@@ -5,6 +5,8 @@ import ILKehadiran from './kehadiran.svg';
 import ILResign from './resign.svg';
 import ILjejakKanan from './jejakKanan.svg';
 import ILjejakKiri from './jejakKiri.svg';
+import ILDog from './ILDog.svg';
+import ILLogin from './ILLogin.svg';
 
 export {
   ILLOGO,
@@ -14,4 +16,6 @@ export {
   ILResign,
   ILjejakKanan,
   ILjejakKiri,
+  ILDog,
+  ILLogin,
 };

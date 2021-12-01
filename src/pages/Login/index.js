@@ -1,36 +1,47 @@
 import React from 'react';
-import {
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import {ILLOGO, ILTangan} from '../../assets';
-import {Gap, Input} from '../../components';
-import {fonts} from '../../utils';
+import {ScrollView, StatusBar, StyleSheet, Text, View} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import {ILLogin} from '../../assets';
+import {Buttons, Gap, Input, Link} from '../../components';
+import {colors, fonts} from '../../utils';
 
 const Login = ({navigation}) => {
   return (
     <View style={styles.page}>
-      <StatusBar barStyle="dark-content" backgroundColor="#FFF" />
-      <ILLOGO style={styles.logo} />
-      <View style={styles.WrapSelamat}>
-        <Text style={styles.TxtSelamat}>Selamat Datang</Text>
-        <ILTangan />
-      </View>
-      <Gap height={20} />
-      <Input judul="Email" />
-      <Gap height={10} />
-      <Input judul="Kata sandi" />
-      <Gap height={20} />
-      <Text style={styles.lupa}>Lupa Password?</Text>
-      <Gap height={40} />
-      <TouchableOpacity
-        style={styles.BtnLogin}
-        onPress={() => navigation.replace('MainApp')}>
-        <Text style={styles.TxtLogin}>LOGIN</Text>
-      </TouchableOpacity>
+      <StatusBar barStyle="light-content" backgroundColor="#4552CB" />
+      <LinearGradient
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 1}}
+        colors={['#4596EA', '#4552CB', '#1324BA']}
+        style={styles.gradient}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <Gap height={50} />
+          <ILLogin style={styles.Ilimg} />
+          <Gap height={30} />
+          <View style={styles.wrapContent}>
+            <Text style={styles.register}>Login</Text>
+            <Gap height={30} />
+            <Input judul="Email" />
+            <Gap height={15} />
+            <Input judul="Kata sandi" />
+            <Text style={styles.lupa}>Lupa Kata sandi?</Text>
+            <Gap height={15} />
+            <Buttons
+              title="Login"
+              onPress={() => navigation.replace('MainApp')}
+            />
+            <Gap height={20} />
+            <View style={styles.wrapLupa}>
+              <Link
+                isi="Belum mempunyai akun?"
+                subIsi="Register"
+                onPress={() => navigation.replace('Register')}
+              />
+            </View>
+          </View>
+          <Gap height={15} />
+        </ScrollView>
+      </LinearGradient>
     </View>
   );
 };
@@ -39,42 +50,36 @@ export default Login;
 
 const styles = StyleSheet.create({
   page: {
-    backgroundColor: 'white',
+    flex: 1,
+  },
+  gradient: {
     flex: 1,
     paddingHorizontal: 20,
-    justifyContent: 'center',
   },
-  logo: {
+  wrapContent: {
+    backgroundColor: colors.Bg.secondary,
+    flex: 1,
+    paddingHorizontal: 20,
+    paddingVertical: 30,
+    borderRadius: 15,
+  },
+  Ilimg: {
     alignSelf: 'center',
   },
-  WrapSelamat: {
-    flexDirection: 'row',
-    marginTop: 36,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  TxtSelamat: {
-    fontSize: 24,
-    fontFamily: fonts.primary[700],
-    color: '#334639',
-    paddingRight: 10,
+  register: {
+    fontSize: 30,
+    fontFamily: fonts.primary[500],
+    color: colors.text.primary,
+    textAlign: 'center',
   },
   lupa: {
-    fontSize: 12,
-    color: '#106048',
-    textDecorationLine: 'underline',
-    fontFamily: fonts.primary[500],
     alignSelf: 'flex-end',
+    marginTop: 12,
+    fontFamily: fonts.primary[500],
+    color: colors.primary,
+    fontSize: 14,
   },
-  BtnLogin: {
-    backgroundColor: '#0D9C57',
-    paddingVertical: 15,
-    borderRadius: 30,
-  },
-  TxtLogin: {
-    color: 'white',
-    fontSize: 18,
-    fontFamily: fonts.primary[800],
-    textAlign: 'center',
+  wrapLupa: {
+    alignItems: 'center',
   },
 });

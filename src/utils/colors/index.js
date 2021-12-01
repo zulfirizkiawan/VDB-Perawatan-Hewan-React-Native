@@ -1,12 +1,12 @@
 const mainColors = {
-  greyblack: '#333333',
+  greyblack: '#9BA0A6',
   blue2: '#4552CB',
   grey1: '#BBC3CE',
   grey2: '#DADADA',
   borderGrey: '#F0F0F8',
   blue1: '#456CD7',
   white1: '#FFFFFF',
-  black1: 'black',
+  black1: '#070821',
 };
 
 export const colors = {
@@ -17,6 +17,7 @@ export const colors = {
   text: {
     primary: mainColors.black1,
     secondary: mainColors.grey2,
+    tree: mainColors.grey1,
     MenuinActive: mainColors.grey,
     MenuActive: mainColors.blue2,
   },

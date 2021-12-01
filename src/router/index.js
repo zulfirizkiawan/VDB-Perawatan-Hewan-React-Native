@@ -8,8 +8,10 @@ import {
   Cuti,
   Dashboard,
   EditProfile,
+  GetStarted,
   Kehadiran,
   Login,
+  Register,
   Resign,
   Riwayat,
   Sakit,
@@ -52,8 +54,18 @@ const Router = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
+        name="GetStarted"
+        component={GetStarted}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
         name="Login"
         component={Login}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Register"
+        component={Register}
         options={{headerShown: false}}
       />
       <Stack.Screen

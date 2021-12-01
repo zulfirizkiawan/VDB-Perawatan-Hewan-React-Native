@@ -1,5 +1,6 @@
 import Splash from './Splash';
 import Login from './Login';
+import Register from './Register';
 import AbsenMasuk from './AbsenMasuk';
 import AbsenPulang from './AbsenPulang';
 import Akun from './Akun';
@@ -11,6 +12,7 @@ import Cuti from './Cuti';
 import Kehadiran from './Kehadiran';
 import Sakit from './Sakit';
 import Absensi from './Absensi';
+import GetStarted from './GetStarted';
 
 export {
   Splash,
@@ -26,4 +28,6 @@ export {
   Kehadiran,
   Sakit,
   Absensi,
+  GetStarted,
+  Register,
 };
