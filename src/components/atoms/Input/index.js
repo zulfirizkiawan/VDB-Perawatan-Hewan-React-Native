@@ -6,7 +6,7 @@ const Input = ({judul}) => {
   return (
     <View>
       <Text style={styles.Tjudul}>{judul}</Text>
-      <TextInput style={styles.TI}> </TextInput>
+      <TextInput style={styles.TI}></TextInput>
       <View style={styles.garis} />
     </View>
   );
@@ -22,13 +22,13 @@ const styles = StyleSheet.create({
   },
   TI: {
     marginTop: -8,
-    fontSize: 16,
+    fontSize: 14,
     color: '#070821',
     fontFamily: fonts.primary[400],
   },
   garis: {
     borderBottomColor: '#BDBDBD',
     borderBottomWidth: 0.7,
-    marginTop: -5,
+    marginTop: -14,
   },
 });

@@ -18,7 +18,7 @@ export const colors = {
     primary: mainColors.black1,
     secondary: mainColors.grey2,
     tree: mainColors.grey1,
-    MenuinActive: mainColors.grey,
+    MenuinActive: mainColors.grey1,
     MenuActive: mainColors.blue2,
   },
   button: {

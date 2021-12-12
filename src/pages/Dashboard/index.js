@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import {DummyProfile} from '../../assets';
-import {Gap, Layanan, Slider} from '../../components';
+import {Gap, Layanan, ListDokter, MerawatHewan, Slider} from '../../components';
 import {colors, fonts} from '../../utils';
 
 const Dashboard = ({navigation}) => {
@@ -42,9 +42,18 @@ const Dashboard = ({navigation}) => {
           <Layanan category="Penitipan" onPress={() => alert('Hallo')} />
           <Layanan category="Dr. Hewan" onPress={() => alert('Hallo')} />
         </View>
-
+        <Gap height={20} />
         {/* List Dokter */}
         <Text style={styles.Lbl}>Konsultasi Dokter</Text>
+        <View style={styles.pD}>
+          <ListDokter />
+        </View>
+        <Gap height={20} />
+        {/* merawat hewan */}
+        <Text style={styles.Lbl}>Cara Merawat Hewan</Text>
+        <View style={styles.pD}>
+          <MerawatHewan />
+        </View>
       </ScrollView>
     </View>
   );
@@ -90,12 +99,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 20,
-    paddingVertical: 15,
+    paddingVertical: 5,
   },
   Lbl: {
     fontFamily: fonts.primary[600],
     fontSize: 16,
     color: colors.primary,
     marginLeft: 20,
+  },
+  pD: {
+    paddingHorizontal: 20,
+    paddingVertical: 5,
   },
 });

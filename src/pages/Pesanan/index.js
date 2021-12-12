@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   wrapRiwayat: {
-    paddingTop: 25,
+    paddingTop: 5,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },

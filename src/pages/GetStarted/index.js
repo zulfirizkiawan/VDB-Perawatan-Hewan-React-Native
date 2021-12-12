@@ -17,7 +17,7 @@ const GetStarted = ({navigation}) => {
           </Text>
           <Gap height={20} />
           <Buttons
-            title="Daftar"
+            title="Register"
             onPress={() => navigation.replace('Register')}
           />
           <Gap height={20} />

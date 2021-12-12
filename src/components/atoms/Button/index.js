@@ -19,8 +19,9 @@ export default Button;
 const styles = StyleSheet.create({
   BtnLogin: {
     backgroundColor: colors.primary,
-    paddingVertical: 15,
+    paddingVertical: 13,
     borderRadius: 30,
+    width: '100%',
   },
   TxtLogin: {
     color: 'white',

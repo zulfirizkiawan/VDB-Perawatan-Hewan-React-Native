@@ -20,12 +20,12 @@ const Login = ({navigation}) => {
           <Gap height={30} />
           <View style={styles.wrapContent}>
             <Text style={styles.register}>Login</Text>
-            <Gap height={30} />
+            <Gap height={20} />
             <Input judul="Email" />
             <Gap height={15} />
             <Input judul="Kata sandi" />
             <Text style={styles.lupa}>Lupa Kata sandi?</Text>
-            <Gap height={15} />
+            <Gap height={25} />
             <Buttons
               title="Login"
               onPress={() => navigation.replace('MainApp')}
@@ -60,7 +60,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.Bg.secondary,
     flex: 1,
     paddingHorizontal: 20,
-    paddingVertical: 30,
+    paddingBottom: 30,
+    paddingTop: 20,
     borderRadius: 15,
   },
   Ilimg: {
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
   },
   register: {
     fontSize: 30,
-    fontFamily: fonts.primary[500],
+    fontFamily: fonts.primary[600],
     color: colors.text.primary,
     textAlign: 'center',
   },

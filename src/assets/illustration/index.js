@@ -11,6 +11,8 @@ import ILKucing from './ILKucing.png';
 import ILGrooming from './ILGrooming.svg';
 import ILPenitipan from './ILPenitipan.svg';
 import ILDr from './ILDr.svg';
+import ILCatandDog from './ILCatandDog.png';
+import ILCard from './ILCard.png';
 
 export {
   ILLOGO,
@@ -25,4 +27,6 @@ export {
   ILGrooming,
   ILPenitipan,
   ILDr,
+  ILCatandDog,
+  ILCard,
 };
