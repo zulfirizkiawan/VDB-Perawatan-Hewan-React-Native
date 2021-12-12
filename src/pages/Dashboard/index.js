@@ -7,8 +7,8 @@ import {
   Text,
   View,
 } from 'react-native';
-import {DummyProfil} from '../../assets';
-import {Artikel, Gap, Layanan, Pengumuman, Penilaian} from '../../components';
+import {DummyProfile} from '../../assets';
+import {Gap, Layanan, Slider} from '../../components';
 import {colors, fonts} from '../../utils';
 
 const Dashboard = ({navigation}) => {
@@ -16,67 +16,35 @@ const Dashboard = ({navigation}) => {
     <View style={styles.page}>
       <StatusBar barStyle="dark-content" backgroundColor="#FFF" />
       <ScrollView showsVerticalScrollIndicator={false}>
+        {/* Profil */}
+
         <Gap height={40} />
-        {/* Profile */}
-        <View style={styles.wrapProfile}>
-          <Image source={DummyProfil} style={styles.avatar} />
+        <View style={styles.wrapProfil}>
           <View>
-            <Text style={styles.nama}>Lutfy Uzumaki</Text>
-            <Text style={styles.profesi}>Staff Quality</Text>
+            <Text style={styles.hallo}>Hallo, Apa kabar ?</Text>
+            <Text style={styles.namaUser}>Dina Anggun Pertiwi</Text>
           </View>
+          <Image source={DummyProfile} style={styles.avatar} />
         </View>
-        <Gap height={40} />
-        {/* Pengumuman */}
+        {/* Slider pengumuman */}
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <View style={styles.wrapPengumuman}>
-            <Pengumuman />
-            <Pengumuman />
+          <View style={styles.wrapSlider}>
+            <Gap width={10} />
+            <Slider />
+            <Gap width={10} />
           </View>
-          <Gap width={10} />
         </ScrollView>
-        {/* Layanan */}
-        <View style={styles.wrapContentLayanan}>
-          <Gap height={40} />
-          <Text style={styles.TxtLabel}>Layanan</Text>
-          <Gap height={20} />
-          <View style={styles.wrapLayanan}>
-            <Layanan
-              category="Kehadiran"
-              onPress={() => navigation.navigate('Kehadiran')}
-            />
-            <Layanan
-              category="Cuti"
-              onPress={() => navigation.navigate('Cuti')}
-            />
-            <Layanan
-              category="  Resign  "
-              onPress={() => navigation.navigate('Resign')}
-            />
-          </View>
-        </View>
-        <Gap height={40} />
-        {/* Penilaian */}
-        <View style={styles.wrapContentLayanan}>
-          <Text style={styles.TxtLabel}>Penilaian Kinerja Anda</Text>
-          <Gap height={15} />
-          <View style={styles.wrapPenilaian}>
-            <Penilaian />
-            <Penilaian />
-            <Penilaian />
-            <Penilaian />
-            <Penilaian />
-            <Penilaian />
-          </View>
-        </View>
-        <Gap height={40} />
-        {/* Artikel */}
-        <View style={styles.wrapContentLayanan}>
-          <Text style={styles.TxtLabel}>Artikel</Text>
-          <Gap height={5} />
-          <Artikel />
-          <Artikel />
-        </View>
         <Gap height={20} />
+        {/* Layanan */}
+        <Text style={styles.Lbl}>Layanan</Text>
+        <View style={styles.wrapRiwayat}>
+          <Layanan category="Grooming" onPress={() => alert('Hallo')} />
+          <Layanan category="Penitipan" onPress={() => alert('Hallo')} />
+          <Layanan category="Dr. Hewan" onPress={() => alert('Hallo')} />
+        </View>
+
+        {/* List Dokter */}
+        <Text style={styles.Lbl}>Konsultasi Dokter</Text>
       </ScrollView>
     </View>
   );
@@ -89,55 +57,45 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     flex: 1,
   },
+  wrapPage: {
+    paddingHorizontal: 20,
+  },
   avatar: {
     height: 60,
     width: 60,
-    borderRadius: 60 / 2,
-    marginRight: 16,
+    borderRadius: 30,
   },
-  wrapProfile: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 10,
-  },
-  nama: {
-    fontFamily: fonts.primary[700],
-    color: colors.text.primary,
-    fontSize: 18,
-    letterSpacing: 0.8,
-  },
-  profesi: {
-    fontFamily: fonts.primary[500],
-    color: colors.text.primary,
-    fontSize: 12,
-  },
-  TxtLabel: {
-    fontFamily: fonts.primary[600],
-    color: colors.text.secondary,
-    fontSize: 14,
-  },
-  wrapLayanan: {
+  wrapProfil: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 30,
-  },
-  wrapPengumuman: {
-    flexDirection: 'row',
-    height: 180,
     alignItems: 'center',
-  },
-  wrapContentLayanan: {
-    paddingHorizontal: 10,
-  },
-  wrapPenilaian: {
-    shadowColor: '#858585',
-    shadowOpacity: 0.26,
-    shadowOffset: {width: 3, height: 2},
-    shadowRadius: 10,
-    elevation: 5,
-    backgroundColor: 'white',
-    borderRadius: 10,
     paddingHorizontal: 20,
-    paddingVertical: 10,
+  },
+  hallo: {
+    fontFamily: fonts.primary[500],
+    fontSize: 14,
+    color: colors.text.primary,
+  },
+  namaUser: {
+    fontFamily: fonts.primary[600],
+    fontSize: 18,
+    color: colors.primary,
+    marginTop: 2,
+  },
+  wrapSlider: {
+    marginTop: 30,
+    flexDirection: 'row',
+  },
+  wrapRiwayat: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+  },
+  Lbl: {
+    fontFamily: fonts.primary[600],
+    fontSize: 16,
+    color: colors.primary,
+    marginLeft: 20,
   },
 });

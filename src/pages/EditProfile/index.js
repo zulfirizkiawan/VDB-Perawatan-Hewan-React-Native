@@ -13,19 +13,13 @@ const EditProfile = ({navigation}) => {
           <Image source={DummyProfile} style={styles.avatar} />
           <Input judul="Nama Lengkap" />
           <Gap height={15} />
-          <Input judul="Alamat" />
-          <Gap height={15} />
-          <Input judul="Tanggal Lahir" />
-          <Gap height={15} />
-          <Input judul="No. Telepon" />
-          <Gap height={15} />
           <Input judul="Email" />
           <Gap height={15} />
-          <Input judul="Posisi" />
-          <Gap height={20} />
+          <Input judul="No. Handphone" />
+          <Gap height={40} />
+          <Buttons title="Simpan" onPress={() => alert('ugh')} />
         </View>
       </ScrollView>
-      <Buttons title="Simpan" onPress={() => alert('ugh')} />
     </View>
   );
 };
@@ -38,13 +32,13 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   wrapContent: {
-    marginTop: 30,
-    paddingHorizontal: 15,
+    marginTop: 10,
+    paddingHorizontal: 20,
   },
   avatar: {
-    height: 100,
-    width: 100,
-    borderRadius: 100 / 2,
+    height: 112,
+    width: 112,
+    borderRadius: 112 / 2,
     alignSelf: 'center',
     marginBottom: 30,
   },

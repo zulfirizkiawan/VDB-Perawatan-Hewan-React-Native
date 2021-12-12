@@ -11,9 +11,9 @@ import {
   GetStarted,
   Kehadiran,
   Login,
+  Pesanan,
   Register,
   Resign,
-  Riwayat,
   Sakit,
   Splash,
 } from '../pages';
@@ -32,8 +32,8 @@ const MainApp = () => {
         options={{headerShown: false}}
       />
       <Tab.Screen
-        name="Riwayat"
-        component={Riwayat}
+        name="Pesanan"
+        component={Pesanan}
         options={{headerShown: false}}
       />
       <Tab.Screen
@@ -47,7 +47,7 @@ const MainApp = () => {
 
 const Router = () => {
   return (
-    <Stack.Navigator initialRouteName="Splash">
+    <Stack.Navigator initialRouteName="MainApp">
       <Stack.Screen
         name="Splash"
         component={Splash}
@@ -69,43 +69,8 @@ const Router = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="AbsenMasuk"
-        component={AbsenMasuk}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="AbsenPulang"
-        component={AbsenPulang}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
         name="EditProfile"
         component={EditProfile}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Resign"
-        component={Resign}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Cuti"
-        component={Cuti}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Kehadiran"
-        component={Kehadiran}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Absensi"
-        component={Absensi}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Sakit"
-        component={Sakit}
         options={{headerShown: false}}
       />
       <Stack.Screen

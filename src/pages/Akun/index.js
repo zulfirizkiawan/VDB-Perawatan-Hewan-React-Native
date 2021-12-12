@@ -18,8 +18,7 @@ const Akun = ({navigation}) => {
         <View style={styles.wrapProfile}>
           <Image source={DummyProfile} style={styles.avatar} />
           <Gap height={24} />
-          <Text style={styles.nama}>Lutfy Uzumaki</Text>
-          <Text style={styles.email}>Lutfy.Uzumaki.02@gmail.com</Text>
+          <Text style={styles.nama}>Dina Anggun Pertiwi</Text>
         </View>
       </View>
       <Gap height={40} />
@@ -34,7 +33,7 @@ const Akun = ({navigation}) => {
           categoryStrip="Benar"
           onPress={() => alert('hallo')}
         />
-        <TabAkun category="Keluar Akun   " onPress={() => alert('hallo')} />
+        <TabAkun category="Keluar Akun" onPress={() => alert('hallo')} />
       </View>
     </View>
   );
@@ -53,16 +52,16 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     fontSize: 20,
-    color: '#333333',
+    color: colors.text.primary,
     fontFamily: fonts.primary[700],
   },
   page: {
-    backgroundColor: '#F9FBFC',
+    backgroundColor: '#F9F9FD',
     flex: 1,
   },
   TxtEdit: {
     fontSize: 14,
-    color: colors.text.secondary,
+    color: colors.text.MenuActive,
     fontFamily: fonts.primary[600],
     width: 76,
   },
@@ -74,11 +73,11 @@ const styles = StyleSheet.create({
   },
   shadow: {
     backgroundColor: 'white',
-    shadowColor: '#9C9C9C',
+    shadowColor: '#ABAECA',
     shadowOffset: {width: 0, height: 4},
-    shadowRadius: 6,
+    shadowRadius: 28,
     shadowOpacity: 0.2,
-    elevation: 10,
+    elevation: 20,
     borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
   },
@@ -88,25 +87,19 @@ const styles = StyleSheet.create({
     borderRadius: 100 / 2,
   },
   nama: {
-    fontFamily: fonts.primary[600],
-    fontSize: 20,
-    color: colors.text.primary,
-  },
-  email: {
     fontFamily: fonts.primary[500],
-    fontSize: 12,
+    fontSize: 24,
     color: colors.text.primary,
-    marginTop: 5,
   },
   wrapAkun: {
     backgroundColor: colors.white,
     paddingHorizontal: 20,
     paddingVertical: 20,
     borderRadius: 15,
-    shadowColor: '#9C9C9C',
+    shadowColor: '#ABAECA',
     shadowOffset: {width: 0, height: 4},
-    shadowRadius: 6,
+    shadowRadius: 28,
     shadowOpacity: 0.2,
-    elevation: 10,
+    elevation: 20,
   },
 });

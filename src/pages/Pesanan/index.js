@@ -3,24 +3,24 @@ import {StyleSheet, Text, View} from 'react-native';
 import {Layanan} from '../../components';
 import {colors, fonts} from '../../utils';
 
-const Riwayat = () => {
+const Pesanan = () => {
   return (
     <View style={styles.page}>
       <View style={styles.container}>
-        <Text style={styles.TxtHeader}>Riwayat</Text>
+        <Text style={styles.TxtHeader}>Pesanan</Text>
       </View>
       <View style={styles.wrapContentRiwayat}>
         <View style={styles.wrapRiwayat}>
-          <Layanan category="Kehadiran" onPress={() => alert('Hallo')} />
-          <Layanan category="Cuti" onPress={() => alert('Hallo')} />
-          <Layanan category="  Resign  " onPress={() => alert('Hallo')} />
+          <Layanan category="Grooming" onPress={() => alert('Hallo')} />
+          <Layanan category="Penitipan" onPress={() => alert('Hallo')} />
+          <Layanan category="Dr. Hewan" onPress={() => alert('Hallo')} />
         </View>
       </View>
     </View>
   );
 };
 
-export default Riwayat;
+export default Pesanan;
 
 const styles = StyleSheet.create({
   page: {
@@ -28,22 +28,20 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   wrapRiwayat: {
+    paddingTop: 25,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   wrapContentRiwayat: {
-    paddingHorizontal: 30,
-    marginTop: 40,
+    paddingHorizontal: 20,
+    // backgroundColor: '#F9F9FD',
+    flex: 1,
   },
   container: {
     paddingHorizontal: 10,
     paddingVertical: 20,
     backgroundColor: 'white',
     flexDirection: 'row',
-    shadowColor: '#000000',
-    shadowOffset: {width: 0, height: 0},
-    shadowRadius: 1,
-    elevation: 10,
     alignItems: 'center',
   },
   TxtHeader: {

@@ -1,27 +1,27 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {
-  ICAkun,
-  ICAkunAktif,
-  ICDashboard,
-  ICDashboardAktif,
-  ICRiwayat,
-  ICRiwayatAktif,
+  ICakunActive,
+  ICakunNonActive,
+  IChomeActive,
+  IChomeNonActive,
+  ICpesananActive,
+  ICpesananNonActive,
 } from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
 const TabItem = ({title, active, onPress, onLongPress}) => {
   const Icon = () => {
     if (title === 'Beranda') {
-      return active ? <ICDashboardAktif /> : <ICDashboard />;
+      return active ? <IChomeActive /> : <IChomeNonActive />;
     }
-    if (title === 'Riwayat') {
-      return active ? <ICRiwayatAktif /> : <ICRiwayat />;
+    if (title === 'Pesanan') {
+      return active ? <ICpesananActive /> : <ICpesananNonActive />;
     }
     if (title === '  Akun   ') {
-      return active ? <ICAkunAktif /> : <ICAkun />;
+      return active ? <ICakunActive /> : <ICakunNonActive />;
     }
-    return <ICDashboard />;
+    return <IChomeActive />;
   };
   return (
     <TouchableOpacity

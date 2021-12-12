@@ -16,7 +16,10 @@ const GetStarted = ({navigation}) => {
             Membantu merawat hewan peliharaan anda dengan baik
           </Text>
           <Gap height={20} />
-          <Buttons title="Daftar" />
+          <Buttons
+            title="Daftar"
+            onPress={() => navigation.replace('Register')}
+          />
           <Gap height={20} />
           <Link
             isi="Saya sudah punya akun?"

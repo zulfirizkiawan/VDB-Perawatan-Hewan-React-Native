@@ -1,33 +1,19 @@
 import Splash from './Splash';
 import Login from './Login';
 import Register from './Register';
-import AbsenMasuk from './AbsenMasuk';
-import AbsenPulang from './AbsenPulang';
 import Akun from './Akun';
 import Dashboard from './Dashboard';
-import Riwayat from './Riwayat';
+import Pesanan from './Pesanan';
 import EditProfile from './EditProfile';
-import Resign from './Resign';
-import Cuti from './Cuti';
-import Kehadiran from './Kehadiran';
-import Sakit from './Sakit';
-import Absensi from './Absensi';
 import GetStarted from './GetStarted';
 
 export {
   Splash,
   Login,
-  AbsenMasuk,
-  AbsenPulang,
   Akun,
   Dashboard,
-  Riwayat,
+  Pesanan,
   EditProfile,
-  Resign,
-  Cuti,
-  Kehadiran,
-  Sakit,
-  Absensi,
   GetStarted,
   Register,
 };

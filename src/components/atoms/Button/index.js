@@ -8,24 +8,15 @@ const Button = ({type, title, onPress}) => {
     return <IconOnly onPress={onPress} />;
   }
   return (
-    <View style={styles.wrapBtn}>
-      <TouchableOpacity style={styles.BtnLogin} onPress={onPress}>
-        <Text style={styles.TxtLogin}>{title}</Text>
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity style={styles.BtnLogin} onPress={onPress}>
+      <Text style={styles.TxtLogin}>{title}</Text>
+    </TouchableOpacity>
   );
 };
 
 export default Button;
 
 const styles = StyleSheet.create({
-  wrapBtn: {
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    paddingVertical: 14,
-
-    width: '100%',
-  },
   BtnLogin: {
     backgroundColor: colors.primary,
     paddingVertical: 15,

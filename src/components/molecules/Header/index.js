@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Buttons, Gap} from '../../atoms';
-import {fonts} from '../../../utils';
+import {colors, fonts} from '../../../utils';
 
 const Header = ({onPress, title, type}) => {
   return (
@@ -17,21 +17,17 @@ export default Header;
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
     paddingVertical: 24,
     backgroundColor: 'white',
     flexDirection: 'row',
-    shadowColor: '#000000',
-    shadowOffset: {width: 0, height: 0},
-    shadowRadius: 1,
-    elevation: 10,
     alignItems: 'center',
   },
   TxtHeader: {
     flex: 1,
     textAlign: 'center',
     fontSize: 20,
-    color: '#333333',
+    color: colors.text.primary,
     fontFamily: fonts.primary[700],
   },
 });

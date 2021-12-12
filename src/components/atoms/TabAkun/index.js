@@ -9,10 +9,10 @@ const TabAkun = ({category, onPress, categoryStrip}) => {
       return <ICEmail />;
     }
     if (category === 'Pusat Bantuan') {
-      return <ICPusatbantuan />;
-    }
-    if (category === 'Keluar Akun   ') {
       return <ICKeluar />;
+    }
+    if (category === 'Keluar Akun') {
+      return <ICPusatbantuan />;
     }
     return <ICEmail />;
   };
