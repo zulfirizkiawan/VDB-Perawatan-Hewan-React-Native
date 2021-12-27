@@ -1,32 +1,32 @@
-import ILLOGO from './ILLOGO.svg';
 import ILTangan from './ILTangan.svg';
 import ILjejakKanan from './jejakKanan.svg';
 import ILjejakKiri from './jejakKiri.svg';
 import ILDog from './ILDog.svg';
 import ILLogin from './ILLogin.svg';
-import ILAnjing from './ILAnjing.png';
-import ILAnjing2 from './ILAnjing2.png';
-import ILKucing from './ILKucing.png';
 
 import ILGrooming from './ILGrooming.svg';
 import ILPenitipan from './ILPenitipan.svg';
 import ILDr from './ILDr.svg';
 import ILCatandDog from './ILCatandDog.png';
 import ILCard from './ILCard.png';
+import ILRectangle from './ILRectangle.png';
+import ILAnjing from './ILAnjing.svg';
+import ILAnjing2 from './ILAnjing2.svg';
+import ILKucing from './ILKucing.svg';
 
 export {
-  ILLOGO,
   ILTangan,
   ILjejakKanan,
   ILjejakKiri,
   ILDog,
   ILLogin,
-  ILKucing,
-  ILAnjing2,
-  ILAnjing,
   ILGrooming,
   ILPenitipan,
   ILDr,
   ILCatandDog,
   ILCard,
+  ILRectangle,
+  ILAnjing,
+  ILAnjing2,
+  ILKucing,
 };

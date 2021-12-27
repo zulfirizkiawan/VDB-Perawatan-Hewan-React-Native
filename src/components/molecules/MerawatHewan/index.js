@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {ILCard, ILCatandDog} from '../../../assets';
+import {ILCard} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
 const MerawatHewan = () => {
@@ -35,10 +35,5 @@ const styles = StyleSheet.create({
     width: 160,
     color: colors.white,
     fontFamily: fonts.primary[600],
-  },
-  imgCat: {
-    height: 200,
-    width: 190,
-    marginRight: 40,
   },
 });

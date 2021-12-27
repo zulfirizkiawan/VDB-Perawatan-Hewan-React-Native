@@ -1,5 +1,12 @@
 import React from 'react';
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import {DummyProfile} from '../../assets';
 import {Buttons, Gap, Header, Input} from '../../components';
 import {colors} from '../../utils';
@@ -12,10 +19,10 @@ const EditProfile = ({navigation}) => {
         <View style={styles.wrapContent}>
           <Image source={DummyProfile} style={styles.avatar} />
           <Input judul="Nama Lengkap" />
-          <Gap height={15} />
-          <Input judul="Email" />
-          <Gap height={15} />
-          <Input judul="No. Handphone" />
+          <Gap height={20} />
+          <Input judul="Email" disable value="jdjdhj@gmail.com" />
+          <Gap height={20} />
+          <Input judul="No. Handphone" keyboardType="numeric" />
           <Gap height={40} />
           <Buttons title="Simpan" onPress={() => alert('ugh')} />
         </View>
@@ -41,5 +48,9 @@ const styles = StyleSheet.create({
     borderRadius: 112 / 2,
     alignSelf: 'center',
     marginBottom: 30,
+  },
+  inputs: {
+    padding: 10,
+    backgroundColor: '#000',
   },
 });

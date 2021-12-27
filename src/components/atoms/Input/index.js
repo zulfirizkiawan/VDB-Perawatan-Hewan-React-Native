@@ -1,12 +1,35 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import {colors, fonts} from '../../../utils';
 
-const Input = ({judul}) => {
+const Input = ({
+  judul,
+  value,
+  onChangeText,
+  secureTextEntry,
+  disable,
+  keyboardType,
+}) => {
+  const [border, setBorder] = useState(colors.text.primary);
+  const onFocusForm = () => {
+    setBorder(colors.text.primary);
+  };
+  const onBlurForm = () => {
+    setBorder(colors.text.primary);
+  };
   return (
     <View>
       <Text style={styles.Tjudul}>{judul}</Text>
-      <TextInput style={styles.TI}></TextInput>
+      <TextInput
+        onFocus={onFocusForm}
+        onBlur={onBlurForm}
+        style={styles.input(border)}
+        value={value}
+        keyboardType={keyboardType}
+        onChangeText={onChangeText}
+        secureTextEntry={secureTextEntry}
+        editable={!disable}
+        selectTextOnFocus={!disable}></TextInput>
       <View style={styles.garis} />
     </View>
   );
@@ -20,12 +43,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: fonts.primary[600],
   },
-  TI: {
+  input: border => ({
     marginTop: -8,
     fontSize: 14,
-    color: '#070821',
-    fontFamily: fonts.primary[400],
-  },
+    color: border,
+    fontFamily: fonts.primary[500],
+  }),
   garis: {
     borderBottomColor: '#BDBDBD',
     borderBottomWidth: 0.7,

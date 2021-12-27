@@ -18,7 +18,7 @@ export default Header;
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 20,
-    paddingVertical: 24,
+    paddingVertical: 20,
     backgroundColor: 'white',
     flexDirection: 'row',
     alignItems: 'center',
@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
   TxtHeader: {
     flex: 1,
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: 18,
     color: colors.text.primary,
-    fontFamily: fonts.primary[700],
+    fontFamily: fonts.primary[600],
   },
 });

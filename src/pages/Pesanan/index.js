@@ -1,22 +1,32 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Layanan} from '../../components';
 import {colors, fonts} from '../../utils';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import PDrHewan from '../PDrHewan';
+import PPenitipan from '../PPenitipan';
+import PGrooming from '../PGrooming';
+
+const Tab = createMaterialTopTabNavigator();
+
+const TopNav = () => {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Grooming" component={PGrooming} />
+      <Tab.Screen name="Penitipan" component={PPenitipan} />
+      <Tab.Screen name="Dr Hewan" component={PDrHewan} />
+    </Tab.Navigator>
+  );
+};
 
 const Pesanan = () => {
   return (
-    <View style={styles.page}>
+    <SafeAreaProvider>
       <View style={styles.container}>
         <Text style={styles.TxtHeader}>Pesanan</Text>
       </View>
-      <View style={styles.wrapContentRiwayat}>
-        <View style={styles.wrapRiwayat}>
-          <Layanan category="Grooming" onPress={() => alert('Hallo')} />
-          <Layanan category="Penitipan" onPress={() => alert('Hallo')} />
-          <Layanan category="Dr. Hewan" onPress={() => alert('Hallo')} />
-        </View>
-      </View>
-    </View>
+      <TopNav />
+    </SafeAreaProvider>
   );
 };
 
@@ -26,16 +36,6 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
     backgroundColor: colors.white,
-  },
-  wrapRiwayat: {
-    paddingTop: 5,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  wrapContentRiwayat: {
-    paddingHorizontal: 20,
-    // backgroundColor: '#F9F9FD',
-    flex: 1,
   },
   container: {
     paddingHorizontal: 10,

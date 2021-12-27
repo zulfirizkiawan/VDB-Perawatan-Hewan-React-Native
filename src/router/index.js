@@ -11,7 +11,11 @@ import {
   GetStarted,
   Kehadiran,
   Login,
+  PDrHewan,
   Pesanan,
+  PGrooming,
+  PPenitipan,
+  ProfilDokter,
   Register,
   Resign,
   Sakit,
@@ -47,7 +51,7 @@ const MainApp = () => {
 
 const Router = () => {
   return (
-    <Stack.Navigator initialRouteName="Splash">
+    <Stack.Navigator initialRouteName="MainApp">
       <Stack.Screen
         name="Splash"
         component={Splash}
@@ -71,6 +75,26 @@ const Router = () => {
       <Stack.Screen
         name="EditProfile"
         component={EditProfile}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="PGrooming"
+        component={PGrooming}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="PPenitipan"
+        component={PPenitipan}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="PDrHewan"
+        component={PDrHewan}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProfilDokter"
+        component={ProfilDokter}
         options={{headerShown: false}}
       />
       <Stack.Screen

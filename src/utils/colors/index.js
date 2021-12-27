@@ -30,6 +30,7 @@ export const colors = {
   Bg: {
     primary: mainColors.blue1,
     secondary: mainColors.white1,
+    tree: mainColors.borderGrey,
   },
   border: mainColors.borderGrey,
   cardLight: mainColors.green2,

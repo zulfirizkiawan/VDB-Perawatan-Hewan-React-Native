@@ -4,9 +4,9 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import {DummyProfile} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
-const ListDokter = () => {
+const ListDokter = ({onPress}) => {
   return (
-    <TouchableOpacity style={styles.wrapList}>
+    <TouchableOpacity style={styles.wrapList} onPress={onPress}>
       <Image source={DummyProfile} style={styles.avatar} />
       <View>
         <Text style={styles.namaDokter}>Sakura Haruno</Text>

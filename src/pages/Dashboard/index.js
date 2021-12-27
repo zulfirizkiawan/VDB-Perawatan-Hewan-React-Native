@@ -17,7 +17,6 @@ const Dashboard = ({navigation}) => {
       <StatusBar barStyle="dark-content" backgroundColor="#FFF" />
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Profil */}
-
         <Gap height={40} />
         <View style={styles.wrapProfil}>
           <View>
@@ -30,7 +29,11 @@ const Dashboard = ({navigation}) => {
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <View style={styles.wrapSlider}>
             <Gap width={10} />
-            <Slider />
+            <Slider category="Kucing" />
+            <Gap width={10} />
+            <Slider category="Anjing" />
+            <Gap width={10} />
+            <Slider category="Anjing2" />
             <Gap width={10} />
           </View>
         </ScrollView>
@@ -46,7 +49,7 @@ const Dashboard = ({navigation}) => {
         {/* List Dokter */}
         <Text style={styles.Lbl}>Konsultasi Dokter</Text>
         <View style={styles.pD}>
-          <ListDokter />
+          <ListDokter onPress={() => navigation.navigate('ProfilDokter')} />
         </View>
         <Gap height={20} />
         {/* merawat hewan */}
