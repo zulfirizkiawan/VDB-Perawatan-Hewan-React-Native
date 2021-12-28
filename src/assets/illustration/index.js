@@ -13,6 +13,7 @@ import ILRectangle from './ILRectangle.png';
 import ILAnjing from './ILAnjing.svg';
 import ILAnjing2 from './ILAnjing2.svg';
 import ILKucing from './ILKucing.svg';
+import ILRelaxingWalkDog from './ILRelaxingWalkDog.svg';
 
 export {
   ILTangan,
@@ -29,4 +30,5 @@ export {
   ILAnjing,
   ILAnjing2,
   ILKucing,
+  ILRelaxingWalkDog,
 };

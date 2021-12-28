@@ -5,13 +5,17 @@ import {
   AbsenPulang,
   Absensi,
   Akun,
+  Artikel,
   Cuti,
   Dashboard,
+  DrHewan,
   EditProfile,
   GetStarted,
+  Grooming,
   Kehadiran,
   Login,
   PDrHewan,
+  Penitipan,
   Pesanan,
   PGrooming,
   PPenitipan,
@@ -95,6 +99,26 @@ const Router = () => {
       <Stack.Screen
         name="ProfilDokter"
         component={ProfilDokter}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Artikel"
+        component={Artikel}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Grooming"
+        component={Grooming}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Penitipan"
+        component={Penitipan}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DrHewan"
+        component={DrHewan}
         options={{headerShown: false}}
       />
       <Stack.Screen

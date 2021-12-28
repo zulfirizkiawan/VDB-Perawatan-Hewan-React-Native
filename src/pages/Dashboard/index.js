@@ -41,9 +41,18 @@ const Dashboard = ({navigation}) => {
         {/* Layanan */}
         <Text style={styles.Lbl}>Layanan</Text>
         <View style={styles.wrapRiwayat}>
-          <Layanan category="Grooming" onPress={() => alert('Hallo')} />
-          <Layanan category="Penitipan" onPress={() => alert('Hallo')} />
-          <Layanan category="Dr. Hewan" onPress={() => alert('Hallo')} />
+          <Layanan
+            category="Grooming"
+            onPress={() => navigation.navigate('Grooming')}
+          />
+          <Layanan
+            category="Penitipan"
+            onPress={() => navigation.navigate('Penitipan')}
+          />
+          <Layanan
+            category="Dr. Hewan"
+            onPress={() => navigation.navigate('DrHewan')}
+          />
         </View>
         <Gap height={20} />
         {/* List Dokter */}
@@ -55,7 +64,7 @@ const Dashboard = ({navigation}) => {
         {/* merawat hewan */}
         <Text style={styles.Lbl}>Cara Merawat Hewan</Text>
         <View style={styles.pD}>
-          <MerawatHewan />
+          <MerawatHewan onPress={() => navigation.navigate('Artikel')} />
         </View>
       </ScrollView>
     </View>
@@ -81,7 +90,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 20,
+    paddingHorizontal: 15,
   },
   hallo: {
     fontFamily: fonts.primary[500],
@@ -101,17 +110,17 @@ const styles = StyleSheet.create({
   wrapRiwayat: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 20,
+    paddingHorizontal: 15,
     paddingVertical: 5,
   },
   Lbl: {
     fontFamily: fonts.primary[600],
     fontSize: 16,
     color: colors.primary,
-    marginLeft: 20,
+    marginLeft: 15,
   },
   pD: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 15,
     paddingVertical: 5,
   },
 });

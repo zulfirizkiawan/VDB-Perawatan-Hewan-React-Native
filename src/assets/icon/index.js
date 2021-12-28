@@ -12,6 +12,8 @@ import ICpesananNonActive from './pesananNonActive.svg';
 import ICpesananActive from './pesananActive.svg';
 import IChomeNonActive from './homeNonActive.svg';
 import IChomeActive from './homeActive.svg';
+import ICNullPhoto from './ICNullPhoto.svg';
+import ICUploadImg from './ICUploadImg.svg';
 
 export {
   ICBack,
@@ -26,4 +28,6 @@ export {
   ICpesananActive,
   IChomeNonActive,
   IChomeActive,
+  ICNullPhoto,
+  ICUploadImg,
 };

@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import {DummyProfile} from '../../assets';
-import {Buttons, Gap, Header, Input} from '../../components';
+import {Buttons, Gap, Header, Input, UploadGambar} from '../../components';
 import {colors} from '../../utils';
 
 const EditProfile = ({navigation}) => {
@@ -17,7 +17,8 @@ const EditProfile = ({navigation}) => {
       <Header title="Profile" onPress={() => navigation.goBack()} />
       <ScrollView showsHorizontalScrollIndicator={false}>
         <View style={styles.wrapContent}>
-          <Image source={DummyProfile} style={styles.avatar} />
+          <UploadGambar />
+          <Gap height={20} />
           <Input judul="Nama Lengkap" />
           <Gap height={20} />
           <Input judul="Email" disable value="jdjdhj@gmail.com" />

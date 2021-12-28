@@ -10,9 +10,9 @@ import {
 import {ILCard} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
-const MerawatHewan = () => {
+const MerawatHewan = ({onPress}) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <ImageBackground source={ILCard} style={styles.wrapMerawat}>
         <Text style={styles.txt}>
           Merawat Hewan Peliharaan dengan Benar di Rumah
@@ -26,7 +26,7 @@ export default MerawatHewan;
 
 const styles = StyleSheet.create({
   wrapMerawat: {
-    height: 199,
+    height: 205,
     paddingTop: 30,
     paddingLeft: 20,
     flexDirection: 'row',

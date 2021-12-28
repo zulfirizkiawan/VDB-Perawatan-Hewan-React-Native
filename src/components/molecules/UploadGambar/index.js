@@ -1,38 +1,34 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
-import {ICUpload} from '../../../assets';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {ICNullPhoto, ICUpload, ICUploadImg} from '../../../assets';
 import {fonts} from '../../../utils';
 
-const UploadGambar = ({title}) => {
+const UploadGambar = ({}) => {
   return (
-    <View style={styles.wrapUG}>
-      <Text style={styles.label}>{title}</Text>
-      <View style={styles.wrapImage}>
-        <ICUpload style={styles.uplImg} />
+    <TouchableOpacity style={styles.WrapProf}>
+      <View style={styles.wrapAvatar}>
+        <ICNullPhoto width={117} height={117} />
+        <ICUploadImg style={styles.addPhoto} width={30} height={30} />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
 export default UploadGambar;
 
 const styles = StyleSheet.create({
-  wrapImage: {
-    width: 118,
-    height: 118,
-    backgroundColor: '#DCDCDC',
+  wrapAvatar: {
+    height: 130,
+    width: 130,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 10,
-    marginTop: 15,
   },
-  label: {
-    fontFamily: fonts.primary[500],
-    fontSize: 14,
-    color: 'black',
-    letterSpacing: 0.5,
+  addPhoto: {
+    position: 'absolute',
+    bottom: 16,
+    right: 10,
   },
-  wrapUG: {
+  WrapProf: {
     alignItems: 'center',
   },
 });

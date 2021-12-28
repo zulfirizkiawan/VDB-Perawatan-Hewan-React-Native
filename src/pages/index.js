@@ -10,6 +10,10 @@ import PDrHewan from './PDrHewan';
 import PGrooming from './PGrooming';
 import PPenitipan from './PPenitipan';
 import ProfilDokter from './ProfilDokter';
+import Artikel from './Artikel';
+import Grooming from './Grooming';
+import Penitipan from './Penitipan';
+import DrHewan from './DrHewan';
 
 export {
   Splash,
@@ -24,4 +28,8 @@ export {
   PGrooming,
   PPenitipan,
   ProfilDokter,
+  Artikel,
+  Grooming,
+  Penitipan,
+  DrHewan,
 };
