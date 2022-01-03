@@ -7,6 +7,7 @@ const mainColors = {
   blue1: '#456CD7',
   white1: '#FFFFFF',
   black1: '#070821',
+  white2: '#FBFBFE',
 };
 
 export const colors = {
@@ -31,6 +32,7 @@ export const colors = {
     primary: mainColors.blue1,
     secondary: mainColors.white1,
     tree: mainColors.borderGrey,
+    for: mainColors.white2,
   },
   border: mainColors.borderGrey,
   cardLight: mainColors.green2,

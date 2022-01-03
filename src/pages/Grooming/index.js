@@ -1,6 +1,14 @@
 import React, {useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {Dropdown, Gap, Header, Input, UploadGambar} from '../../components';
+import {
+  Buttons,
+  Dropdown,
+  Gap,
+  Header,
+  Input,
+  TotalPesan,
+  UploadGambar,
+} from '../../components';
 import {colors, fonts} from '../../utils';
 import {Picker} from '@react-native-picker/picker';
 
@@ -35,7 +43,7 @@ const Grooming = ({navigation}) => {
           <Input judul="Keturunan" />
           <Gap height={15} />
           <View>
-            <Text style={styles.Judul}>Jenis Hewan</Text>
+            <Text style={styles.Judul}>Jenis Kelamin</Text>
             <View style={styles.wrapPicker}>
               <Picker
                 style={styles.pickers}
@@ -52,7 +60,7 @@ const Grooming = ({navigation}) => {
           <Text style={styles.informasiHewan}>Informasi Hewan</Text>
           <Gap height={10} />
           <View>
-            <Text style={styles.Judul}>Jenis Hewan</Text>
+            <Text style={styles.Judul}>Paket</Text>
             <View style={styles.wrapPicker}>
               <Picker
                 style={styles.pickers}
@@ -67,6 +75,12 @@ const Grooming = ({navigation}) => {
         </View>
         <Gap height={30} />
       </ScrollView>
+      <TotalPesan
+        namaTotal="Total"
+        totalHarga="50.000"
+        title="Selanjutnya"
+        onPress={() => navigation.navigate('PembayaranGrooming')}
+      />
     </View>
   );
 };

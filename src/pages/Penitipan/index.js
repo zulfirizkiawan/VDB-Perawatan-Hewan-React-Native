@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {Gap, Header, Input, UploadGambar} from '../../components';
+import {Gap, Header, Input, TotalPesan, UploadGambar} from '../../components';
 import {colors, fonts} from '../../utils';
 import {Picker} from '@react-native-picker/picker';
 
@@ -35,7 +35,7 @@ const Penitipan = ({navigation}) => {
           <Input judul="Keturunan" />
           <Gap height={15} />
           <View>
-            <Text style={styles.Judul}>Jenis Hewan</Text>
+            <Text style={styles.Judul}>Jenis Kelamin</Text>
             <View style={styles.wrapPicker}>
               <Picker
                 style={styles.pickers}
@@ -49,7 +49,7 @@ const Penitipan = ({navigation}) => {
           <Gap height={15} />
           <Input judul="Catatan" />
           <Gap height={20} />
-          <Text style={styles.informasiHewan}>Informasi Hewan</Text>
+          <Text style={styles.informasiHewan}>Pilih Berapa Hari Penitipan</Text>
           <Gap height={15} />
           <Input judul="Tanggal Pemesanan" disable />
           <Gap height={15} />
@@ -57,6 +57,12 @@ const Penitipan = ({navigation}) => {
         </View>
         <Gap height={30} />
       </ScrollView>
+      <TotalPesan
+        namaTotal="Total"
+        totalHarga="50.000"
+        title="Selanjutnya"
+        onPress={() => navigation.navigate('PembayaranPenitipan')}
+      />
     </View>
   );
 };

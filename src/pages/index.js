@@ -14,6 +14,9 @@ import Artikel from './Artikel';
 import Grooming from './Grooming';
 import Penitipan from './Penitipan';
 import DrHewan from './DrHewan';
+import PembayaranGrooming from './PembayaranGrooming';
+import PembayaranPenitipan from './PembayaranPenitipan';
+import PembayaranDrHewan from './PembayaranDrHewan';
 
 export {
   Splash,
@@ -32,4 +35,7 @@ export {
   Grooming,
   Penitipan,
   DrHewan,
+  PembayaranGrooming,
+  PembayaranPenitipan,
+  PembayaranDrHewan,
 };

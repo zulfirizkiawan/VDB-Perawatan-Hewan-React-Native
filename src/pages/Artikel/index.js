@@ -4,7 +4,7 @@ import {ILRelaxingWalkDog} from '../../assets';
 import {Gap, Header} from '../../components';
 import {colors, fonts} from '../../utils';
 
-const Artikel = ({navigation, juduls, SubIsi1, SubIsi2, SubIsi3}) => {
+const Artikel = ({navigation}) => {
   const [artikel, setArtikel] = useState([
     {
       id: 1,
@@ -77,11 +77,10 @@ const Artikel = ({navigation, juduls, SubIsi1, SubIsi2, SubIsi3}) => {
           return (
             <View>
               <View style={{flexDirection: 'row'}}>
-                <Text style={styles.txtJudul}>{artikels.id}.</Text>
                 <Text key={artikels.id} style={styles.txtJudul}>
-                  {' '}
-                  {artikels.judul}
+                  {artikels.id}.
                 </Text>
+                <Text style={styles.txtJudul}> {artikels.judul}</Text>
               </View>
               <Text style={styles.txtSubIsi}>{artikels.SubIsi1}</Text>
               <Text style={styles.txtSubIsi}>{artikels.SubIsi2}</Text>

@@ -15,6 +15,9 @@ import {
   Kehadiran,
   Login,
   PDrHewan,
+  PembayaranDrHewan,
+  PembayaranGrooming,
+  PembayaranPenitipan,
   Penitipan,
   Pesanan,
   PGrooming,
@@ -55,7 +58,7 @@ const MainApp = () => {
 
 const Router = () => {
   return (
-    <Stack.Navigator initialRouteName="MainApp">
+    <Stack.Navigator initialRouteName="Splash">
       <Stack.Screen
         name="Splash"
         component={Splash}
@@ -119,6 +122,21 @@ const Router = () => {
       <Stack.Screen
         name="DrHewan"
         component={DrHewan}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="PembayaranGrooming"
+        component={PembayaranGrooming}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="PembayaranPenitipan"
+        component={PembayaranPenitipan}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="PembayaranDrHewan"
+        component={PembayaranDrHewan}
         options={{headerShown: false}}
       />
       <Stack.Screen
