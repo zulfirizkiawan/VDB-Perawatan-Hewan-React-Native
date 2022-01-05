@@ -31,7 +31,7 @@ export default Layanan;
 const styles = StyleSheet.create({
   wrapLayanan: {
     alignItems: 'center',
-    backgroundColor: '#F8FBFF',
+    backgroundColor: colors.Bg.six,
     // shadowColor: '#ABAECA',
     // shadowOffset: {width: 0, height: 4},
     // shadowRadius: 28,
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
   lblLayanan: {
     fontSize: 14,
-    fontFamily: fonts.primary[600],
+    fontFamily: fonts.primary[500],
     color: colors.text.primary,
     marginTop: 10,
   },

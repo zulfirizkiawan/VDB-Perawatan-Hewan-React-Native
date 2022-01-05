@@ -107,8 +107,8 @@ const styles = StyleSheet.create({
     color: colors.text.primary,
   },
   garis: {
-    height: 1,
-    backgroundColor: colors.border,
+    height: 0.7,
+    backgroundColor: colors.Bg.five,
   },
   wrapJarak: {
     justifyContent: 'space-between',
@@ -116,12 +116,27 @@ const styles = StyleSheet.create({
   },
   txtJarak: {
     fontSize: 14,
-    fontFamily: fonts.primary[600],
+    fontFamily: fonts.primary[400],
     color: colors.text.primary,
   },
   txtHasilJarak: {
     fontSize: 14,
-    fontFamily: fonts.primary[400],
+    fontFamily: fonts.primary[500],
     color: colors.text.primary,
+  },
+  wrapPicker: {
+    height: 55,
+    borderBottomColor: '#BDBDBD',
+    borderBottomWidth: 0.7,
+  },
+  pickers: {
+    flex: 1,
+    color: colors.text.primary,
+    backgroundColor: colors.white,
+  },
+  Judul: {
+    color: colors.secondary,
+    fontSize: 14,
+    fontFamily: fonts.primary[500],
   },
 });

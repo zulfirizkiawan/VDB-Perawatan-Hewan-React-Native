@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import Gap from '../Gap';
 import {ICArrowRight, ICEmail, ICKeluar, ICPusatbantuan} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
@@ -14,8 +15,9 @@ const TabAkun = ({category, onPress, categoryStrip}) => {
     if (category === 'Keluar Akun') {
       return <ICPusatbantuan />;
     }
-    return <ICEmail />;
+    return <View style={{marginRight: -10}} />;
   };
+
   const Strip = () => {
     if (categoryStrip === 'Benar') {
       return <View style={styles.stripp} />;
@@ -28,8 +30,11 @@ const TabAkun = ({category, onPress, categoryStrip}) => {
     <TouchableOpacity onPress={onPress}>
       <View style={styles.wrapContent}>
         <Icon />
-        <Text style={styles.TxtCategory}>{category}</Text>
-        <ICArrowRight style={styles.ArrowRight} />
+        <Gap width={10} />
+        <View style={styles.wrapTxt}>
+          <Text style={styles.TxtCategory}>{category}</Text>
+          <ICArrowRight style={styles.ArrowRight} />
+        </View>
       </View>
       <Strip />
     </TouchableOpacity>
@@ -42,7 +47,6 @@ const styles = StyleSheet.create({
   wrapContent: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
   },
   stripp: {
     backgroundColor: colors.border,
@@ -50,13 +54,18 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   TxtCategory: {
-    width: '80%',
-    fontFamily: fonts.primary[500],
+    fontFamily: fonts.primary[400],
     color: colors.text.primary,
     fontSize: 14,
     letterSpacing: 0.5,
   },
   ArrowRight: {
     marginRight: 3,
+  },
+  wrapTxt: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    flex: 1,
+    alignItems: 'center',
   },
 });

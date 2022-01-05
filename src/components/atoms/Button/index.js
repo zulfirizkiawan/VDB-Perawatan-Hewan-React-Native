@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   TxtLogin: {
     color: 'white',
     fontSize: 18,
-    fontFamily: fonts.primary[600],
+    fontFamily: fonts.primary[500],
     textAlign: 'center',
   },
 });

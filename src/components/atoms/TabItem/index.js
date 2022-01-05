@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   text: active => ({
     fontSize: 12,
     color: active ? colors.text.MenuActive : colors.text.MenuinActive,
-    fontFamily: fonts.primary[600],
+    fontFamily: fonts.primary[500],
     marginTop: 3,
   }),
 });

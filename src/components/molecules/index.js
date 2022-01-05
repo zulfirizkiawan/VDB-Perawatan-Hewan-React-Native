@@ -6,6 +6,7 @@ import Layanan from './Layanan';
 import ListDokter from './ListDokter';
 import MerawatHewan from './MerawatHewan';
 import TotalPesan from './TotalPesan';
+import CardPesanan from './CardPesanan';
 
 export {
   Header,
@@ -16,4 +17,5 @@ export {
   ListDokter,
   MerawatHewan,
   TotalPesan,
+  CardPesanan,
 };

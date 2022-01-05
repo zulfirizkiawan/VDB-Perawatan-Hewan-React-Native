@@ -20,7 +20,7 @@ export default ListDokter;
 
 const styles = StyleSheet.create({
   wrapList: {
-    backgroundColor: '#F8FBFF',
+    backgroundColor: colors.Bg.six,
     padding: 10,
     borderRadius: 15,
     flexDirection: 'row',
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   namaDokter: {
-    fontFamily: fonts.primary[600],
+    fontFamily: fonts.primary[500],
     fontSize: 14,
     color: colors.text.primary,
   },

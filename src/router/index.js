@@ -8,6 +8,7 @@ import {
   Artikel,
   Cuti,
   Dashboard,
+  DetailPesanan,
   DrHewan,
   EditProfile,
   GetStarted,
@@ -23,6 +24,7 @@ import {
   PGrooming,
   PPenitipan,
   ProfilDokter,
+  PusatBantuan,
   Register,
   Resign,
   Sakit,
@@ -137,6 +139,16 @@ const Router = () => {
       <Stack.Screen
         name="PembayaranDrHewan"
         component={PembayaranDrHewan}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="PusatBantuan"
+        component={PusatBantuan}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DetailPesanan"
+        component={DetailPesanan}
         options={{headerShown: false}}
       />
       <Stack.Screen

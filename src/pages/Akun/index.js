@@ -1,5 +1,12 @@
 import React from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  ScrollView,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {DummyProfile} from '../../assets';
 import {Gap, TabAkun} from '../../components';
 import {colors, fonts} from '../../utils';
@@ -7,34 +14,37 @@ import {colors, fonts} from '../../utils';
 const Akun = ({navigation}) => {
   return (
     <View style={styles.page}>
-      <View style={styles.shadow}>
-        <View style={styles.container}>
-          <Gap width={76} />
-          <Text style={styles.TxtHeader}>Akun</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('EditProfile')}>
-            <Text style={styles.TxtEdit}>Edit Profile</Text>
-          </TouchableOpacity>
+      <ScrollView>
+        <View style={styles.shadow}>
+          <View style={styles.container}>
+            <Gap width={76} />
+            <Text style={styles.TxtHeader}>Akun</Text>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('EditProfile')}>
+              <Text style={styles.TxtEdit}>Edit Profile</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.wrapProfile}>
+            <Image source={DummyProfile} style={styles.avatar} />
+            <Gap height={24} />
+            <Text style={styles.nama}>Dina Anggun Pertiwi</Text>
+          </View>
         </View>
-        <View style={styles.wrapProfile}>
-          <Image source={DummyProfile} style={styles.avatar} />
-          <Gap height={24} />
-          <Text style={styles.nama}>Dina Anggun Pertiwi</Text>
+        <Gap height={40} />
+        <View style={styles.wrapAkun}>
+          <TabAkun
+            category="Beri Masukan"
+            categoryStrip="Benar"
+            onPress={() => alert('hallo')}
+          />
+          <TabAkun
+            category="Pusat Bantuan"
+            categoryStrip="Benar"
+            onPress={() => navigation.navigate('PusatBantuan')}
+          />
+          <TabAkun category="Keluar Akun" onPress={() => alert('hallo')} />
         </View>
-      </View>
-      <Gap height={40} />
-      <View style={styles.wrapAkun}>
-        <TabAkun
-          category="Beri Masukan"
-          categoryStrip="Benar"
-          onPress={() => alert('hallo')}
-        />
-        <TabAkun
-          category="Pusat Bantuan"
-          categoryStrip="Benar"
-          onPress={() => alert('hallo')}
-        />
-        <TabAkun category="Keluar Akun" onPress={() => alert('hallo')} />
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -62,7 +72,7 @@ const styles = StyleSheet.create({
   TxtEdit: {
     fontSize: 14,
     color: colors.text.MenuActive,
-    fontFamily: fonts.primary[600],
+    fontFamily: fonts.primary[500],
     width: 76,
   },
   wrapProfile: {

@@ -39,9 +39,9 @@ export default Input;
 
 const styles = StyleSheet.create({
   Tjudul: {
-    color: colors.text.tree,
+    color: colors.secondary,
     fontSize: 14,
-    fontFamily: fonts.primary[600],
+    fontFamily: fonts.primary[500],
   },
   input: border => ({
     marginTop: -8,

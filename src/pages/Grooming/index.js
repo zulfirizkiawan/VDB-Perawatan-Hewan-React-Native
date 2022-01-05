@@ -111,8 +111,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   Judul: {
-    color: colors.text.tree,
+    color: colors.secondary,
     fontSize: 14,
-    fontFamily: fonts.primary[600],
+    fontFamily: fonts.primary[500],
   },
 });

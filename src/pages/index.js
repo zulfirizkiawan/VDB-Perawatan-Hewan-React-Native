@@ -17,6 +17,8 @@ import DrHewan from './DrHewan';
 import PembayaranGrooming from './PembayaranGrooming';
 import PembayaranPenitipan from './PembayaranPenitipan';
 import PembayaranDrHewan from './PembayaranDrHewan';
+import PusatBantuan from './PusatBantuan';
+import DetailPesanan from './DetailPesanan';
 
 export {
   Splash,
@@ -38,4 +40,6 @@ export {
   PembayaranGrooming,
   PembayaranPenitipan,
   PembayaranDrHewan,
+  PusatBantuan,
+  DetailPesanan,
 };

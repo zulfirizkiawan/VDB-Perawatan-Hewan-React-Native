@@ -3,11 +3,15 @@ const mainColors = {
   blue2: '#4552CB',
   grey1: '#BBC3CE',
   grey2: '#DADADA',
+  grey3: '#50555C',
   borderGrey: '#F0F0F8',
   blue1: '#456CD7',
   white1: '#FFFFFF',
   black1: '#070821',
   white2: '#FBFBFE',
+  garis: '#BDBDBD',
+  bluewhite: '#F8FBFF',
+  orange1: '#F1A852',
 };
 
 export const colors = {
@@ -19,6 +23,7 @@ export const colors = {
     primary: mainColors.black1,
     secondary: mainColors.grey2,
     tree: mainColors.grey1,
+    for: mainColors.grey3,
     MenuinActive: mainColors.grey1,
     MenuActive: mainColors.blue2,
   },
@@ -33,6 +38,9 @@ export const colors = {
     secondary: mainColors.white1,
     tree: mainColors.borderGrey,
     for: mainColors.white2,
+    five: mainColors.garis,
+    six: mainColors.bluewhite,
+    seven: mainColors.orange1,
   },
   border: mainColors.borderGrey,
   cardLight: mainColors.green2,
