@@ -47,36 +47,39 @@ const DrHewan = ({navigation}) => {
             </View>
           </View>
           <Gap height={15} />
+          <View>
+            <Text style={styles.Judul}>Gejala Hewan</Text>
+            <View style={styles.wrapPicker}>
+              <Picker
+                style={styles.pickers}
+                selectedValue={JenisKelamin}
+                onValueChange={itemValue => setJenisKelamin(itemValue)}>
+                <Picker.Item label="Jantan" value="Jantan" />
+                <Picker.Item label="Betina" value="Betina" />
+              </Picker>
+            </View>
+          </View>
+          <Gap height={15} />
+          <View>
+            <Text style={styles.Judul}>Gejala Hewan ke 2 (jika ada)</Text>
+            <View style={styles.wrapPicker}>
+              <Picker
+                style={styles.pickers}
+                selectedValue={JenisKelamin}
+                onValueChange={itemValue => setJenisKelamin(itemValue)}>
+                <Picker.Item label="Jantan" value="Jantan" />
+                <Picker.Item label="Betina" value="Betina" />
+              </Picker>
+            </View>
+          </View>
+          <Gap height={15} />
           <Input judul="Catatan" />
-          <Gap height={15} />
-          <View>
-            <Text style={styles.Judul}>Penyakit Hewan</Text>
-            <View style={styles.wrapPicker}>
-              <Picker
-                style={styles.pickers}
-                selectedValue={JenisKelamin}
-                onValueChange={itemValue => setJenisKelamin(itemValue)}>
-                <Picker.Item label="Jantan" value="Jantan" />
-                <Picker.Item label="Betina" value="Betina" />
-              </Picker>
-            </View>
-          </View>
-          <Gap height={15} />
-          <View>
-            <Text style={styles.Judul}>Penyakit Hewan ke 2</Text>
-            <View style={styles.wrapPicker}>
-              <Picker
-                style={styles.pickers}
-                selectedValue={JenisKelamin}
-                onValueChange={itemValue => setJenisKelamin(itemValue)}>
-                <Picker.Item label="Jantan" value="Jantan" />
-                <Picker.Item label="Betina" value="Betina" />
-              </Picker>
-            </View>
-          </View>
+          <Text style={styles.Note}>
+            #Jika ada gejala yang lain, bisa di ketik di catatan
+          </Text>
           <Gap height={20} />
           <Text style={styles.informasiHewan}>Dr. Hewan</Text>
-          <Gap height={15} />
+          <Gap height={10} />
           <Input judul="Nama Dr. Hewan" disable />
         </View>
         <Gap height={30} />
@@ -120,5 +123,10 @@ const styles = StyleSheet.create({
     color: colors.secondary,
     fontSize: 14,
     fontFamily: fonts.primary[500],
+  },
+  Note: {
+    color: colors.text.tree,
+    fontSize: 12,
+    fontFamily: fonts.primary[400],
   },
 });

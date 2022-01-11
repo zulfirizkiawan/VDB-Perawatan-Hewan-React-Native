@@ -62,27 +62,14 @@ const PembayaranPenitipan = ({navigation}) => {
           </View>
           <Gap height={15} />
           <View style={styles.garis} />
-          <Gap height={15} />
-          <Text style={styles.informasiHewan}>Pembayaran</Text>
-          <Gap height={10} />
-          <View>
-            <Text style={styles.Judul}>Metode Pembayaran</Text>
-            <View style={styles.wrapPicker}>
-              <Picker
-                style={styles.pickers}
-                selectedValue={Pembayaran}
-                onValueChange={itemValue => setPembayaran(itemValue)}>
-                <Picker.Item
-                  label="COD (Bayar di tempat)"
-                  value="COD (Bayar di tempat)"
-                />
-              </Picker>
-            </View>
-          </View>
           <Gap height={20} />
         </View>
       </ScrollView>
-      <TotalPesan namaTotal="Total Harga" totalHarga="55.000" title="Pesan" />
+      <TotalPesan
+        namaTotal="Total Harga"
+        totalHarga="55.000"
+        title="Pilih Pembayaran"
+      />
     </View>
   );
 };
@@ -95,7 +82,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   map: {
-    height: 380,
+    height: 330,
     borderRadius: 15,
   },
   content: {

@@ -75,11 +75,9 @@ const Artikel = ({navigation}) => {
         <Gap height={20} />
         {artikel.map(artikels => {
           return (
-            <View>
+            <View key={artikels.id}>
               <View style={{flexDirection: 'row'}}>
-                <Text key={artikels.id} style={styles.txtJudul}>
-                  {artikels.id}.
-                </Text>
+                <Text style={styles.txtJudul}>{artikels.id}.</Text>
                 <Text style={styles.txtJudul}> {artikels.judul}</Text>
               </View>
               <Text style={styles.txtSubIsi}>{artikels.SubIsi1}</Text>

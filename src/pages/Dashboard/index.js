@@ -30,11 +30,6 @@ const Dashboard = ({navigation}) => {
           <View style={styles.wrapSlider}>
             <Gap width={10} />
             <Slider category="Kucing" />
-            <Gap width={10} />
-            <Slider category="Anjing" />
-            <Gap width={10} />
-            <Slider category="Anjing2" />
-            <Gap width={10} />
           </View>
         </ScrollView>
         <Gap height={20} />

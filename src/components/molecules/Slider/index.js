@@ -1,6 +1,12 @@
 import React from 'react';
-import {ImageBackground, StyleSheet, Text, View} from 'react-native';
-import {ILAnjing, ILAnjing2, ILKucing, ILRectangle} from '../../../assets';
+import {Image, ImageBackground, StyleSheet, Text, View} from 'react-native';
+import {
+  ILAnjing,
+  ILAnjing2,
+  ILDiskon,
+  ILKucing,
+  ILRectangle,
+} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
 const Slider = ({category}) => {
@@ -8,33 +14,17 @@ const Slider = ({category}) => {
     if (category === 'Kucing') {
       return (
         <View style={styles.wrapIcon}>
-          <ILKucing />
-          <Text style={styles.text}>
-            Semua jenis layanan untuk hewan peliharaan Anda dalam satu tempat.
-          </Text>
+          <Image source={ILDiskon} style={styles.imgVector} />
+          <View>
+            <Text style={styles.text}>
+              Dapatkan potongan hari ini untuk semua layanan
+            </Text>
+            <Text style={styles.text}>Rp. 10.000</Text>
+          </View>
         </View>
       );
     }
-    if (category === 'Anjing') {
-      return (
-        <View style={styles.wrapIcon}>
-          <ILAnjing />
-          <Text style={styles.text}>
-            Jaga kesehatan hewan peliharaan anda dengan cara menjaga kebersihan.
-          </Text>
-        </View>
-      );
-    }
-    if (category === 'Anjing2') {
-      return (
-        <View style={styles.wrapIcon}>
-          <ILAnjing2 />
-          <Text style={styles.text}>
-            Konsultasikan ke dokter jika ada masalah pada hewan peliharaan anda.
-          </Text>
-        </View>
-      );
-    }
+
     return <ILKucing />;
   };
   return (
@@ -63,10 +53,14 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: fonts.primary[600],
     width: 220,
-    paddingLeft: 20,
+    paddingLeft: 5,
   },
   wrapIcon: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  imgVector: {
+    width: 100,
+    height: 100,
   },
 });

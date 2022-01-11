@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     paddingVertical: 10,
     borderRadius: 30,
-    width: 190,
+    width: 200,
   },
   TxtLogin: {
     color: 'white',

@@ -9,6 +9,7 @@ const Input = ({
   secureTextEntry,
   disable,
   keyboardType,
+  RP,
 }) => {
   const [border, setBorder] = useState(colors.text.primary);
   const onFocusForm = () => {
@@ -29,7 +30,9 @@ const Input = ({
         onChangeText={onChangeText}
         secureTextEntry={secureTextEntry}
         editable={!disable}
-        selectTextOnFocus={!disable}></TextInput>
+        selectTextOnFocus={!disable}>
+        {RP}
+      </TextInput>
       <View style={styles.garis} />
     </View>
   );

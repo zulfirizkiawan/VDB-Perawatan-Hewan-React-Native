@@ -16,8 +16,10 @@ const ProfilDokter = ({navigation}) => {
         <Input judul="Tempat Pratik" disable />
         <Gap height={20} />
         <Input judul="Dokter" disable />
+        <Gap height={20} />
+        <Input judul="Biaya Konsutasi" RP="Rp." disable />
         <Gap height={40} />
-        <Buttons title="Mulai Konsultasi" />
+        <Buttons title="Konsultasi" />
       </View>
     </View>
   );

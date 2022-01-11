@@ -15,6 +15,7 @@ import ILAnjing2 from './ILAnjing2.svg';
 import ILKucing from './ILKucing.svg';
 import ILRelaxingWalkDog from './ILRelaxingWalkDog.svg';
 import ILCustomerService from './ILCustomerService.svg';
+import ILDiskon from './ILDiskon.png';
 
 export {
   ILTangan,
@@ -33,4 +34,5 @@ export {
   ILKucing,
   ILRelaxingWalkDog,
   ILCustomerService,
+  ILDiskon,
 };
