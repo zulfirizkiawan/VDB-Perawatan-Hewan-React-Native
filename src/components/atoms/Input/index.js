@@ -33,7 +33,6 @@ const Input = ({
         selectTextOnFocus={!disable}>
         {RP}
       </TextInput>
-      <View style={styles.garis} />
     </View>
   );
 };
@@ -42,19 +41,17 @@ export default Input;
 
 const styles = StyleSheet.create({
   Tjudul: {
-    color: colors.secondary,
-    fontSize: 14,
+    color: colors.text.primary,
+    fontSize: 15,
     fontFamily: fonts.primary[500],
   },
   input: border => ({
-    marginTop: -8,
-    fontSize: 14,
+    marginTop: 4,
+    fontSize: 16,
     color: border,
-    fontFamily: fonts.primary[500],
+    backgroundColor: colors.Bg.eight,
+    fontFamily: fonts.primary[400],
+    borderRadius: 10,
+    paddingLeft: 10,
   }),
-  garis: {
-    borderBottomColor: '#BDBDBD',
-    borderBottomWidth: 0.7,
-    marginTop: -14,
-  },
 });

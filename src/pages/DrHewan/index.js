@@ -117,11 +117,11 @@ const styles = StyleSheet.create({
   pickers: {
     flex: 1,
     color: colors.text.primary,
-    backgroundColor: colors.white,
+    backgroundColor: colors.Bg.eight,
   },
   Judul: {
-    color: colors.secondary,
-    fontSize: 14,
+    color: colors.text.primary,
+    fontSize: 15,
     fontFamily: fonts.primary[500],
   },
   Note: {

@@ -21,7 +21,7 @@ const Dashboard = ({navigation}) => {
         <View style={styles.wrapProfil}>
           <View>
             <Text style={styles.hallo}>Hallo, Apa kabar ?</Text>
-            <Text style={styles.namaUser}>Dina Anggun Pertiwi</Text>
+            <Text style={styles.namaUser}>Zulfi Rizkiawan</Text>
           </View>
           <Image source={DummyProfile} style={styles.avatar} />
         </View>

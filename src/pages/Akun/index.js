@@ -27,7 +27,7 @@ const Akun = ({navigation}) => {
           <View style={styles.wrapProfile}>
             <Image source={DummyProfile} style={styles.avatar} />
             <Gap height={24} />
-            <Text style={styles.nama}>Dina Anggun Pertiwi</Text>
+            <Text style={styles.nama}>Zulfi Rizkiawan</Text>
           </View>
         </View>
         <Gap height={40} />

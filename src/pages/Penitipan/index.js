@@ -51,9 +51,9 @@ const Penitipan = ({navigation}) => {
           <Gap height={20} />
           <Text style={styles.informasiHewan}>Pilih Berapa Hari Penitipan</Text>
           <Gap height={15} />
-          <Input judul="Tanggal Pemesanan" disable />
+          <Input judul="Tanggal Penitipan" disable />
           <Gap height={15} />
-          <Input judul="Tanggal Pemesanan" />
+          <Input judul="Tanggal Pgengembalian" />
         </View>
         <Gap height={30} />
       </ScrollView>
@@ -90,11 +90,11 @@ const styles = StyleSheet.create({
   pickers: {
     flex: 1,
     color: colors.text.primary,
-    backgroundColor: colors.white,
+    backgroundColor: colors.Bg.eight,
   },
   Judul: {
-    color: colors.secondary,
-    fontSize: 14,
+    color: colors.text.primary,
+    fontSize: 15,
     fontFamily: fonts.primary[500],
   },
 });

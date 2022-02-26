@@ -20,7 +20,7 @@ const CardPesanan = ({onPress}) => {
         <View style={styles.wrapStatus}>
           <View style={styles.flex}>
             <Text style={styles.txt}>Nama Pemilik</Text>
-            <Text style={styles.txtHasil}>Dina Anggun</Text>
+            <Text style={styles.txtHasil}>Aril Noah</Text>
           </View>
           <View style={styles.flex}>
             <Text style={styles.txt}>Jenis Hewan</Text>

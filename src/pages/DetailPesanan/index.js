@@ -50,6 +50,9 @@ const DetailPesanan = ({navigation}) => {
           <Text style={styles.informasiHewan}>Lokasi VDB pet care</Text>
           <Gap height={5} />
           <Input judul="Lokasi " disable />
+          <Gap height={15} />
+          <View style={styles.garis} />
+
           <Gap height={10} />
           <View style={styles.flex}>
             <Text style={styles.txt}>Jarak Darimu </Text>

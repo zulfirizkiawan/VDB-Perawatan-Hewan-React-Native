@@ -57,7 +57,7 @@ const Grooming = ({navigation}) => {
           <Gap height={15} />
           <Input judul="Catatan" />
           <Gap height={20} />
-          <Text style={styles.informasiHewan}>Informasi Hewan</Text>
+          <Text style={styles.informasiHewan}>Informasi Paket Grooming</Text>
           <Gap height={10} />
           <View>
             <Text style={styles.Judul}>Paket</Text>
@@ -108,11 +108,11 @@ const styles = StyleSheet.create({
   pickers: {
     flex: 1,
     color: colors.text.primary,
-    backgroundColor: colors.white,
+    backgroundColor: colors.Bg.eight,
   },
   Judul: {
-    color: colors.secondary,
-    fontSize: 14,
+    color: colors.text.primary,
+    fontSize: 15,
     fontFamily: fonts.primary[500],
   },
 });

@@ -28,11 +28,10 @@ const PembayaranDrHewan = ({navigation}) => {
         </MapView>
         <Gap height={20} />
         <View style={styles.content}>
-          <Text style={styles.informasiHewan}>Alamat Rumah</Text>
-          <Input judul="Lokasi" />
+          {/* <Text style={styles.informasiHewan}>Alamat Rumah</Text> */}
+          <Input judul="Masukkan Alamat Anda" />
           <Gap height={15} />
-          <Text style={styles.informasiHewan}>Lokasi VDB pet care</Text>
-          <Input judul="Lokasi" disable />
+          <View style={styles.garis} />
           <Gap height={15} />
           <View style={styles.wrapJarak}>
             <Text style={styles.txtJarak}>Jarak Darimu</Text>
