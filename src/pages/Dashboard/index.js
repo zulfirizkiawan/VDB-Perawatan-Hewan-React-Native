@@ -45,7 +45,7 @@ const Dashboard = ({navigation}) => {
             onPress={() => navigation.navigate('Penitipan')}
           />
           <Layanan
-            category="Dr. Hewan"
+            category="Praktik"
             onPress={() => navigation.navigate('DrHewan')}
           />
         </View>

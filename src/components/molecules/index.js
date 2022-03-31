@@ -7,6 +7,8 @@ import ListDokter from './ListDokter';
 import MerawatHewan from './MerawatHewan';
 import TotalPesan from './TotalPesan';
 import CardPesanan from './CardPesanan';
+import ItemListMenu from './ItemListMenu';
+import AkunTabSection from './AkunTabSection';
 
 export {
   Header,
@@ -18,4 +20,6 @@ export {
   MerawatHewan,
   TotalPesan,
   CardPesanan,
+  ItemListMenu,
+  AkunTabSection,
 };

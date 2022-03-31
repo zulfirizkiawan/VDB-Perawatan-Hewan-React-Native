@@ -8,16 +8,14 @@ import {colors, fonts} from '../../utils';
 const Register = ({navigation}) => {
   return (
     <View style={styles.page}>
-      <StatusBar barStyle="light-content" backgroundColor="#4552CB" />
+      <StatusBar barStyle="light-content" backgroundColor="#4596EA" />
       <LinearGradient
         start={{x: 0, y: 0}}
-        end={{x: 1, y: 1}}
+        end={{x: 0, y: 1}}
         colors={['#4596EA', '#4552CB', '#1324BA']}
         style={styles.gradient}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <Gap height={50} />
           <ILLogin style={styles.Ilimg} />
-          <Gap height={30} />
           <View style={styles.wrapContent}>
             <Text style={styles.register}>Register</Text>
             <Gap height={10} />
@@ -64,6 +62,8 @@ const styles = StyleSheet.create({
   },
   Ilimg: {
     alignSelf: 'center',
+    width: 280,
+    height: 280,
   },
   register: {
     fontSize: 30,

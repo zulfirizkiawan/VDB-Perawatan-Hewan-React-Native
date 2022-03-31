@@ -10,7 +10,7 @@ const DrHewan = ({navigation}) => {
 
   return (
     <View style={styles.page}>
-      <Header title="Dr Hewan" onPress={() => navigation.goBack()} />
+      <Header title="Praktik Dr Hewan" onPress={() => navigation.goBack()} />
       <ScrollView>
         <View style={styles.content}>
           <UploadGambar />

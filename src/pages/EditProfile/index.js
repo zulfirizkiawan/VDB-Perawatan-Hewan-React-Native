@@ -24,6 +24,8 @@ const EditProfile = ({navigation}) => {
           <Input judul="Email" disable value="jdjdhj@gmail.com" />
           <Gap height={20} />
           <Input judul="No. Handphone" keyboardType="numeric" />
+          <Gap height={20} />
+          <Input judul="Alamat" />
           <Gap height={40} />
           <Buttons title="Simpan" onPress={() => alert('ugh')} />
         </View>

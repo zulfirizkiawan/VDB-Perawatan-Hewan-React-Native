@@ -12,7 +12,7 @@ const Layanan = ({category, onPress}) => {
     if (category === 'Penitipan') {
       return <ILPenitipan />;
     }
-    if (category === 'Dr. Hewan') {
+    if (category === 'Praktik') {
       return <ILDr />;
     }
     return <ILGrooming />;

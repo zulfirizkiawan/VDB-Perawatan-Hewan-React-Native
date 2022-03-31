@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {ILCustomerService} from '../../assets';
-import {Gap, Header, TabAkun} from '../../components';
+import {Gap, Header, ItemListMenu} from '../../components';
 import {colors, fonts} from '../../utils';
 
 const PusatBantuan = ({navigation}) => {
@@ -19,27 +19,11 @@ const PusatBantuan = ({navigation}) => {
         <Gap height={20} />
         <Text style={styles.txtTopik}>Semua Topik</Text>
         <Gap height={10} />
-        <TabAkun
-          category="Cara memesan Layanan Grooming"
-          categoryStrip="Benar"
-          onPress={() => alert('hallo')}
-        />
-        <TabAkun
-          category="Cara memesan Layanan Penitipan"
-          categoryStrip="Benar"
-          onPress={() => alert('hallo')}
-        />
-        <TabAkun
-          category="Cara memesan Layanan Dr. Hewan"
-          categoryStrip="Benar"
-          onPress={() => alert('hallo')}
-        />
-        <TabAkun
-          category="Cara konsultasi dengan Dr. Hewan"
-          categoryStrip="Benar"
-          onPress={() => alert('hallo')}
-        />
       </View>
+      <ItemListMenu text="Cara memesan Layanan Grooming" />
+      <ItemListMenu text="Cara memesan Layanan Penitipan" />
+      <ItemListMenu text="Cara memesan Layanan Dr. Hewan" />
+      <ItemListMenu text="Cara konsultasi dengan Dr. Hewan" />
     </View>
   );
 };
@@ -52,7 +36,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   content: {
-    flex: 1,
     paddingHorizontal: 15,
   },
   wrapUp: {

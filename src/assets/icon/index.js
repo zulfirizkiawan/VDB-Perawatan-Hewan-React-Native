@@ -3,7 +3,7 @@ import ICUpload from './ICUpload.svg';
 import ICEmail from './Email.svg';
 import ICKeluar from './Keluar.svg';
 import ICPusatbantuan from './Pusatbantuan.svg';
-import ICArrowRight from './ArrowRight.svg';
+import ICNext from './ArrowRight.svg';
 
 //new
 import ICakunNonActive from './akunNonActive.svg';
@@ -21,7 +21,7 @@ export {
   ICEmail,
   ICKeluar,
   ICPusatbantuan,
-  ICArrowRight,
+  ICNext,
   ICakunNonActive,
   ICakunActive,
   ICpesananNonActive,

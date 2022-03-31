@@ -6,45 +6,30 @@ import {
   Text,
   TouchableOpacity,
   View,
+  useWindowDimensions,
 } from 'react-native';
 import {DummyProfile} from '../../assets';
-import {Gap, TabAkun} from '../../components';
+import {AkunTabSection, Gap} from '../../components';
 import {colors, fonts} from '../../utils';
+import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 
 const Akun = ({navigation}) => {
   return (
     <View style={styles.page}>
-      <ScrollView>
-        <View style={styles.shadow}>
-          <View style={styles.container}>
-            <Gap width={76} />
-            <Text style={styles.TxtHeader}>Akun</Text>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('EditProfile')}>
-              <Text style={styles.TxtEdit}>Edit Profile</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.wrapProfile}>
-            <Image source={DummyProfile} style={styles.avatar} />
-            <Gap height={24} />
-            <Text style={styles.nama}>Zulfi Rizkiawan</Text>
-          </View>
+      <View style={styles.shadow}>
+        <View style={styles.container}>
+          <Text style={styles.TxtHeader}>Akun</Text>
         </View>
-        <Gap height={40} />
-        <View style={styles.wrapAkun}>
-          <TabAkun
-            category="Beri Masukan"
-            categoryStrip="Benar"
-            onPress={() => alert('hallo')}
-          />
-          <TabAkun
-            category="Pusat Bantuan"
-            categoryStrip="Benar"
-            onPress={() => navigation.navigate('PusatBantuan')}
-          />
-          <TabAkun category="Keluar Akun" onPress={() => alert('hallo')} />
+        <View style={styles.wrapProfile}>
+          <Image source={DummyProfile} style={styles.avatar} />
+          <Gap height={24} />
+          <Text style={styles.nama}>Zulfi Rizkiawan</Text>
         </View>
-      </ScrollView>
+      </View>
+      <Gap height={20} />
+      <View style={styles.tabContainer}>
+        <AkunTabSection />
+      </View>
     </View>
   );
 };
@@ -63,10 +48,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     color: colors.text.primary,
-    fontFamily: fonts.primary[700],
+    fontFamily: fonts.primary[600],
   },
   page: {
     backgroundColor: '#F9F9FD',
+    flex: 1,
+  },
+  tabContainer: {
     flex: 1,
   },
   TxtEdit: {
@@ -78,8 +66,8 @@ const styles = StyleSheet.create({
   wrapProfile: {
     alignItems: 'center',
     paddingBottom: 30,
-    borderBottomLeftRadius: 15,
-    borderBottomRightRadius: 15,
+    // borderBottomLeftRadius: 25,
+    // borderBottomRightRadius: 25,
   },
   shadow: {
     backgroundColor: 'white',
@@ -88,8 +76,8 @@ const styles = StyleSheet.create({
     shadowRadius: 28,
     shadowOpacity: 0.2,
     elevation: 20,
-    borderBottomLeftRadius: 15,
-    borderBottomRightRadius: 15,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
   },
   avatar: {
     height: 100,
@@ -100,16 +88,5 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primary[500],
     fontSize: 24,
     color: colors.text.primary,
-  },
-  wrapAkun: {
-    backgroundColor: colors.white,
-    paddingHorizontal: 20,
-    paddingVertical: 20,
-    borderRadius: 15,
-    shadowColor: '#ABAECA',
-    shadowOffset: {width: 0, height: 4},
-    shadowRadius: 28,
-    shadowOpacity: 0.2,
-    elevation: 20,
   },
 });
