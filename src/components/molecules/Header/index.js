@@ -28,6 +28,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
     color: colors.text.primary,
-    fontFamily: fonts.primary[600],
+    fontFamily: fonts.primary[500],
   },
 });

@@ -13,10 +13,10 @@ const Splash = ({navigation}) => {
 
   return (
     <View style={styles.page}>
-      <StatusBar barStyle="light-content" backgroundColor="#4552CB" />
+      <StatusBar barStyle="light-content" backgroundColor="#4596EA" />
       <LinearGradient
         start={{x: 0, y: 0}}
-        end={{x: 1, y: 1}}
+        end={{x: 0, y: 1}}
         colors={['#4596EA', '#4552CB', '#1324BA']}
         style={styles.gradient}>
         <ILjejakKanan style={styles.iljkanan} />

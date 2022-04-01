@@ -13,6 +13,7 @@ const mainColors = {
   garis: '#BDBDBD',
   bluewhite: '#F8FBFF',
   orange1: '#F1A852',
+  green1: '#27AE60',
 };
 
 export const colors = {
@@ -25,6 +26,7 @@ export const colors = {
     secondary: mainColors.grey2,
     tree: mainColors.grey1,
     for: mainColors.grey3,
+    five: mainColors.green1,
     MenuinActive: mainColors.grey1,
     MenuActive: mainColors.blue2,
   },

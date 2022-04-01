@@ -9,6 +9,9 @@ import {
   Cuti,
   Dashboard,
   DetailPesanan,
+  DetailPesananGrooming,
+  DetailPesananPenitipan,
+  DetailPesananPraktik,
   DrHewan,
   EditProfile,
   GetStarted,
@@ -147,8 +150,18 @@ const Router = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="DetailPesanan"
-        component={DetailPesanan}
+        name="DetailPesananGrooming"
+        component={DetailPesananGrooming}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DetailPesananPenitipan"
+        component={DetailPesananPenitipan}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DetailPesananPraktik"
+        component={DetailPesananPraktik}
         options={{headerShown: false}}
       />
       <Stack.Screen

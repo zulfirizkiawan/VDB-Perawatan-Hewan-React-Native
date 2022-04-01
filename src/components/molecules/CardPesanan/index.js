@@ -3,14 +3,16 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Status, Gap} from '../../atoms';
 import {DummyCat} from '../../../assets';
 import {colors, fonts} from '../../../utils';
+import ItemValue from '../ItemValue';
 
 const CardPesanan = ({onPress}) => {
   return (
     <TouchableOpacity style={styles.content} onPress={onPress}>
-      <View style={styles.flex}>
-        <Text style={styles.txt}>Status</Text>
-        <Status />
-      </View>
+      <ItemValue
+        label="Status"
+        value="PENJEMPUTAN"
+        valueColor={'Paid' === 'CANCELLED' ? '#D9435E' : '#F1A852'}
+      />
       <Gap height={5} />
       <View style={styles.garis} />
       <Gap height={10} />
@@ -43,6 +45,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.Bg.six,
     padding: 10,
     borderRadius: 15,
+    marginTop: 15,
   },
   wrapContent: {
     flexDirection: 'row',

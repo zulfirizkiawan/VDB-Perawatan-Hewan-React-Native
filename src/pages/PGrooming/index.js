@@ -6,7 +6,9 @@ import {colors} from '../../utils';
 const PGrooming = ({navigation}) => {
   return (
     <View style={styles.content}>
-      <CardPesanan onPress={() => navigation.navigate('DetailPesanan')} />
+      <CardPesanan
+        onPress={() => navigation.navigate('DetailPesananGrooming')}
+      />
     </View>
   );
 };

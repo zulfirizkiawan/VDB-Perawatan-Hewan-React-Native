@@ -18,7 +18,9 @@ import PembayaranGrooming from './PembayaranGrooming';
 import PembayaranPenitipan from './PembayaranPenitipan';
 import PembayaranDrHewan from './PembayaranDrHewan';
 import PusatBantuan from './PusatBantuan';
-import DetailPesanan from './DetailPesanan';
+import DetailPesananGrooming from './DetailPesananGrooming';
+import DetailPesananPenitipan from './DetailPesananPenitipan';
+import DetailPesananPraktik from './DetailPesananPraktik';
 
 export {
   Splash,
@@ -41,5 +43,7 @@ export {
   PembayaranPenitipan,
   PembayaranDrHewan,
   PusatBantuan,
-  DetailPesanan,
+  DetailPesananGrooming,
+  DetailPesananPenitipan,
+  DetailPesananPraktik,
 };

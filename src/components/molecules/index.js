@@ -9,6 +9,8 @@ import TotalPesan from './TotalPesan';
 import CardPesanan from './CardPesanan';
 import ItemListMenu from './ItemListMenu';
 import AkunTabSection from './AkunTabSection';
+import PesananTabSection from './PesananTabSection';
+import ItemValue from './ItemValue';
 
 export {
   Header,
@@ -22,4 +24,6 @@ export {
   CardPesanan,
   ItemListMenu,
   AkunTabSection,
+  PesananTabSection,
+  ItemValue,
 };
