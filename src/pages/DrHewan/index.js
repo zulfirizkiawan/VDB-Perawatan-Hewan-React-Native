@@ -1,95 +1,60 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {Gap, Header, Input, TotalPesan, UploadGambar} from '../../components';
+import {
+  Buttons,
+  Gap,
+  Header,
+  Input,
+  PickerGejala,
+  PickerJenisHewan,
+  PickerJK,
+  UploadGambar,
+} from '../../components';
 import {colors, fonts} from '../../utils';
-import {Picker} from '@react-native-picker/picker';
 
 const DrHewan = ({navigation}) => {
-  const [JenisHewan, setJenisHewan] = useState('Kucing');
-  const [JenisKelamin, setJenisKelamin] = useState('Jantan');
-
   return (
     <View style={styles.page}>
-      <Header title="Praktik Dr Hewan" onPress={() => navigation.goBack()} />
+      <Header title="Praktik Dr. Hewan" onPress={() => navigation.goBack()} />
       <ScrollView>
         <View style={styles.content}>
-          <UploadGambar />
+          <View style={{alignItems: 'center'}}>
+            <UploadGambar />
+          </View>
           <Gap height={20} />
           <Text style={styles.informasiHewan}>Informasi Hewan</Text>
           <Gap height={10} />
           <Input judul="Nama Hewan" />
+
+          <PickerJenisHewan />
           <Gap height={15} />
-          <View>
-            <Text style={styles.Judul}>Jenis Hewan</Text>
-            <View style={styles.wrapPicker}>
-              <Picker
-                style={styles.pickers}
-                selectedValue={JenisHewan}
-                onValueChange={itemValue => setJenisHewan(itemValue)}>
-                <Picker.Item label="Kucing" value="Kucing" />
-                <Picker.Item label="Anjing" value="Anjing" />
-              </Picker>
-            </View>
-          </View>
+          <Input
+            judul="Keturunan"
+            note="contoh : (persia, anggora) atau (Pomeranian, poodle)"
+          />
           <Gap height={15} />
-          <Input judul="Keturunan" />
-          <Gap height={15} />
-          <View>
-            <Text style={styles.Judul}>Jenis Kelamin</Text>
-            <View style={styles.wrapPicker}>
-              <Picker
-                style={styles.pickers}
-                selectedValue={JenisKelamin}
-                onValueChange={itemValue => setJenisKelamin(itemValue)}>
-                <Picker.Item label="Jantan" value="Jantan" />
-                <Picker.Item label="Betina" value="Betina" />
-              </Picker>
-            </View>
-          </View>
-          <Gap height={15} />
-          <View>
-            <Text style={styles.Judul}>Gejala Hewan</Text>
-            <View style={styles.wrapPicker}>
-              <Picker
-                style={styles.pickers}
-                selectedValue={JenisKelamin}
-                onValueChange={itemValue => setJenisKelamin(itemValue)}>
-                <Picker.Item label="Jantan" value="Jantan" />
-                <Picker.Item label="Betina" value="Betina" />
-              </Picker>
-            </View>
-          </View>
-          <Gap height={15} />
-          <View>
-            <Text style={styles.Judul}>Gejala Hewan ke 2 (jika ada)</Text>
-            <View style={styles.wrapPicker}>
-              <Picker
-                style={styles.pickers}
-                selectedValue={JenisKelamin}
-                onValueChange={itemValue => setJenisKelamin(itemValue)}>
-                <Picker.Item label="Jantan" value="Jantan" />
-                <Picker.Item label="Betina" value="Betina" />
-              </Picker>
-            </View>
-          </View>
+          <PickerJK />
           <Gap height={15} />
           <Input judul="Catatan" />
-          <Text style={styles.Note}>
-            #Jika ada gejala yang lain, bisa di ketik di catatan
-          </Text>
+          <PickerGejala label="Gejala Pertama" />
+          <Gap height={15} />
+          <PickerGejala label="Gejala Kedua" />
           <Gap height={20} />
           <Text style={styles.informasiHewan}>Dr. Hewan</Text>
           <Gap height={10} />
           <Input judul="Nama Dr. Hewan" disable />
+          <Gap height={10} />
         </View>
-        <Gap height={30} />
+        <Gap height={10} />
       </ScrollView>
-      <TotalPesan
-        namaTotal="Total"
-        totalHarga="50.000"
-        title="Selanjutnya"
-        onPress={() => navigation.navigate('PembayaranDrHewan')}
-      />
+      <View style={styles.content}>
+        <Gap height={15} />
+        <Buttons
+          title="Selanjutnya"
+          onPress={() => navigation.navigate('PembayaranDrHewan')}
+        />
+        <Gap height={15} />
+      </View>
     </View>
   );
 };
@@ -108,25 +73,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: fonts.primary[600],
     color: colors.text.primary,
-  },
-  wrapPicker: {
-    height: 55,
-    borderBottomColor: '#BDBDBD',
-    borderBottomWidth: 0.7,
-  },
-  pickers: {
-    flex: 1,
-    color: colors.text.primary,
-    backgroundColor: colors.Bg.eight,
-  },
-  Judul: {
-    color: colors.text.primary,
-    fontSize: 15,
-    fontFamily: fonts.primary[500],
-  },
-  Note: {
-    color: colors.text.tree,
-    fontSize: 12,
-    fontFamily: fonts.primary[400],
   },
 });

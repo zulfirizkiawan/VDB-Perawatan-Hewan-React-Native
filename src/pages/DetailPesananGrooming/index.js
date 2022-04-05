@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {DummyProfile} from '../../assets';
-import {Gap, Header, Input, ItemValue, Status} from '../../components';
+import {Gap, Header, ItemValue} from '../../components';
 import {colors, fonts} from '../../utils';
 
 const DetailPesananGrooming = ({navigation}) => {

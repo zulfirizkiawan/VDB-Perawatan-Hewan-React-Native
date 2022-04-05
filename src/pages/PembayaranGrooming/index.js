@@ -1,68 +1,88 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {Gap, Header, Input, TotalPesan} from '../../components';
+import {Gap, Header, ItemValue, TotalPesan} from '../../components';
 import {colors, fonts} from '../../utils';
-import MapView, {Marker} from 'react-native-maps';
-import {Picker} from '@react-native-picker/picker';
 
-const PembayaranGrooming = ({navigation}) => {
-  const [Pembayaran, setPembayaran] = useState('COD (Bayar di tempat)');
+const PembayaranGrooming = ({
+  navigation,
+  basic,
+  Subtotal,
+  total,
+  ongkos,
+  kutu,
+  jamur,
+  kombinasi,
+}) => {
+  ongkos = 10000;
+
+  if ((basic = 'Basic')) {
+    Subtotal = 50000;
+    total = Subtotal + ongkos;
+  }
+  if ((kutu = 'Kutu')) {
+    Subtotal = 70000;
+    total = Subtotal + ongkos;
+  }
+  if ((jamur = 'Jamur')) {
+    Subtotal = 75000;
+    total = Subtotal + ongkos;
+  }
+  if ((kombinasi = 'Kombinasi (Kutu dan Jamur)')) {
+    Subtotal = 90000;
+    total = Subtotal + ongkos;
+  }
+
   return (
-    <View style={styles.page}>
-      <Header title="Pembayaran" onPress={() => navigation.goBack()} />
+    <View style={styles.Page}>
+      <Header title="Ringkasan Pesanan" onPress={() => navigation.goBack()} />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <MapView
-          style={styles.map}
-          initialRegion={{
-            latitude: -7.9124451,
-            longitude: 112.6408022,
-            latitudeDelta: 0.0009,
-            longitudeDelta: 0.0009,
-          }}>
-          <Marker
-            coordinate={{
-              latitude: -7.912431159618501,
-              longitude: 112.64157513281744,
-            }}
-          />
-        </MapView>
-        <Gap height={20} />
         <View style={styles.content}>
-          <Input judul="Masukkan Alamat Anda" />
-          <Gap height={15} />
-          <View style={styles.garis} />
-          <Gap height={15} />
-          <View style={styles.wrapJarak}>
-            <Text style={styles.txtJarak}>Jarak Darimu</Text>
-            <Text style={styles.txtHasilJarak}>2.0 KM</Text>
+          <Text style={styles.informasiHewan}>informasi Hewan</Text>
+          <ItemValue label="Nama Hewan " value="Bisqi" />
+          <ItemValue label="Jenis Hewan " value="Kucing" />
+          <ItemValue label="Keturunan" value="Persia" />
+          <ItemValue label="Jenis kelamin" value="Betina" />
+          <ItemValue
+            label="Jenis Grooming"
+            value={basic}
+            valueColor="#4552CB"
+          />
+          <Gap height={8} />
+          <View>
+            <Text style={styles.txt}>Catatan :</Text>
+            <Gap height={3} />
+            <Text style={styles.txtHasil}>
+              Hati hati ya kak, kucingnya galak
+            </Text>
           </View>
-          <Gap height={15} />
-          <View style={styles.garis} />
-          <Gap height={15} />
-          <View style={styles.wrapJarak}>
-            <Text style={styles.txtJarak}>Paket</Text>
-            <Text style={styles.txtHasilJarak}>Grooming 1</Text>
-          </View>
-          <Gap height={15} />
-          <View style={styles.wrapJarak}>
-            <Text style={styles.txtJarak}>Subtotal</Text>
-            <Text style={styles.txtHasilJarak}>Rp. 50.000</Text>
-          </View>
-          <Gap height={15} />
-          <View style={styles.wrapJarak}>
-            <Text style={styles.txtJarak}>Ongkos Kirim </Text>
-            <Text style={styles.txtHasilJarak}>Rp. 5.000</Text>
-          </View>
-          <Gap height={15} />
-          <View style={styles.garis} />
-          <Gap height={20} />
         </View>
+        <View style={styles.content}>
+          <Text style={styles.informasiHewan}>Pesanan Dari :</Text>
+          <ItemValue label="Nama " value="Rizkiawan" />
+          <ItemValue label="No. Hp" value="08586756282" />
+          <Gap height={8} />
+          <View>
+            <Text style={styles.txt}>Alamat :</Text>
+            <Gap height={3} />
+            <Text style={styles.txtHasil}>
+              Purboyo, Purwosekar, Tajinan, Malang
+            </Text>
+          </View>
+        </View>
+
+        <View style={styles.content}>
+          <ItemValue label="Subtotal " value={'Rp. ' + Subtotal} />
+          <ItemValue label="Ongkos Antar Jemput" value="10.000" />
+          <ItemValue label="Diskon " value="- 5.000" />
+        </View>
+
+        <Gap height={20} />
+        <TotalPesan
+          namaTotal="Total"
+          totalHarga={total}
+          title="Pilih Pembayaran"
+        />
       </ScrollView>
-      <TotalPesan
-        namaTotal="Total Harga"
-        totalHarga="55.000"
-        title="Pilih Pembayaran"
-      />
     </View>
   );
 };
@@ -70,53 +90,29 @@ const PembayaranGrooming = ({navigation}) => {
 export default PembayaranGrooming;
 
 const styles = StyleSheet.create({
-  page: {
+  Page: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: colors.Bg.six,
   },
-  map: {
-    height: 330,
-    borderRadius: 15,
-  },
-  content: {
-    paddingHorizontal: 15,
-  },
+
   informasiHewan: {
     fontSize: 16,
     fontFamily: fonts.primary[600],
     color: colors.text.primary,
   },
-  garis: {
-    height: 0.7,
-    backgroundColor: colors.Bg.five,
-  },
-  wrapJarak: {
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-  },
-  txtJarak: {
-    fontSize: 14,
-    fontFamily: fonts.primary[400],
-    color: colors.text.primary,
-  },
-  txtHasilJarak: {
-    fontSize: 14,
-    fontFamily: fonts.primary[500],
-    color: colors.text.primary,
-  },
-  wrapPicker: {
-    height: 55,
-    borderBottomColor: '#BDBDBD',
-    borderBottomWidth: 0.7,
-  },
-  pickers: {
-    flex: 1,
-    color: colors.text.primary,
+  content: {
     backgroundColor: colors.white,
+    padding: 15,
+    marginTop: 16,
   },
-  Judul: {
-    color: colors.secondary,
+  txt: {
+    fontFamily: fonts.primary[400],
     fontSize: 14,
-    fontFamily: fonts.primary[500],
+    color: colors.text.for,
+  },
+  txtHasil: {
+    fontFamily: fonts.primary[400],
+    fontSize: 14,
+    color: colors.text.primary,
   },
 });

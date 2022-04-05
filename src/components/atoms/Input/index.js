@@ -10,6 +10,7 @@ const Input = ({
   disable,
   keyboardType,
   RP,
+  note,
 }) => {
   const [border, setBorder] = useState(colors.text.primary);
   const onFocusForm = () => {
@@ -34,6 +35,7 @@ const Input = ({
         {RP}
       </TextInput>
       <View style={styles.garis} />
+      <Text style={styles.notes}>{note}</Text>
     </View>
   );
 };
@@ -55,6 +57,12 @@ const styles = StyleSheet.create({
   garis: {
     borderBottomColor: '#BDBDBD',
     borderBottomWidth: 0.7,
-    marginTop: -14,
+    marginTop: -12,
+  },
+  notes: {
+    color: colors.secondary,
+    fontSize: 13,
+    fontFamily: fonts.primary[400],
+    marginTop: 2,
   },
 });

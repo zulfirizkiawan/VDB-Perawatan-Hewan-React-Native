@@ -8,7 +8,6 @@ const UploadGambar = ({}) => {
     <TouchableOpacity style={styles.WrapProf}>
       <View style={styles.wrapAvatar}>
         <ICNullPhoto width={117} height={117} />
-        <ICUploadImg style={styles.addPhoto} width={30} height={30} />
       </View>
     </TouchableOpacity>
   );
@@ -29,6 +28,7 @@ const styles = StyleSheet.create({
     right: 10,
   },
   WrapProf: {
-    alignItems: 'center',
+    height: 130,
+    width: 130,
   },
 });
