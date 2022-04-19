@@ -7,7 +7,6 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import {DummyProfile} from '../../assets';
 import {Buttons, Gap, Header, Input, UploadGambar} from '../../components';
 import {colors} from '../../utils';
 
@@ -17,7 +16,9 @@ const EditProfile = ({navigation}) => {
       <Header title="Profile" onPress={() => navigation.goBack()} />
       <ScrollView showsHorizontalScrollIndicator={false}>
         <View style={styles.wrapContent}>
-          <UploadGambar />
+          <View style={{alignItems: 'center'}}>
+            <UploadGambar />
+          </View>
           <Gap height={20} />
           <Input judul="Nama Lengkap" />
           <Gap height={20} />

@@ -11,6 +11,9 @@ import ItemListMenu from './ItemListMenu';
 import AkunTabSection from './AkunTabSection';
 import PesananTabSection from './PesananTabSection';
 import ItemValue from './ItemValue';
+import RiwayatGroomingTabSection from './RiwayatGroomingTabSection';
+import RiwayatPenitipanTabSection from './RiwayatPenitipanTabSection';
+import RiwayatPraktikTabSection from './RiwayatPraktikTabSection';
 
 export {
   Header,
@@ -26,4 +29,7 @@ export {
   AkunTabSection,
   PesananTabSection,
   ItemValue,
+  RiwayatGroomingTabSection,
+  RiwayatPenitipanTabSection,
+  RiwayatPraktikTabSection,
 };

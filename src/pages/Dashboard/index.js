@@ -26,12 +26,9 @@ const Dashboard = ({navigation}) => {
           <Image source={DummyProfile} style={styles.avatar} />
         </View>
         {/* Slider pengumuman */}
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <View style={styles.wrapSlider}>
-            <Gap width={10} />
-            <Slider category="Kucing" />
-          </View>
-        </ScrollView>
+        <View style={styles.wrapSlider}>
+          <Slider category="Kucing" />
+        </View>
         <Gap height={20} />
         {/* Layanan */}
         <Text style={styles.Lbl}>Layanan</Text>
@@ -100,7 +97,7 @@ const styles = StyleSheet.create({
   },
   wrapSlider: {
     marginTop: 30,
-    flexDirection: 'row',
+    alignItems: 'center',
   },
   wrapRiwayat: {
     flexDirection: 'row',

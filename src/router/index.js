@@ -30,6 +30,9 @@ import {
   PusatBantuan,
   Register,
   Resign,
+  RiwayatGrooming,
+  RiwayatPenitipan,
+  RiwayatPraktik,
   Sakit,
   Splash,
 } from '../pages';
@@ -89,21 +92,7 @@ const Router = () => {
         component={EditProfile}
         options={{headerShown: false}}
       />
-      <Stack.Screen
-        name="PGrooming"
-        component={PGrooming}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="PPenitipan"
-        component={PPenitipan}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="PDrHewan"
-        component={PDrHewan}
-        options={{headerShown: false}}
-      />
+
       <Stack.Screen
         name="ProfilDokter"
         component={ProfilDokter}
@@ -162,6 +151,21 @@ const Router = () => {
       <Stack.Screen
         name="DetailPesananPraktik"
         component={DetailPesananPraktik}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="RiwayatGrooming"
+        component={RiwayatGrooming}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="RiwayatPenitipan"
+        component={RiwayatPenitipan}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="RiwayatPraktik"
+        component={RiwayatPraktik}
         options={{headerShown: false}}
       />
       <Stack.Screen

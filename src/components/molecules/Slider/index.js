@@ -28,7 +28,7 @@ const Slider = ({category}) => {
     return <ILKucing />;
   };
   return (
-    <View style={styles.container}>
+    <View>
       <ImageBackground source={ILRectangle} style={styles.image}>
         <Icon />
       </ImageBackground>
@@ -39,12 +39,9 @@ const Slider = ({category}) => {
 export default Slider;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   image: {
     height: 120,
-    width: 335,
+    width: 345,
     justifyContent: 'center',
     alignItems: 'center',
   },

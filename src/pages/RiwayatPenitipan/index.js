@@ -1,20 +1,20 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import {Header, RiwayatPenitipanTabSection} from '../../components';
 import {colors, fonts} from '../../utils';
-import {PesananTabSection} from '../../components';
 
-const Pesanan = () => {
+const RiwayatPenitipan = ({navigation}) => {
   return (
     <View style={styles.page}>
-      <Text style={styles.judulPage}>Pesanan</Text>
+      <Header title="Riwayat Penitipan" onPress={() => navigation.goBack('')} />
       <View style={styles.tabContainer}>
-        <PesananTabSection />
+        <RiwayatPenitipanTabSection />
       </View>
     </View>
   );
 };
 
-export default Pesanan;
+export default RiwayatPenitipan;
 
 const styles = StyleSheet.create({
   page: {
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: colors.text.primary,
     textAlign: 'center',
-	 marginTop: 20,
+    marginTop: 20,
   },
-  tabContainer: {flex: 1, marginTop: 10},
+  tabContainer: {flex: 1},
 });

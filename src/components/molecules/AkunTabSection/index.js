@@ -64,9 +64,18 @@ const Riwayat = () => {
   const navigation = useNavigation();
   return (
     <View style={{paddingTop: 10, backgroundColor: colors.white, flex: 1}}>
-      <ItemListMenu text="Grooming" />
-      <ItemListMenu text="Penitipan" />
-      <ItemListMenu text="Praktik" />
+      <ItemListMenu
+        text="Grooming"
+        onPress={() => navigation.navigate('RiwayatGrooming')}
+      />
+      <ItemListMenu
+        text="Penitipan"
+        onPress={() => navigation.navigate('RiwayatPenitipan')}
+      />
+      <ItemListMenu
+        text="Praktik"
+        onPress={() => navigation.navigate('RiwayatPraktik')}
+      />
     </View>
   );
 };

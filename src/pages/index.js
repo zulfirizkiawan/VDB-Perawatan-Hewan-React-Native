@@ -6,9 +6,6 @@ import Dashboard from './Dashboard';
 import Pesanan from './Pesanan';
 import EditProfile from './EditProfile';
 import GetStarted from './GetStarted';
-import PDrHewan from './PDrHewan';
-import PGrooming from './PGrooming';
-import PPenitipan from './PPenitipan';
 import ProfilDokter from './ProfilDokter';
 import Artikel from './Artikel';
 import Grooming from './Grooming';
@@ -21,6 +18,9 @@ import PusatBantuan from './PusatBantuan';
 import DetailPesananGrooming from './DetailPesananGrooming';
 import DetailPesananPenitipan from './DetailPesananPenitipan';
 import DetailPesananPraktik from './DetailPesananPraktik';
+import RiwayatGrooming from './RiwayatGrooming';
+import RiwayatPenitipan from './RiwayatPenitipan';
+import RiwayatPraktik from './RiwayatPraktik';
 
 export {
   Splash,
@@ -31,9 +31,6 @@ export {
   EditProfile,
   GetStarted,
   Register,
-  PDrHewan,
-  PGrooming,
-  PPenitipan,
   ProfilDokter,
   Artikel,
   Grooming,
@@ -46,4 +43,7 @@ export {
   DetailPesananGrooming,
   DetailPesananPenitipan,
   DetailPesananPraktik,
+  RiwayatGrooming,
+  RiwayatPenitipan,
+  RiwayatPraktik,
 };
