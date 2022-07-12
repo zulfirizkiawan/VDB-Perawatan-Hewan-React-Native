@@ -3,11 +3,11 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {ICNullPhoto, ICUpload, ICUploadImg} from '../../../assets';
 import {fonts} from '../../../utils';
 
-const UploadGambar = ({}) => {
+const UploadGambar = ({source}) => {
   return (
     <TouchableOpacity style={styles.WrapProf}>
       <View style={styles.wrapAvatar}>
-        <ICNullPhoto width={117} height={117} />
+        <ICNullPhoto width={117} height={117} source />
       </View>
     </TouchableOpacity>
   );

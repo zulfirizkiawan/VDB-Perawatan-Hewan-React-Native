@@ -15,10 +15,10 @@ const PickerGrooming = () => {
         }
         style={{marginLeft: -10}}>
         <Picker.Item label="Basic - Rp. 45.000" value="Basic" />
-        <Picker.Item label="Kutu - Rp. 70.000" value="kutu" />
-        <Picker.Item label="Jamur - Rp. 75.000" value="jamur" />
+        <Picker.Item label="Kutu - Rp. 60.000" value="kutu" />
+        <Picker.Item label="Jamur - Rp. 60.000" value="jamur" />
         <Picker.Item
-          label="kombinasi (Kutu dan Jamur) - Rp. 90.000"
+          label="kombinasi (Kutu dan Jamur) - Rp. 70.000"
           value="kombinasi"
         />
       </Picker>

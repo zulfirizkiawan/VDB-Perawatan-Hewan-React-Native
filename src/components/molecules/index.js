@@ -14,6 +14,8 @@ import ItemValue from './ItemValue';
 import RiwayatGroomingTabSection from './RiwayatGroomingTabSection';
 import RiwayatPenitipanTabSection from './RiwayatPenitipanTabSection';
 import RiwayatPraktikTabSection from './RiwayatPraktikTabSection';
+import Loading from './Loading';
+import Number from './Number';
 
 export {
   Header,
@@ -32,4 +34,6 @@ export {
   RiwayatGroomingTabSection,
   RiwayatPenitipanTabSection,
   RiwayatPraktikTabSection,
+  Number,
+  Loading,
 };

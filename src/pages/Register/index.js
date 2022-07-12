@@ -1,11 +1,38 @@
 import React from 'react';
 import {ScrollView, StatusBar, StyleSheet, Text, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {ILLogin} from '../../assets';
+import {useDispatch, useSelector} from 'react-redux';
 import {Buttons, Gap, Input, Link} from '../../components';
-import {colors, fonts} from '../../utils';
+import {signUpAction} from '../../redux/action/auth';
+import {setLoading} from '../../redux/action/global';
+import {colors, fonts, useForm} from '../../utils';
 
 const Register = ({navigation}) => {
+  const [form, setFrom] = useForm({
+    name: '',
+    email: '',
+    password: '',
+    address: '',
+    city: '',
+    phoneNumber: '',
+  });
+
+  const dispatch = useDispatch();
+  const {registerReducer} = useSelector(state => state);
+
+  const onSubmit = () => {
+    console.log('form: ', form);
+    dispatch({type: 'SET_REGISTER', value: form});
+    const data = {
+      ...form,
+      ...registerReducer,
+    };
+    console.log('Data register: ', data);
+
+    dispatch(setLoading(true));
+    dispatch(signUpAction(data, navigation));
+  };
+
   return (
     <View style={styles.page}>
       <StatusBar barStyle="light-content" backgroundColor="#4596EA" />
@@ -15,17 +42,48 @@ const Register = ({navigation}) => {
         colors={['#4596EA', '#4552CB', '#1324BA']}
         style={styles.gradient}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <ILLogin style={styles.Ilimg} />
+          <Gap height={20} />
           <View style={styles.wrapContent}>
             <Text style={styles.register}>Register</Text>
             <Gap height={10} />
-            <Input judul="Nama Lengkap" />
-            <Gap height={15} />
-            <Input judul="Email" />
-            <Gap height={15} />
-            <Input judul="Kata sandi" />
+            <Input
+              judul="Nama Lengkap"
+              value={form.name}
+              onChangeText={value => setFrom('name', value)}
+            />
+            <Gap height={12} />
+            <Input
+              judul="Alamat Rumah"
+              value={form.address}
+              onChangeText={value => setFrom('address', value)}
+            />
+            <Gap height={12} />
+            <Input
+              judul="No. Hp"
+              value={form.phoneNumber}
+              onChangeText={value => setFrom('phoneNumber', value)}
+            />
+            <Gap height={12} />
+            <Input
+              judul="Kota"
+              value={form.city}
+              onChangeText={value => setFrom('city', value)}
+            />
+            <Gap height={12} />
+            <Input
+              judul="Email"
+              value={form.email}
+              onChangeText={value => setFrom('email', value)}
+            />
+            <Gap height={12} />
+            <Input
+              judul="Kata sandi"
+              value={form.password}
+              onChangeText={value => setFrom('password', value)}
+              secureTextEntry
+            />
             <Gap height={25} />
-            <Buttons title="Register" />
+            <Buttons title="Register" onPress={onSubmit} />
             <Gap height={20} />
             <View style={styles.wrapLupa}>
               <Link

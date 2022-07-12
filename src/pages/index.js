@@ -21,6 +21,7 @@ import DetailPesananPraktik from './DetailPesananPraktik';
 import RiwayatGrooming from './RiwayatGrooming';
 import RiwayatPenitipan from './RiwayatPenitipan';
 import RiwayatPraktik from './RiwayatPraktik';
+import LihatProfile from './LihatProfile';
 
 export {
   Splash,
@@ -29,6 +30,7 @@ export {
   Dashboard,
   Pesanan,
   EditProfile,
+  LihatProfile,
   GetStarted,
   Register,
   ProfilDokter,

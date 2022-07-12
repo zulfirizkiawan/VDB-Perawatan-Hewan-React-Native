@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   ScrollView,
   Image,
@@ -10,10 +10,18 @@ import {
 } from 'react-native';
 import {DummyProfile} from '../../assets';
 import {AkunTabSection, Gap} from '../../components';
-import {colors, fonts} from '../../utils';
-import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
+import {colors, fonts, getData} from '../../utils';
 
 const Akun = ({navigation}) => {
+  const [userProfile, setUserProfile] = useState({});
+
+  useEffect(() => {
+    getData('userProfile').then(res => {
+      console.log('token :', res);
+      setUserProfile(res);
+    });
+  }, []);
+
   return (
     <View style={styles.page}>
       <View style={styles.shadow}>
@@ -21,9 +29,12 @@ const Akun = ({navigation}) => {
           <Text style={styles.TxtHeader}>Akun</Text>
         </View>
         <View style={styles.wrapProfile}>
-          <Image source={DummyProfile} style={styles.avatar} />
+          <Image
+            source={{uri: userProfile.profile_photo_url}}
+            style={styles.avatar}
+          />
           <Gap height={24} />
-          <Text style={styles.nama}>Zulfi Rizkiawan</Text>
+          <Text style={styles.nama}>{userProfile.name}</Text>
         </View>
       </View>
       <Gap height={20} />
@@ -80,9 +91,11 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 20,
   },
   avatar: {
-    height: 100,
     width: 100,
+    height: 100,
     borderRadius: 100 / 2,
+    backgroundColor: '#F0F0F0',
+    padding: 24,
   },
   nama: {
     fontFamily: fonts.primary[500],

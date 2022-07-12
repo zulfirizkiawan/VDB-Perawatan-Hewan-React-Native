@@ -1,14 +1,9 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
-  AbsenMasuk,
-  AbsenPulang,
-  Absensi,
   Akun,
   Artikel,
-  Cuti,
   Dashboard,
-  DetailPesanan,
   DetailPesananGrooming,
   DetailPesananPenitipan,
   DetailPesananPraktik,
@@ -16,24 +11,19 @@ import {
   EditProfile,
   GetStarted,
   Grooming,
-  Kehadiran,
+  LihatProfile,
   Login,
-  PDrHewan,
   PembayaranDrHewan,
   PembayaranGrooming,
   PembayaranPenitipan,
   Penitipan,
   Pesanan,
-  PGrooming,
-  PPenitipan,
   ProfilDokter,
   PusatBantuan,
   Register,
-  Resign,
   RiwayatGrooming,
   RiwayatPenitipan,
   RiwayatPraktik,
-  Sakit,
   Splash,
 } from '../pages';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -66,7 +56,7 @@ const MainApp = () => {
 
 const Router = () => {
   return (
-    <Stack.Navigator initialRouteName="MainApp">
+    <Stack.Navigator initialRouteName="Splash">
       <Stack.Screen
         name="Splash"
         component={Splash}
@@ -88,11 +78,15 @@ const Router = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
+        name="LihatProfile"
+        component={LihatProfile}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
         name="EditProfile"
         component={EditProfile}
         options={{headerShown: false}}
       />
-
       <Stack.Screen
         name="ProfilDokter"
         component={ProfilDokter}

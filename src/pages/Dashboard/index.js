@@ -1,4 +1,6 @@
 import React from 'react';
+import {useEffect} from 'react';
+import {useState} from 'react';
 import {
   Image,
   ScrollView,
@@ -9,9 +11,17 @@ import {
 } from 'react-native';
 import {DummyProfile} from '../../assets';
 import {Gap, Layanan, ListDokter, MerawatHewan, Slider} from '../../components';
-import {colors, fonts} from '../../utils';
+import {colors, fonts, getData} from '../../utils';
 
 const Dashboard = ({navigation}) => {
+  const [userProfile, setUserProfile] = useState({});
+
+  useEffect(() => {
+    getData('userProfile').then(res => {
+      console.log('token :', res);
+      setUserProfile(res);
+    });
+  }, []);
   return (
     <View style={styles.page}>
       <StatusBar barStyle="dark-content" backgroundColor="#FFF" />
@@ -21,9 +31,12 @@ const Dashboard = ({navigation}) => {
         <View style={styles.wrapProfil}>
           <View>
             <Text style={styles.hallo}>Hallo, Apa kabar ?</Text>
-            <Text style={styles.namaUser}>Zulfi Rizkiawan</Text>
+            <Text style={styles.namaUser}>{userProfile.name}</Text>
           </View>
-          <Image source={DummyProfile} style={styles.avatar} />
+          <Image
+            source={{uri: userProfile.profile_photo_url}}
+            style={styles.avatar}
+          />
         </View>
         {/* Slider pengumuman */}
         <View style={styles.wrapSlider}>

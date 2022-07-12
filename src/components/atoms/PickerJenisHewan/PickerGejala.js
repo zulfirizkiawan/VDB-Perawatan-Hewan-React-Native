@@ -12,8 +12,7 @@ const PickerGejala = ({label}) => {
         selectedValue={selectedGejala}
         onValueChange={(itemValue, itemIndex) => setSelectedGejala(itemValue)}
         style={{marginLeft: -10}}>
-        <Picker.Item label="Bersin - Bersin" value="Bersin - Bersin" />
-        <Picker.Item label="Penyumbatan" value="Penyumbatan" />
+        <Picker.Item label="Bersin-bersin" value="Bersin-bersin" />
         <Picker.Item label="Demam" value="Demam" />
         <Picker.Item label="Benjolan" value="Benjolan" />
         <Picker.Item label="Pembengkakan" value="Pembengkakan" />
@@ -21,7 +20,7 @@ const PickerGejala = ({label}) => {
           label="Kehilangan Selera Makan"
           value="Kehilangan Selera Makan"
         />
-        <Picker.Item label="Muntah" value="Muntah" />
+        <Picker.Item label="Muntah-muntah" value="Muntah-muntah" />
         <Picker.Item label="Bulu Rontok" value="Bulu Rontok" />
         <Picker.Item label="Infeksi Mata" value="Infeksi Mata" />
         <Picker.Item label="Gusi Berdarah" value="Gusi Berdarah" />
@@ -30,8 +29,7 @@ const PickerGejala = ({label}) => {
           label="Penurunan Berat Badan"
           value="Penurunan Berat Badan"
         />
-        <Picker.Item label="Gusi berdarah" value="Gusi berdarah" />
-        <Picker.Item label="Kejang" value="Kejang" />
+        <Picker.Item label="Kejang-kejang" value="Kejang-kejang" />
         <Picker.Item label="Pingsan" value="Pingsan" />
       </Picker>
       <View style={styles.garis} />
