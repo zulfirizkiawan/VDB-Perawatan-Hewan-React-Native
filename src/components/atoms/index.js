@@ -1,6 +1,7 @@
 import Buttons from './Button';
 import Gap from './Gap';
 import Input from './Input';
+import Output from './Output';
 import TabItem from './TabItem';
 import Link from './Link';
 import Status from './Status';
@@ -11,6 +12,7 @@ import PickerGejala from './PickerJenisHewan/PickerGejala';
 
 export {
   Input,
+  Output,
   Buttons,
   Gap,
   TabItem,

@@ -1,13 +1,14 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {colors, fonts} from '../../../utils';
+import Number from '../Number';
 
 const TotalPesan = ({namaTotal, totalHarga, onPress, title}) => {
   return (
     <View style={styles.content}>
       <View>
         <Text style={styles.total}>{namaTotal}</Text>
-        <Text style={styles.totalHg}>Rp {totalHarga}</Text>
+        <Number number={totalHarga} style={styles.totalHg} />
       </View>
       <TouchableOpacity style={styles.BtnLogin} onPress={onPress}>
         <Text style={styles.TxtLogin}>{title}</Text>

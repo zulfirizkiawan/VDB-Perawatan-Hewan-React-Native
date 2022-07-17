@@ -1,14 +1,25 @@
 import Axios from 'axios';
 
 const API_HOST = {
-  url: 'http://otwlulus.com/foodmarket-backend/public/api',
+  url: 'http://vdb.otwlulus.com/api',
 };
 
-export const getFoodData = () => dispatch => {
-  Axios.get(`${API_HOST.url}/food`)
+export const getDiskonData = () => dispatch => {
+  Axios.get(`${API_HOST.url}/discount?id=1`)
     .then(res => {
-      // console.log('res :', res.data.data.data);
-      dispatch({type: 'SET_FOOD', value: res.data.data.data});
+      console.log('res diskon :', res.data.data);
+      dispatch({type: 'SET_DISKON', value: res.data.data});
+    })
+    .catch(err => {
+      console.log('err :', err);
+    });
+};
+
+export const getDokterData = () => dispatch => {
+  Axios.get(`${API_HOST.url}/doctor`)
+    .then(res => {
+      console.log('res dokter :', res.data.data);
+      dispatch({type: 'SET_DOKTER', value: res.data.data});
     })
     .catch(err => {
       console.log('err :', err);

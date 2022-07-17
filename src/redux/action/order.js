@@ -17,10 +17,7 @@ export const getOrders = () => dispatch => {
         dispatch({type: 'SET_ORDER', value: res.data.data.data});
       })
       .catch(err => {
-        showMessage(
-          `${err?.response?.data?.message} on Transaction API` ||
-            'Terjadi Kesalahan di API Transaction',
-        );
+        showMessage('Terjadi Kesalahan di API Transaction');
       });
   });
 };

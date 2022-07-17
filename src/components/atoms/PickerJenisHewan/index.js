@@ -1,19 +1,17 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import {Picker} from '@react-native-picker/picker';
 import {colors, fonts} from '../../../utils';
 
-const PickerJenisHewan = () => {
-  const [selectedJenisHewan, setSelectedJenisHewan] = useState();
+const PickerJenisHewan = ({value, onSelectChange}) => {
   return (
     <View>
       <Text style={styles.Tjudul}>Jenis Hewan</Text>
       <Picker
-        selectedValue={selectedJenisHewan}
-        onValueChange={(itemValue, itemIndex) =>
-          setSelectedJenisHewan(itemValue)
-        }
+        selectedValue={value}
+        onValueChange={itemValue => onSelectChange(itemValue)}
         style={{marginLeft: -10}}>
+        <Picker.Item label="-- Pilih Jenis Hewan --" />
         <Picker.Item label="Kucing" value="Kucing" />
         <Picker.Item label="Anjing" value="Anjing" />
       </Picker>

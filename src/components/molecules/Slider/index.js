@@ -1,25 +1,18 @@
 import React from 'react';
 import {Image, ImageBackground, StyleSheet, Text, View} from 'react-native';
-import {
-  ILAnjing,
-  ILAnjing2,
-  ILDiskon,
-  ILKucing,
-  ILRectangle,
-} from '../../../assets';
+import {ILDiskon, ILKucing, ILRectangle} from '../../../assets';
 import {colors, fonts} from '../../../utils';
+import Number from '../Number';
 
-const Slider = ({category}) => {
+const Slider = ({category, diskon, deskripsi}) => {
   const Icon = () => {
     if (category === 'Kucing') {
       return (
         <View style={styles.wrapIcon}>
           <Image source={ILDiskon} style={styles.imgVector} />
           <View>
-            <Text style={styles.text}>
-              Dapatkan potongan hari ini untuk semua layanan
-            </Text>
-            <Text style={styles.text}>Rp. 10.000</Text>
+            <Text style={styles.text}>{deskripsi}</Text>
+            <Number number={diskon} style={styles.text} />
           </View>
         </View>
       );
@@ -48,7 +41,7 @@ const styles = StyleSheet.create({
   text: {
     color: 'white',
     fontSize: 14,
-    fontFamily: fonts.primary[600],
+    fontFamily: fonts.primary[500],
     width: 220,
     paddingLeft: 5,
   },

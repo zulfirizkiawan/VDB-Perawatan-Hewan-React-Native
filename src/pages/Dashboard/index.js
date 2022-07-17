@@ -1,6 +1,4 @@
-import React from 'react';
-import {useEffect} from 'react';
-import {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Image,
   ScrollView,
@@ -9,8 +7,9 @@ import {
   Text,
   View,
 } from 'react-native';
-import {DummyProfile} from '../../assets';
+import {useDispatch, useSelector} from 'react-redux';
 import {Gap, Layanan, ListDokter, MerawatHewan, Slider} from '../../components';
+import {getDiskonData, getDokterData} from '../../redux/action/home';
 import {colors, fonts, getData} from '../../utils';
 
 const Dashboard = ({navigation}) => {
@@ -18,10 +17,22 @@ const Dashboard = ({navigation}) => {
 
   useEffect(() => {
     getData('userProfile').then(res => {
-      console.log('token :', res);
+      // console.log('userProfile :', res);
       setUserProfile(res);
     });
   }, []);
+
+  const dispatch = useDispatch();
+  const {diskon, dokter} = useSelector(state => state.homeReducer);
+
+  useEffect(() => {
+    dispatch(getDiskonData());
+  }, []);
+
+  useEffect(() => {
+    dispatch(getDokterData());
+  }, []);
+
   return (
     <View style={styles.page}>
       <StatusBar barStyle="dark-content" backgroundColor="#FFF" />
@@ -39,9 +50,18 @@ const Dashboard = ({navigation}) => {
           />
         </View>
         {/* Slider pengumuman */}
-        <View style={styles.wrapSlider}>
-          <Slider category="Kucing" />
-        </View>
+        {diskon.turn_off === 'yes' ? (
+          <View />
+        ) : (
+          <View style={styles.wrapSlider}>
+            <Slider
+              key={diskon.id}
+              category="Kucing"
+              deskripsi={diskon.description}
+              diskon={diskon.price_discount}
+            />
+          </View>
+        )}
         <Gap height={20} />
         {/* Layanan */}
         <Text style={styles.Lbl}>Layanan</Text>
@@ -63,7 +83,16 @@ const Dashboard = ({navigation}) => {
         {/* List Dokter */}
         <Text style={styles.Lbl}>Konsultasi Dokter</Text>
         <View style={styles.pD}>
-          <ListDokter onPress={() => navigation.navigate('ProfilDokter')} />
+          {dokter.map(itemDokter => {
+            return (
+              <ListDokter
+                onPress={() => navigation.navigate('ProfilDokter', itemDokter)}
+                gambar={{uri: itemDokter.doctor_photo_path}}
+                nama={itemDokter.name}
+                key={itemDokter.id}
+              />
+            );
+          })}
         </View>
         <Gap height={20} />
         {/* merawat hewan */}

@@ -1,6 +1,5 @@
-import React from 'react';
-import {useEffect} from 'react';
-import {useState} from 'react';
+import Axios from 'axios';
+import React, {useEffect, useState} from 'react';
 import {
   Image,
   ScrollView,
@@ -9,17 +8,82 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {launchImageLibrary} from 'react-native-image-picker';
 import {Gap, Header, Input} from '../../components';
-import {colors, fonts, getData} from '../../utils';
+import {colors, fonts, getData, showMessage, storeData} from '../../utils';
 
 const LihatProfile = ({navigation}) => {
   const [userProfile, setUserProfile] = useState('');
-  useEffect(() => {
+  const [token, setToken] = useState('');
+
+  const updateUserProfile = () => {
     getData('userProfile').then(res => {
+      // console.log('user :', res);
       setUserProfile(res);
-      console.log('userProfile :', res);
+    });
+  };
+
+  useEffect(() => {
+    navigation.addListener('focus', () => {
+      updateUserProfile();
+    });
+  }, [navigation]);
+
+  useEffect(() => {
+    getData('token').then(res => {
+      // console.log('token :', res);
+      setToken(res.value);
     });
   }, []);
+
+  const updatePhoto = () => {
+    launchImageLibrary(
+      {
+        quality: 0.7,
+        maxWidth: 200,
+        maxHeight: 200,
+      },
+      response => {
+        if (response.didCancel || response.error) {
+          showMessage('Anda tidak memilih photo');
+        } else {
+          const dataImage = {
+            uri: response.uri,
+            type: response.type,
+            name: response.fileName,
+          };
+
+          const photoForUpload = new FormData();
+          photoForUpload.append('file', dataImage);
+          getData('token').then(resToken => {
+            Axios.post(
+              `http://vdb.otwlulus.com/api/user/photo`,
+              photoForUpload,
+              {
+                headers: {
+                  Authorization: resToken.value,
+                  'Content-Type': 'multipart/form-data',
+                },
+              },
+            )
+              .then(res => {
+                getData('userProfile').then(resUser => {
+                  showMessage('Update Photo Berhasil', 'success');
+                  resUser.profile_photo_url = `http://vdb.otwlulus.com/storage/${res.data.data[0]}`;
+                  storeData('userProfile', resUser).then(() => {
+                    updateUserProfile();
+                  });
+                });
+              })
+              .catch(err => {
+                console.log('token :', err);
+                showMessage('Terjadi kesalahan di API Update Photo');
+              });
+          });
+        }
+      },
+    );
+  };
 
   return (
     <View style={styles.page}>
@@ -32,7 +96,7 @@ const LihatProfile = ({navigation}) => {
             <Text style={styles.txtEdit}>Edit Profile</Text>
           </TouchableOpacity>
           <View style={{alignItems: 'center'}}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={updatePhoto}>
               <View style={styles.borderPhoto}>
                 <Image
                   source={{uri: userProfile.profile_photo_url}}

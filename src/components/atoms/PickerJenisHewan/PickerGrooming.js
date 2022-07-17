@@ -3,23 +3,21 @@ import React, {useState} from 'react';
 import {Picker} from '@react-native-picker/picker';
 import {colors, fonts} from '../../../utils';
 
-const PickerGrooming = () => {
-  const [selectedJenisGrooming, setSelectedJenisGrooming] = useState();
+const PickerGrooming = ({value, onSelectChange}) => {
   return (
     <View>
       <Text style={styles.Tjudul}>Jenis Grooming</Text>
       <Picker
-        selectedValue={selectedJenisGrooming}
-        onValueChange={(itemValue, itemIndex) =>
-          setSelectedJenisGrooming(itemValue)
-        }
+        selectedValue={value}
+        onValueChange={itemValue => onSelectChange(itemValue)}
         style={{marginLeft: -10}}>
+        <Picker.Item label="-- Pilih Paket Grooming --" />
         <Picker.Item label="Basic - Rp. 45.000" value="Basic" />
-        <Picker.Item label="Kutu - Rp. 60.000" value="kutu" />
-        <Picker.Item label="Jamur - Rp. 60.000" value="jamur" />
+        <Picker.Item label="Kutu - Rp. 60.000" value="Kutu" />
+        <Picker.Item label="Jamur - Rp. 60.000" value="Jamur" />
         <Picker.Item
           label="kombinasi (Kutu dan Jamur) - Rp. 70.000"
-          value="kombinasi"
+          value="Kombinasi"
         />
       </Picker>
       <View style={styles.garis} />

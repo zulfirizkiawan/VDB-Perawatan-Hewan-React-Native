@@ -3,17 +3,16 @@ import React, {useState} from 'react';
 import {Picker} from '@react-native-picker/picker';
 import {colors, fonts} from '../../../utils';
 
-const PickerJK = () => {
+const PickerJK = ({value, onSelectChange}) => {
   const [selectedJenisKelamin, setSelectedJenisKelamin] = useState();
   return (
     <View>
       <Text style={styles.Tjudul}>Jenis Kelamin</Text>
       <Picker
-        selectedValue={selectedJenisKelamin}
-        onValueChange={(itemValue, itemIndex) =>
-          setSelectedJenisKelamin(itemValue)
-        }
+        selectedValue={value}
+        onValueChange={itemValue => onSelectChange(itemValue)}
         style={{marginLeft: -10}}>
+        <Picker.Item label="-- Pilih Jenis kelamin --" />
         <Picker.Item label="Jantan" value="Jantan" />
         <Picker.Item label="Betina" value="Betina" />
       </Picker>

@@ -1,33 +1,20 @@
 const initHome = {
-  food: [],
-  newTaste: [],
-  popular: [],
-  recommended: [],
+  diskon: [],
+  dokter: [],
 };
 
 export const homeReducer = (state = initHome, action) => {
-  if (action.type === 'SET_FOOD') {
+  if (action.type === 'SET_DISKON') {
     return {
       ...state,
-      food: action.value,
+      diskon: action.value,
     };
   }
-  if (action.type === 'SET_NEW_TASTE') {
+
+  if (action.type === 'SET_DOKTER') {
     return {
       ...state,
-      newTaste: action.value,
-    };
-  }
-  if (action.type === 'SET_POPULAR') {
-    return {
-      ...state,
-      popular: action.value,
-    };
-  }
-  if (action.type === 'SET_RECOMMENDED') {
-    return {
-      ...state,
-      recommended: action.value,
+      dokter: action.value,
     };
   }
 

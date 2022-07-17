@@ -20,7 +20,7 @@ const Number = ({number, type, style}) => {
       value={number}
       thousandSeparator="."
       displayType="text"
-      prefix="IDR "
+      prefix="Rp. "
       renderText={value => <Text style={style}>{value}</Text>}
       decimalSeparator=","
     />
