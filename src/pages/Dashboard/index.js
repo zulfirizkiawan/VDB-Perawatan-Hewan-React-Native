@@ -11,9 +11,11 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Gap, Layanan, ListDokter, MerawatHewan, Slider} from '../../components';
 import {getDiskonData, getDokterData} from '../../redux/action/home';
 import {colors, fonts, getData} from '../../utils';
+import Dialog from 'react-native-dialog';
 
 const Dashboard = ({navigation}) => {
   const [userProfile, setUserProfile] = useState({});
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     getData('userProfile').then(res => {
@@ -32,6 +34,33 @@ const Dashboard = ({navigation}) => {
   useEffect(() => {
     dispatch(getDokterData());
   }, []);
+
+  const showDialog = () => {
+    setVisible(true);
+  };
+
+  const handleCancel = () => {
+    setVisible(false);
+    navigation.navigate('DrHewan');
+  };
+
+  // return (
+  //   <ListDokter
+  //     onPress={() => navigation.navigate('ProfilDokter', itemDokter)}
+  //     gambar={{uri: itemDokter.doctor_photo_path}}
+  //     nama={itemDokter.name}
+  //     key={itemDokter.id}
+  //   />
+  // );
+
+  const konsultasi = () => {
+    {
+      dokter.map(itemDokter => {
+        navigation.navigate('ProfilDokter', itemDokter);
+        setVisible(false);
+      });
+    }
+  };
 
   return (
     <View style={styles.page}>
@@ -74,10 +103,26 @@ const Dashboard = ({navigation}) => {
             category="Penitipan"
             onPress={() => navigation.navigate('Penitipan')}
           />
-          <Layanan
-            category="Praktik"
-            onPress={() => navigation.navigate('DrHewan')}
-          />
+          <Layanan category="Praktik" onPress={showDialog} />
+
+          <Dialog.Container visible={visible}>
+            <Dialog.Title>Pemberitahuan</Dialog.Title>
+            <Dialog.Description style={styles.descDialog}>
+              Jika hewan anda ingin berobat silahkan konsultasikan terlebih
+              dahulu kepada dr. hewan untuk mengetahui tindakan yang akan
+              dilakukan. Terimakasih
+            </Dialog.Description>
+            <Dialog.Button
+              label="Tidak"
+              onPress={handleCancel}
+              color="#4552CB"
+            />
+            <Dialog.Button
+              label="Konsultasi"
+              onPress={konsultasi}
+              color="#4552CB"
+            />
+          </Dialog.Container>
         </View>
         <Gap height={20} />
         {/* List Dokter */}
@@ -156,5 +201,11 @@ const styles = StyleSheet.create({
   pD: {
     paddingHorizontal: 15,
     paddingVertical: 5,
+  },
+  descDialog: {
+    fontFamily: fonts.primary[400],
+    fontSize: 14,
+    color: colors.text.primary,
+    textAlign: 'justify',
   },
 });

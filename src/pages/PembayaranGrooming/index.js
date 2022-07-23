@@ -1,12 +1,16 @@
+import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import WebView from 'react-native-webview';
 import {useDispatch, useSelector} from 'react-redux';
-import {Gap, Header, ItemValue, Number, TotalPesan} from '../../components';
+import {Gap, Header, ItemValue, Loading, TotalPesan} from '../../components';
 import {getDiskonData} from '../../redux/action/home';
 import {colors, fonts, getData} from '../../utils';
 
 const PembayaranGrooming = ({navigation, total, sub_total}) => {
   const [userProfile, setUserProfile] = useState({});
+  const [isPaymentOpen, setIsPaymentOpen] = useState(false);
+  const [paymentURL, setPaymentURL] = useState('https://google.com');
 
   useEffect(() => {
     getData('userProfile').then(res => {
@@ -48,7 +52,7 @@ const PembayaranGrooming = ({navigation, total, sub_total}) => {
       animal_gender: grooming.animal_gender,
       note: grooming.note,
       packet_grooming: grooming.packet_grooming,
-      status: 'Menunggu Konfirmasi',
+      status: 'PENDING',
       sub_total,
       shipping_cost,
       discount: diskon.price_discount,
@@ -56,7 +60,49 @@ const PembayaranGrooming = ({navigation, total, sub_total}) => {
     };
 
     console.log('checkout :', data);
+    getData('token').then(resToken => {
+      axios
+        .post('http://vdb.otwlulus.com/api/checkoutgrooming', data, {
+          headers: {
+            Authorization: resToken.value,
+          },
+        })
+        .then(res => {
+          console.log('checkout sukses :', res.data);
+          setIsPaymentOpen(true);
+          setPaymentURL(res.data.data.payment_url);
+        })
+        .catch(err => {
+          console.log('checkout error :', err);
+        });
+    });
   };
+
+  const onNavChange = state => {
+    console.log('nav :', state);
+    const titleWeb = 'Laravel';
+    if (state.title === titleWeb) {
+      navigation.replace('MainApp', {screen: 'Pesanan'});
+    }
+  };
+
+  if (isPaymentOpen) {
+    return (
+      <>
+        <Header
+          title="Payment"
+          subTitle="Silahkan selesaikan pembayaran anda"
+          onBack={() => setIsPaymentOpen(false)}
+        />
+        <WebView
+          source={{uri: paymentURL}}
+          startInLoadingState={true}
+          renderLoading={() => <Loading />}
+          onNavigationStateChange={onNavChange}
+        />
+      </>
+    );
+  }
 
   return (
     <View style={styles.Page}>
@@ -112,15 +158,14 @@ const PembayaranGrooming = ({navigation, total, sub_total}) => {
             </View>
           )}
         </View>
-
         <Gap height={20} />
-        <TotalPesan
-          namaTotal="Total"
-          totalHarga={total}
-          title="Pilih Pembayaran"
-          onPress={onCheckout}
-        />
       </ScrollView>
+      <TotalPesan
+        namaTotal="Total"
+        totalHarga={total}
+        title="Pilih Pembayaran"
+        onPress={onCheckout}
+      />
     </View>
   );
 };

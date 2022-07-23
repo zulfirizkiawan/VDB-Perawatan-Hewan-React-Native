@@ -3,36 +3,48 @@ import React, {useState} from 'react';
 import {Picker} from '@react-native-picker/picker';
 import {colors, fonts} from '../../../utils';
 
-const PickerGejala = ({label}) => {
+const PickerGejala = ({label, value, onSelectChange, note}) => {
   const [selectedGejala, setSelectedGejala] = useState();
   return (
     <View>
       <Text style={styles.Tjudul}>{label}</Text>
       <Picker
-        selectedValue={selectedGejala}
-        onValueChange={(itemValue, itemIndex) => setSelectedGejala(itemValue)}
+        selectedValue={value}
+        onValueChange={itemValue => onSelectChange(itemValue)}
         style={{marginLeft: -10}}>
-        <Picker.Item label="Bersin-bersin" value="Bersin-bersin" />
-        <Picker.Item label="Demam" value="Demam" />
-        <Picker.Item label="Benjolan" value="Benjolan" />
-        <Picker.Item label="Pembengkakan" value="Pembengkakan" />
+        <Picker.Item label="-- Pilih Tindakan --" value="Tidak ada" />
         <Picker.Item
-          label="Kehilangan Selera Makan"
-          value="Kehilangan Selera Makan"
+          label="Pemeriksaan dan pengobatan"
+          value="Pemeriksaan dan pengobatan"
         />
-        <Picker.Item label="Muntah-muntah" value="Muntah-muntah" />
-        <Picker.Item label="Bulu Rontok" value="Bulu Rontok" />
-        <Picker.Item label="Infeksi Mata" value="Infeksi Mata" />
-        <Picker.Item label="Gusi Berdarah" value="Gusi Berdarah" />
-        <Picker.Item label="Diare" value="Diare" />
+        <Picker.Item label="Steril kucing" value="Steril kucing" />
+        <Picker.Item label="Steril anjing" value="Steril anjing" />
+        <Picker.Item label="Suntik Jamur kucing" value="Suntik Jamur kucing" />
         <Picker.Item
-          label="Penurunan Berat Badan"
-          value="Penurunan Berat Badan"
+          label="Suntik rabies kucing"
+          value="Suntik rabies kucing"
         />
-        <Picker.Item label="Kejang-kejang" value="Kejang-kejang" />
-        <Picker.Item label="Pingsan" value="Pingsan" />
+        <Picker.Item label="Melahirkan" value="Melahirkan" />
+        <Picker.Item label="Operasi hernia" value="Operasi hernia" />
+        <Picker.Item
+          label="Diagnosa Kebuntingan"
+          value="Diagnosa Kebuntingan"
+        />
+        <Picker.Item label="Operasi Caesar" value="Operasi Caesar" />
+        <Picker.Item
+          label="Pemeriksaan reproduksi (USG)"
+          value="Pemeriksaan reproduksi (USG)"
+        />
+        <Picker.Item label="Operasi Mata" value="Operasi Mata" />
+        <Picker.Item
+          label="Operasi Saluran Pencernaan"
+          value="Operasi Saluran Pencernaan"
+        />
+
+        <Picker.Item label="Jahit Luka" value="Jahit Luka" />
       </Picker>
       <View style={styles.garis} />
+      <Text style={styles.notes}>{note}</Text>
     </View>
   );
 };
@@ -51,5 +63,11 @@ const styles = StyleSheet.create({
     borderBottomColor: '#BDBDBD',
     borderBottomWidth: 0.7,
     marginTop: -10,
+  },
+  notes: {
+    color: colors.secondary,
+    fontSize: 13,
+    fontFamily: fonts.primary[400],
+    marginTop: 2,
   },
 });

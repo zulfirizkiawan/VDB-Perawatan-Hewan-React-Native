@@ -52,7 +52,7 @@ const Grooming = ({navigation}) => {
           <Gap height={15} />
           <Input
             judul="Keturunan"
-            note="contoh : (persia, anggora) atau (Pomeranian, poodle)"
+            note="persia, anggora atau Pomeranian, Cihuahua"
             value={form.descendants}
             onChangeText={value => setFrom('descendants', value)}
           />

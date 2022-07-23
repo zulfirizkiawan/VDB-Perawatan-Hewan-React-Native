@@ -7,7 +7,7 @@ const API_HOST = {
 export const getDiskonData = () => dispatch => {
   Axios.get(`${API_HOST.url}/discount?id=1`)
     .then(res => {
-      console.log('res diskon :', res.data.data);
+      // console.log('res diskon :', res.data.data);
       dispatch({type: 'SET_DISKON', value: res.data.data});
     })
     .catch(err => {
@@ -18,7 +18,7 @@ export const getDiskonData = () => dispatch => {
 export const getDokterData = () => dispatch => {
   Axios.get(`${API_HOST.url}/doctor`)
     .then(res => {
-      console.log('res dokter :', res.data.data);
+      // console.log('res dokter :', res.data.data);
       dispatch({type: 'SET_DOKTER', value: res.data.data});
     })
     .catch(err => {

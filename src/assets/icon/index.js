@@ -14,6 +14,7 @@ import IChomeNonActive from './homeNonActive.svg';
 import IChomeActive from './homeActive.svg';
 import ICNullPhoto from './ICNullPhoto.svg';
 import ICUploadImg from './ICUploadImg.svg';
+import ICCalendar from './calendar.png';
 
 export {
   ICBack,
@@ -30,4 +31,5 @@ export {
   IChomeActive,
   ICNullPhoto,
   ICUploadImg,
+  ICCalendar,
 };
