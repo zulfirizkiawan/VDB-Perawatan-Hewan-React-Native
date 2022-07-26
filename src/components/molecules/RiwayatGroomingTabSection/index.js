@@ -4,13 +4,16 @@ import {
   View,
   useWindowDimensions,
   ScrollView,
+  RefreshControl,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {colors, fonts} from '../../../utils';
 import {useNavigation} from '@react-navigation/native';
 import CardPesanan from '../CardPesanan';
 import {Gap} from '../../atoms';
+import {getBatalGrooming, getSelesaiGrooming} from '../../../redux/action';
+import {useDispatch, useSelector} from 'react-redux';
 
 const renderTabBar = props => (
   <TabBar
@@ -44,13 +47,40 @@ const renderTabBar = props => (
 
 const Selesai = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const {selesaiGrooming} = useSelector(state => state.pesananReducer);
+  const [refreshing, setRefreshing] = useState(false);
+
+  useEffect(() => {
+    dispatch(getSelesaiGrooming());
+  }, []);
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    dispatch(getSelesaiGrooming());
+    setRefreshing(false);
+  };
+
   return (
-    <ScrollView>
+    <ScrollView
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }>
       <View style={styles.contentPage}>
-        <CardPesanan
-          onPress={() => navigation.navigate('DetailPesananPraktik')}
-        />
-        <CardPesanan />
+        {selesaiGrooming.map(itemGrooming => {
+          return (
+            <CardPesanan
+              onPress={() =>
+                navigation.navigate('DetailPesananGrooming', itemGrooming)
+              }
+              key={itemGrooming.id}
+              nama={itemGrooming.user.name}
+              jenisHewan={itemGrooming.animal_type}
+              total={itemGrooming.total}
+              status={itemGrooming.status}
+            />
+          );
+        })}
       </View>
       <Gap height={20} />
     </ScrollView>
@@ -59,13 +89,40 @@ const Selesai = () => {
 
 const Batal = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const {batalGrooming} = useSelector(state => state.pesananReducer);
+  const [refreshing, setRefreshing] = useState(false);
+
+  useEffect(() => {
+    dispatch(getBatalGrooming());
+  }, []);
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    dispatch(getBatalGrooming());
+    setRefreshing(false);
+  };
+
   return (
-    <ScrollView>
+    <ScrollView
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }>
       <View style={styles.contentPage}>
-        <CardPesanan
-          onPress={() => navigation.navigate('DetailPesananPraktik')}
-        />
-        <CardPesanan />
+        {batalGrooming.map(itemGrooming => {
+          return (
+            <CardPesanan
+              onPress={() =>
+                navigation.navigate('DetailPesananGrooming', itemGrooming)
+              }
+              key={itemGrooming.id}
+              nama={itemGrooming.user.name}
+              jenisHewan={itemGrooming.animal_type}
+              total={itemGrooming.total}
+              status={itemGrooming.status}
+            />
+          );
+        })}
       </View>
       <Gap height={20} />
     </ScrollView>

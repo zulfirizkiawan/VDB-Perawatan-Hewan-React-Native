@@ -4,13 +4,16 @@ import {
   View,
   useWindowDimensions,
   ScrollView,
+  RefreshControl,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {colors, fonts} from '../../../utils';
 import {useNavigation} from '@react-navigation/native';
 import CardPesanan from '../CardPesanan';
 import {Gap} from '../../atoms';
+import {useDispatch, useSelector} from 'react-redux';
+import {getGrooming, getPraktik, getPenitipan} from '../../../redux/action';
 
 const renderTabBar = props => (
   <TabBar
@@ -40,15 +43,40 @@ const renderTabBar = props => (
 
 const PesananGrooming = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const {pesananGrooming} = useSelector(state => state.pesananReducer);
+  const [refreshing, setRefreshing] = useState(false);
+
+  useEffect(() => {
+    dispatch(getGrooming());
+  }, []);
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    dispatch(getGrooming());
+    setRefreshing(false);
+  };
+
   return (
-    <ScrollView>
+    <ScrollView
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }>
       <View style={styles.contentPage}>
-        <CardPesanan
-          onPress={() => navigation.navigate('DetailPesananGrooming')}
-        />
-        <CardPesanan />
-        <CardPesanan />
-        <CardPesanan />
+        {pesananGrooming.map(itemGrooming => {
+          return (
+            <CardPesanan
+              onPress={() =>
+                navigation.navigate('DetailPesananGrooming', itemGrooming)
+              }
+              key={itemGrooming.id}
+              nama={itemGrooming.user.name}
+              jenisHewan={itemGrooming.animal_type}
+              total={itemGrooming.total}
+              status={itemGrooming.status}
+            />
+          );
+        })}
       </View>
       <Gap height={20} />
     </ScrollView>
@@ -57,15 +85,40 @@ const PesananGrooming = () => {
 
 const PesananPenitipan = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const {pesananPenitipan} = useSelector(state => state.pesananReducer);
+  const [refreshing, setRefreshing] = useState(false);
+
+  useEffect(() => {
+    dispatch(getPenitipan());
+  }, []);
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    dispatch(getPenitipan());
+    setRefreshing(false);
+  };
+
   return (
-    <ScrollView>
+    <ScrollView
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }>
       <View style={styles.contentPage}>
-        <CardPesanan
-          onPress={() => navigation.navigate('DetailPesananPenitipan')}
-        />
-        <CardPesanan />
-        <CardPesanan />
-        <CardPesanan />
+        {pesananPenitipan.map(itemPenitipan => {
+          return (
+            <CardPesanan
+              onPress={() =>
+                navigation.navigate('DetailPesananPenitipan', itemPenitipan)
+              }
+              key={itemPenitipan.id}
+              nama={itemPenitipan.user.name}
+              jenisHewan={itemPenitipan.animal_type}
+              total={itemPenitipan.total}
+              status={itemPenitipan.status}
+            />
+          );
+        })}
       </View>
       <Gap height={20} />
     </ScrollView>
@@ -74,15 +127,39 @@ const PesananPenitipan = () => {
 
 const PesananPraktik = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const {pesananPraktik} = useSelector(state => state.pesananReducer);
+  const [refreshing, setRefreshing] = useState(false);
+
+  useEffect(() => {
+    dispatch(getPraktik());
+  }, []);
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    dispatch(getPraktik());
+    setRefreshing(false);
+  };
   return (
-    <ScrollView>
+    <ScrollView
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }>
       <View style={styles.contentPage}>
-        <CardPesanan
-          onPress={() => navigation.navigate('DetailPesananPraktik')}
-        />
-        <CardPesanan />
-        <CardPesanan />
-        <CardPesanan />
+        {pesananPraktik.map(itemPraktik => {
+          return (
+            <CardPesanan
+              onPress={() =>
+                navigation.navigate('DetailPesananPraktik', itemPraktik)
+              }
+              key={itemPraktik.id}
+              nama={itemPraktik.user.name}
+              jenisHewan={itemPraktik.animal_type}
+              total={itemPraktik.total}
+              status={itemPraktik.status}
+            />
+          );
+        })}
       </View>
       <Gap height={20} />
     </ScrollView>

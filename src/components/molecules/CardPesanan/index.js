@@ -4,13 +4,14 @@ import {Status, Gap} from '../../atoms';
 import {DummyCat} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 import ItemValue from '../ItemValue';
+import Number from '../Number';
 
-const CardPesanan = ({onPress}) => {
+const CardPesanan = ({onPress, total, jenisHewan, nama, status}) => {
   return (
     <TouchableOpacity style={styles.content} onPress={onPress}>
       <ItemValue
         label="Status"
-        value="PENJEMPUTAN"
+        value={status}
         valueColor={'Paid' === 'CANCELLED' ? '#D9435E' : '#F1A852'}
       />
       <Gap height={5} />
@@ -22,15 +23,16 @@ const CardPesanan = ({onPress}) => {
         <View style={styles.wrapStatus}>
           <View style={styles.flex}>
             <Text style={styles.txt}>Nama Pemilik</Text>
-            <Text style={styles.txtHasil}>Aril Noah</Text>
+            <Text style={styles.txtHasil}>{nama}</Text>
           </View>
           <View style={styles.flex}>
             <Text style={styles.txt}>Jenis Hewan</Text>
-            <Text style={styles.txtHasil}>Kucing</Text>
+            <Text style={styles.txtHasil}>{jenisHewan}</Text>
           </View>
           <View style={styles.flex}>
             <Text style={styles.txt}>Total</Text>
-            <Text style={styles.txtHasil}>Rp. 55.000</Text>
+            {/* <Text style={styles.txtHasil}>Rp. 55.000</Text> */}
+            <Number number={total} style={styles.txtHasil} />
           </View>
         </View>
       </View>

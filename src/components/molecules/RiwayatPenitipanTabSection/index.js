@@ -4,13 +4,16 @@ import {
   View,
   useWindowDimensions,
   ScrollView,
+  RefreshControl,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {colors, fonts} from '../../../utils';
 import {useNavigation} from '@react-navigation/native';
 import CardPesanan from '../CardPesanan';
 import {Gap} from '../../atoms';
+import {useDispatch, useSelector} from 'react-redux';
+import {getSelesaiPenitipan, getBatalPenitipan} from '../../../redux/action';
 
 const renderTabBar = props => (
   <TabBar
@@ -44,13 +47,40 @@ const renderTabBar = props => (
 
 const Selesai = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const {selesaiPenitipan} = useSelector(state => state.pesananReducer);
+  const [refreshing, setRefreshing] = useState(false);
+
+  useEffect(() => {
+    dispatch(getSelesaiPenitipan());
+  }, []);
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    dispatch(getSelesaiPenitipan());
+    setRefreshing(false);
+  };
+
   return (
-    <ScrollView>
+    <ScrollView
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }>
       <View style={styles.contentPage}>
-        <CardPesanan
-          onPress={() => navigation.navigate('DetailPesananPraktik')}
-        />
-        <CardPesanan />
+        {selesaiPenitipan.map(itemPenitipan => {
+          return (
+            <CardPesanan
+              onPress={() =>
+                navigation.navigate('DetailPesananPenitipan', itemPenitipan)
+              }
+              key={itemPenitipan.id}
+              nama={itemPenitipan.user.name}
+              jenisHewan={itemPenitipan.animal_type}
+              total={itemPenitipan.total}
+              status={itemPenitipan.status}
+            />
+          );
+        })}
       </View>
       <Gap height={20} />
     </ScrollView>
@@ -59,13 +89,40 @@ const Selesai = () => {
 
 const Batal = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const {batalPenitipan} = useSelector(state => state.pesananReducer);
+  const [refreshing, setRefreshing] = useState(false);
+
+  useEffect(() => {
+    dispatch(getBatalPenitipan());
+  }, []);
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    dispatch(getBatalPenitipan());
+    setRefreshing(false);
+  };
+
   return (
-    <ScrollView>
+    <ScrollView
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }>
       <View style={styles.contentPage}>
-        <CardPesanan
-          onPress={() => navigation.navigate('DetailPesananPraktik')}
-        />
-        <CardPesanan />
+        {batalPenitipan.map(itemPenitipan => {
+          return (
+            <CardPesanan
+              onPress={() =>
+                navigation.navigate('DetailPesananPenitipan', itemPenitipan)
+              }
+              key={itemPenitipan.id}
+              nama={itemPenitipan.user.name}
+              jenisHewan={itemPenitipan.animal_type}
+              total={itemPenitipan.total}
+              status={itemPenitipan.status}
+            />
+          );
+        })}
       </View>
       <Gap height={20} />
     </ScrollView>

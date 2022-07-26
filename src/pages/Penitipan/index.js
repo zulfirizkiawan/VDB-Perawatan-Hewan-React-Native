@@ -23,7 +23,7 @@ import {
 import {colors, fonts, useForm} from '../../utils';
 
 const Penitipan = ({navigation}) => {
-  const [currentDate, setCurrentDate] = useState('');
+  const [currentDate, setCurrentDate] = useState(new Date().toDateString());
 
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
@@ -37,19 +37,12 @@ const Penitipan = ({navigation}) => {
     tanggal_pengembalian: '',
   });
 
-  useEffect(() => {
-    var date = new Date().getDate(); //Current Date
-    var month = new Date().getMonth() + 1; //Current Month
-    var year = new Date().getFullYear(); //Current Year
-    setCurrentDate(year + '-' + month + '-' + date);
-  }, []);
-
   const dispatch = useDispatch();
 
   const onSubmit = () => {
     dispatch({type: 'SET_PENITIPAN', value: form});
     console.log('form: ', form);
-    navigation.navigate('PembayaranPenitipan');
+    // navigation.navigate('PembayaranPenitipan');
   };
 
   return (
@@ -104,9 +97,7 @@ const Penitipan = ({navigation}) => {
           <TouchableOpacity onPress={() => setOpen(true)}>
             <View style={styles.wrapTgl}>
               <Image source={ICCalendar} style={styles.imgVector} />
-              <Text style={styles.outputs}>
-                {date.toISOString().substring(0, 10)}
-              </Text>
+              <Text style={styles.outputs}>{date.toDateString()}</Text>
             </View>
           </TouchableOpacity>
           <View style={styles.garis} />
