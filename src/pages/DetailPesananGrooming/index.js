@@ -18,7 +18,11 @@ const DetailPesananGrooming = ({navigation, route}) => {
             label="Status"
             value={itemGrooming.status}
             valueColor={
-              itemGrooming.status === 'DIBATALKAN' ? '#D9435E' : '#F1A852'
+              itemGrooming.status === 'DIBATALKAN'
+                ? '#D9435E'
+                : itemGrooming.status === 'SELESAI'
+                ? '#1ABC9C'
+                : '#F1A852'
             }
           />
           <ItemValue label="Tanggal Pemesanan " value={formatedDate} />

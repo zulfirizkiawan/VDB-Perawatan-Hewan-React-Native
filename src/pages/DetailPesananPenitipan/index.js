@@ -18,7 +18,13 @@ const DetailPesananPenitipan = ({navigation, route}) => {
           <ItemValue
             label="Status"
             value={itemPenitipan.status}
-            valueColor={'Paid' === 'CANCELLED' ? '#D9435E' : '#F1A852'}
+            valueColor={
+              itemPenitipan.status === 'DIBATALKAN'
+                ? '#D9435E'
+                : itemPenitipan.status === 'SELESAI'
+                ? '#1ABC9C'
+                : '#F1A852'
+            }
           />
           <ItemValue label="Tanggal Pemesanan " value={formatedDate} />
         </View>

@@ -34,7 +34,7 @@ export default Slider;
 const styles = StyleSheet.create({
   image: {
     height: 120,
-    width: 345,
+    width: 380,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primary[500],
     width: 220,
     paddingLeft: 5,
+    textAlign: 'justify',
   },
   wrapIcon: {
     flexDirection: 'row',

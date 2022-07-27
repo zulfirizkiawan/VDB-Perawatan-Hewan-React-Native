@@ -50,7 +50,7 @@ export default Akun;
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 10,
-    paddingVertical: 20,
+    // paddingVertical: 20,
     flexDirection: 'row',
     alignItems: 'center',
   },

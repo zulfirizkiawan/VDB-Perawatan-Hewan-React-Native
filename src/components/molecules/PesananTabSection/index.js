@@ -8,12 +8,13 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
-import {colors, fonts} from '../../../utils';
+import {colors, fonts, getData} from '../../../utils';
 import {useNavigation} from '@react-navigation/native';
 import CardPesanan from '../CardPesanan';
 import {Gap} from '../../atoms';
 import {useDispatch, useSelector} from 'react-redux';
 import {getGrooming, getPraktik, getPenitipan} from '../../../redux/action';
+import Axios from 'axios';
 
 const renderTabBar = props => (
   <TabBar
@@ -57,6 +58,37 @@ const PesananGrooming = () => {
     setRefreshing(false);
   };
 
+  const cancelGrooming = () => {
+    {
+      pesananGrooming.map(itemGrooming => {
+        // console.log('pentitpan: ', itemPenitipan.id);
+        const data = {
+          status: 'DIBATALKAN',
+        };
+        getData('token').then(resToken => {
+          Axios.post(
+            `http://vdb.otwlulus.com/api/grooming/${itemGrooming.id}`,
+            data,
+            {
+              headers: {
+                Authorization: resToken.value,
+              },
+            },
+          )
+            .then(res => {
+              navigation.reset({
+                index: 0,
+                routes: [{name: 'MainApp'}],
+              });
+            })
+            .catch(err => {
+              console.log('sukses cancel :', err);
+            });
+        });
+      });
+    }
+  };
+
   return (
     <ScrollView
       refreshControl={
@@ -74,6 +106,7 @@ const PesananGrooming = () => {
               jenisHewan={itemGrooming.animal_type}
               total={itemGrooming.total}
               status={itemGrooming.status}
+              onCancel={cancelGrooming}
             />
           );
         })}
@@ -99,6 +132,36 @@ const PesananPenitipan = () => {
     setRefreshing(false);
   };
 
+  const cancelPenitipan = () => {
+    {
+      pesananPenitipan.map(itemPenitipan => {
+        const data = {
+          status: 'DIBATALKAN',
+        };
+        getData('token').then(resToken => {
+          Axios.post(
+            `http://vdb.otwlulus.com/api/penitipan/${itemPenitipan.id}`,
+            data,
+            {
+              headers: {
+                Authorization: resToken.value,
+              },
+            },
+          )
+            .then(res => {
+              navigation.reset({
+                index: 0,
+                routes: [{name: 'MainApp'}],
+              });
+            })
+            .catch(err => {
+              console.log('sukses cancel :', err);
+            });
+        });
+      });
+    }
+  };
+
   return (
     <ScrollView
       refreshControl={
@@ -116,6 +179,7 @@ const PesananPenitipan = () => {
               jenisHewan={itemPenitipan.animal_type}
               total={itemPenitipan.total}
               status={itemPenitipan.status}
+              onCancel={cancelPenitipan}
             />
           );
         })}
@@ -140,6 +204,37 @@ const PesananPraktik = () => {
     dispatch(getPraktik());
     setRefreshing(false);
   };
+
+  const cancelPraktik = () => {
+    {
+      pesananPraktik.map(itemPraktik => {
+        const data = {
+          status: 'DIBATALKAN',
+        };
+        getData('token').then(resToken => {
+          Axios.post(
+            `http://vdb.otwlulus.com/api/praktik/${itemPraktik.id}`,
+            data,
+            {
+              headers: {
+                Authorization: resToken.value,
+              },
+            },
+          )
+            .then(res => {
+              navigation.reset({
+                index: 0,
+                routes: [{name: 'MainApp'}],
+              });
+            })
+            .catch(err => {
+              console.log('sukses cancel :', err);
+            });
+        });
+      });
+    }
+  };
+
   return (
     <ScrollView
       refreshControl={
@@ -157,6 +252,7 @@ const PesananPraktik = () => {
               jenisHewan={itemPraktik.animal_type}
               total={itemPraktik.total}
               status={itemPraktik.status}
+              onCancel={cancelPraktik}
             />
           );
         })}

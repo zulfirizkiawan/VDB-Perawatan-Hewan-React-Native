@@ -63,6 +63,7 @@ const LihatProfile = ({navigation}) => {
                 headers: {
                   Authorization: resToken.value,
                   'Content-Type': 'multipart/form-data',
+                  Accept: 'application/json',
                 },
               },
             )

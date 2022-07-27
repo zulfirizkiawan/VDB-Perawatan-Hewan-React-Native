@@ -67,7 +67,7 @@ const Dashboard = ({navigation}) => {
       <StatusBar barStyle="dark-content" backgroundColor="#FFF" />
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Profil */}
-        <Gap height={40} />
+        <Gap height={20} />
         <View style={styles.wrapProfil}>
           <View>
             <Text style={styles.hallo}>Hallo, Apa kabar ?</Text>

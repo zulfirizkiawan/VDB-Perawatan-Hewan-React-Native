@@ -28,7 +28,13 @@ const DetailPesananPraktik = ({navigation, route}) => {
           <ItemValue
             label="Status"
             value={itemPraktik.status}
-            valueColor={'Paid' === 'CANCELLED' ? '#D9435E' : '#F1A852'}
+            valueColor={
+              itemPraktik.status === 'DIBATALKAN'
+                ? '#D9435E'
+                : itemPraktik.status === 'SELESAI'
+                ? '#1ABC9C'
+                : '#F1A852'
+            }
           />
           <ItemValue label="Tanggal Pemesanan " value={formatedDate} />
         </View>
