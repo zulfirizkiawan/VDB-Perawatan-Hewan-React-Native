@@ -1,14 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {
-  ScrollView,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  useWindowDimensions,
-} from 'react-native';
-import {DummyProfile} from '../../assets';
+import {ScrollView, Image, StyleSheet, Text, View} from 'react-native';
 import {AkunTabSection, Gap} from '../../components';
 import {colors, fonts, getData} from '../../utils';
 
@@ -50,7 +41,7 @@ export default Akun;
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 10,
-    // paddingVertical: 20,
+    marginBottom: 20,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -99,7 +90,7 @@ const styles = StyleSheet.create({
   },
   nama: {
     fontFamily: fonts.primary[500],
-    fontSize: 24,
+    fontSize: 20,
     color: colors.text.primary,
   },
 });

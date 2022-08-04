@@ -3,6 +3,7 @@ import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {DummyProfile} from '../../assets';
 import {Gap, Header, ItemValue} from '../../components';
 import {colors, fonts} from '../../utils';
+import moment from 'moment';
 
 const DetailPesananGrooming = ({navigation, route}) => {
   const itemGrooming = route.params;
@@ -25,7 +26,10 @@ const DetailPesananGrooming = ({navigation, route}) => {
                 : '#F1A852'
             }
           />
-          <ItemValue label="Tanggal Pemesanan " value={formatedDate} />
+          <ItemValue
+            label="Tanggal Pemesanan "
+            value={moment(formatedDate).format('DD MMM YYYY')}
+          />
         </View>
         <View style={styles.content}>
           <Text style={styles.informasiHewan}>informasi Hewan</Text>

@@ -52,10 +52,39 @@ const LihatProfile = ({navigation}) => {
             type: response.type,
             name: response.fileName,
           };
-
+          console.log('response :', response);
           const photoForUpload = new FormData();
           photoForUpload.append('file', dataImage);
           getData('token').then(resToken => {
+            // fetch(
+            //   `http://vdb.otwlulus.com/api/user/photo`,
+            //   {
+            //     method: 'POST',
+            //   },
+            //   photoForUpload,
+            //   {
+            //     headers: {
+            //       Authorization: resToken.value,
+            //       'Content-Type': 'multipart/form-data',
+            //     },
+            //   },
+            // )
+            //   .then(res => {
+            //     getData('userProfile').then(resUser => {
+            //       console.log('sukses :', resUser);
+            //       showMessage('Update Photo Berhasil', 'success');
+            //       // resUser.profile_photo_url = `http://vdb.otwlulus.com/storage/${res.data.data[0]}`;
+            //       storeData('userProfile', resUser).then(() => {
+            //         updateUserProfile();
+            //       });
+            //     });
+            //   })
+            //   .then(actualData => console.log(actualData))
+            //   .catch(err => {
+            //     console.log('error :', err);
+            //     showMessage('Terjadi kesalahan di API Update Photo');
+            //   });
+
             Axios.post(
               `http://vdb.otwlulus.com/api/user/photo`,
               photoForUpload,
@@ -63,7 +92,6 @@ const LihatProfile = ({navigation}) => {
                 headers: {
                   Authorization: resToken.value,
                   'Content-Type': 'multipart/form-data',
-                  Accept: 'application/json',
                 },
               },
             )

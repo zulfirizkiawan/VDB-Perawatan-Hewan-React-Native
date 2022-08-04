@@ -6,6 +6,7 @@ import {DummyProfile} from '../../assets';
 import {Gap, Header, Input, ItemValue, Status} from '../../components';
 import {getDokterData} from '../../redux/action';
 import {colors, fonts} from '../../utils';
+import moment from 'moment';
 
 const DetailPesananPraktik = ({navigation, route}) => {
   const itemPraktik = route.params;
@@ -36,7 +37,10 @@ const DetailPesananPraktik = ({navigation, route}) => {
                 : '#F1A852'
             }
           />
-          <ItemValue label="Tanggal Pemesanan " value={formatedDate} />
+          <ItemValue
+            label="Tanggal Pemesanan "
+            value={moment(formatedDate).format('DD MMM YYYY')}
+          />
         </View>
         <View style={styles.content}>
           <Text style={styles.informasiHewan}>informasi Hewan</Text>

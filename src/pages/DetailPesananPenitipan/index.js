@@ -3,6 +3,7 @@ import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {DummyProfile} from '../../assets';
 import {Gap, Header, Input, ItemValue, Status} from '../../components';
 import {colors, fonts} from '../../utils';
+import moment from 'moment';
 
 const DetailPesananPenitipan = ({navigation, route}) => {
   const itemPenitipan = route.params;
@@ -26,7 +27,10 @@ const DetailPesananPenitipan = ({navigation, route}) => {
                 : '#F1A852'
             }
           />
-          <ItemValue label="Tanggal Pemesanan " value={formatedDate} />
+          <ItemValue
+            label="Tanggal Pemesanan "
+            value={moment(formatedDate).format('DD MMM YYYY')}
+          />
         </View>
         <View style={styles.content}>
           <Text style={styles.informasiHewan}>informasi Hewan</Text>
@@ -39,12 +43,14 @@ const DetailPesananPenitipan = ({navigation, route}) => {
           />
           <ItemValue
             label="Tgl Penitipan"
-            value={formatedDate}
+            value={moment(formatedDate).format('YYYY-MM-DD')}
             valueColor="#4552CB"
           />
           <ItemValue
             label="Tgl Peengembalian"
-            value={itemPenitipan.tanggal_pengembalian}
+            value={moment(itemPenitipan.tanggal_pengembalian).format(
+              'YYYY-MM-DD',
+            )}
             valueColor="#4552CB"
           />
           <Gap height={8} />

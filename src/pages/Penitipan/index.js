@@ -21,6 +21,7 @@ import {
   UploadGambar,
 } from '../../components';
 import {colors, fonts, useForm} from '../../utils';
+import moment from 'moment';
 
 const Penitipan = ({navigation}) => {
   const [currentDate, setCurrentDate] = useState(new Date().toDateString());
@@ -42,7 +43,7 @@ const Penitipan = ({navigation}) => {
   const onSubmit = () => {
     dispatch({type: 'SET_PENITIPAN', value: form});
     console.log('form: ', form);
-    // navigation.navigate('PembayaranPenitipan');
+    navigation.navigate('PembayaranPenitipan');
   };
 
   return (
@@ -86,18 +87,20 @@ const Penitipan = ({navigation}) => {
           <Gap height={5} />
           <Text style={styles.informasiHewan}>Pilih Berapa Hari Penitipan</Text>
           <Gap height={10} />
-          <Text style={styles.Tjudul}>Tanggal Penitipan</Text>
+          <Text style={styles.Tjudul}>Tanggal Penitipan *</Text>
           <View style={styles.wrapTgl}>
             <Image source={ICCalendar} style={styles.imgVector} />
-            <Text style={styles.outputs}>{currentDate}</Text>
+            <Text style={styles.outputs}>{moment().format('YYYY-MM-DD')}</Text>
           </View>
           <View style={styles.garis} />
           <Gap height={15} />
-          <Text style={styles.Tjudul}>Tanggal Pengembalian</Text>
+          <Text style={styles.Tjudul}>Pilih Tanggal Pengembalian</Text>
           <TouchableOpacity onPress={() => setOpen(true)}>
             <View style={styles.wrapTgl}>
               <Image source={ICCalendar} style={styles.imgVector} />
-              <Text style={styles.outputs}>{date.toDateString()}</Text>
+              <Text style={styles.outputs}>
+                {moment(date).format('YYYY-MM-DD')}
+              </Text>
             </View>
           </TouchableOpacity>
           <View style={styles.garis} />
@@ -106,9 +109,11 @@ const Penitipan = ({navigation}) => {
             mode="date"
             open={open}
             date={date}
-            onConfirm={date => {
+            value={form.tanggal_pengembalian}
+            onConfirm={value => {
               setOpen(false);
-              setDate(date);
+              setDate(value);
+              setFrom('tanggal_pengembalian', value);
             }}
             onCancel={() => {
               setOpen(false);
