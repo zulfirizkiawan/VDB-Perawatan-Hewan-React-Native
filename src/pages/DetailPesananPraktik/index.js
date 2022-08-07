@@ -2,7 +2,7 @@ import React from 'react';
 import {useEffect} from 'react';
 import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {DummyProfile} from '../../assets';
+import {DummyCat} from '../../assets';
 import {Gap, Header, Input, ItemValue, Status} from '../../components';
 import {getDokterData} from '../../redux/action';
 import {colors, fonts} from '../../utils';
@@ -24,7 +24,7 @@ const DetailPesananPraktik = ({navigation, route}) => {
       <Header title="Detail Pesanan" onPress={() => navigation.goBack()} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.content}>
-          <Image source={DummyProfile} style={styles.avatar} />
+          <Image source={DummyCat} style={styles.avatar} />
           <Gap height={20} />
           <ItemValue
             label="Status"

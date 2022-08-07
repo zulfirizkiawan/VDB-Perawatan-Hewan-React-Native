@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
-import {DummyProfile} from '../../assets';
+import {DummyCat} from '../../assets';
 import {Gap, Header, ItemValue} from '../../components';
 import {colors, fonts} from '../../utils';
 import moment from 'moment';
@@ -13,7 +13,7 @@ const DetailPesananGrooming = ({navigation, route}) => {
       <Header title="Detail Pesanan" onPress={() => navigation.goBack()} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.content}>
-          <Image source={DummyProfile} style={styles.avatar} />
+          <Image source={DummyCat} style={styles.avatar} />
           <Gap height={20} />
           <ItemValue
             label="Status"

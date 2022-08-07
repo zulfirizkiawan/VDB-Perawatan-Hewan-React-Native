@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
-import {DummyProfile} from '../../assets';
+import {DummyCat} from '../../assets';
 import {Gap, Header, Input, ItemValue, Status} from '../../components';
 import {colors, fonts} from '../../utils';
 import moment from 'moment';
@@ -14,7 +14,7 @@ const DetailPesananPenitipan = ({navigation, route}) => {
       <Header title="Detail Pesanan" onPress={() => navigation.goBack()} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.content}>
-          <Image source={DummyProfile} style={styles.avatar} />
+          <Image source={DummyCat} style={styles.avatar} />
           <Gap height={20} />
           <ItemValue
             label="Status"
@@ -43,13 +43,13 @@ const DetailPesananPenitipan = ({navigation, route}) => {
           />
           <ItemValue
             label="Tgl Penitipan"
-            value={moment(formatedDate).format('YYYY-MM-DD')}
+            value={moment(formatedDate).format('DD MMM YYYY')}
             valueColor="#4552CB"
           />
           <ItemValue
             label="Tgl Peengembalian"
             value={moment(itemPenitipan.tanggal_pengembalian).format(
-              'YYYY-MM-DD',
+              'DD MMM YYYY',
             )}
             valueColor="#4552CB"
           />

@@ -40,8 +40,6 @@ export default Splash;
 const styles = StyleSheet.create({
   page: {
     flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
   iljkanan: {
     marginVertical: 8,

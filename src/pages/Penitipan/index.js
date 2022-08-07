@@ -90,7 +90,7 @@ const Penitipan = ({navigation}) => {
           <Text style={styles.Tjudul}>Tanggal Penitipan *</Text>
           <View style={styles.wrapTgl}>
             <Image source={ICCalendar} style={styles.imgVector} />
-            <Text style={styles.outputs}>{moment().format('YYYY-MM-DD')}</Text>
+            <Text style={styles.outputs}>{moment().format('DD MMM YYYY')}</Text>
           </View>
           <View style={styles.garis} />
           <Gap height={15} />
@@ -99,7 +99,7 @@ const Penitipan = ({navigation}) => {
             <View style={styles.wrapTgl}>
               <Image source={ICCalendar} style={styles.imgVector} />
               <Text style={styles.outputs}>
-                {moment(date).format('YYYY-MM-DD')}
+                {moment(date).format('DD MMM YYYY')}
               </Text>
             </View>
           </TouchableOpacity>

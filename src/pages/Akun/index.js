@@ -8,7 +8,6 @@ const Akun = ({navigation}) => {
 
   useEffect(() => {
     getData('userProfile').then(res => {
-      console.log('token :', res);
       setUserProfile(res);
     });
   }, []);

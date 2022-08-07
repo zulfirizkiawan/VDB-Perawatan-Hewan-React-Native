@@ -141,13 +141,13 @@ const PembayaranPenitipan = ({navigation, total, sub_total}) => {
           <ItemValue label="Jenis kelamin" value={penitipan.animal_gender} />
           <ItemValue
             label="Tgl Penitipan"
-            value={moment().format('YYYY-MM-DD')}
+            value={moment().format('DD MMM YYYY')}
             valueColor="#4552CB"
           />
 
           <ItemValue
             label="Tgl Pengembalian"
-            value={moment(penitipan.tanggal_pengembalian).format('YYYY-MM-DD')}
+            value={moment(penitipan.tanggal_pengembalian).format('DD MMM YYYY')}
             valueColor="#4552CB"
           />
 

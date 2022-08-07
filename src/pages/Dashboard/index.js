@@ -19,7 +19,6 @@ const Dashboard = ({navigation}) => {
 
   useEffect(() => {
     getData('userProfile').then(res => {
-      // console.log('userProfile :', res);
       setUserProfile(res);
     });
   }, []);
@@ -43,15 +42,6 @@ const Dashboard = ({navigation}) => {
     setVisible(false);
     navigation.navigate('DrHewan');
   };
-
-  // return (
-  //   <ListDokter
-  //     onPress={() => navigation.navigate('ProfilDokter', itemDokter)}
-  //     gambar={{uri: itemDokter.doctor_photo_path}}
-  //     nama={itemDokter.name}
-  //     key={itemDokter.id}
-  //   />
-  // );
 
   const konsultasi = () => {
     {

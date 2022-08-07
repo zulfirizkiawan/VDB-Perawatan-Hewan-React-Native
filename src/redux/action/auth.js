@@ -7,8 +7,8 @@ const API_HOST = {
   url: 'http://vdb.otwlulus.com/api',
 };
 
-export const signUpAction = (data, navigation) => dispatch => {
-  Axios.post(`${API_HOST.url}/register`, data)
+export const signUpAction = (form, navigation) => dispatch => {
+  Axios.post(`${API_HOST.url}/register`, form)
     .then(res => {
       console.log('data sukses', res.data);
 

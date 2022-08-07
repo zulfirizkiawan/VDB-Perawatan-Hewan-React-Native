@@ -12,25 +12,17 @@ const Register = ({navigation}) => {
     name: '',
     email: '',
     password: '',
+    password_confirmation: '',
     address: '',
     city: '',
     phoneNumber: '',
   });
 
   const dispatch = useDispatch();
-  const {registerReducer} = useSelector(state => state);
 
   const onSubmit = () => {
-    console.log('form: ', form);
-    dispatch({type: 'SET_REGISTER', value: form});
-    const data = {
-      ...form,
-      ...registerReducer,
-    };
-    console.log('Data register: ', data);
-
     dispatch(setLoading(true));
-    dispatch(signUpAction(data, navigation));
+    dispatch(signUpAction(form, navigation));
   };
 
   return (
@@ -80,6 +72,12 @@ const Register = ({navigation}) => {
               judul="Kata sandi"
               value={form.password}
               onChangeText={value => setFrom('password', value)}
+              secureTextEntry
+            />
+            <Input
+              judul="konfirmasi kata sandi"
+              value={form.password_confirmation}
+              onChangeText={value => setFrom('password_confirmation', value)}
               secureTextEntry
             />
             <Gap height={25} />

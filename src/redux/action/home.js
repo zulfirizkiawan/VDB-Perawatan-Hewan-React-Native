@@ -18,7 +18,6 @@ export const getDiskonData = () => dispatch => {
 export const getDokterData = () => dispatch => {
   Axios.get(`${API_HOST.url}/doctor`)
     .then(res => {
-      // console.log('res dokter :', res.data.data);
       dispatch({type: 'SET_DOKTER', value: res.data.data});
     })
     .catch(err => {
@@ -26,20 +25,20 @@ export const getDokterData = () => dispatch => {
     });
 };
 
-export const getFoodDataByTypes = types => dispatch => {
-  Axios.get(`${API_HOST.url}/food?types=${types}`)
-    .then(res => {
-      if (types === 'newfood') {
-        dispatch({type: 'SET_NEW_TASTE', value: res.data.data.data});
-      }
-      if (types === 'popular') {
-        dispatch({type: 'SET_POPULAR', value: res.data.data.data});
-      }
-      if (types === 'recommended') {
-        dispatch({type: 'SET_RECOMMENDED', value: res.data.data.data});
-      }
-    })
-    .catch(err => {
-      showMessage('Terjadi kesalahan di API Food By Type');
-    });
-};
+// export const getFoodDataByTypes = types => dispatch => {
+//   Axios.get(`${API_HOST.url}/food?types=${types}`)
+//     .then(res => {
+//       if (types === 'newfood') {
+//         dispatch({type: 'SET_NEW_TASTE', value: res.data.data.data});
+//       }
+//       if (types === 'popular') {
+//         dispatch({type: 'SET_POPULAR', value: res.data.data.data});
+//       }
+//       if (types === 'recommended') {
+//         dispatch({type: 'SET_RECOMMENDED', value: res.data.data.data});
+//       }
+//     })
+//     .catch(err => {
+//       showMessage('Terjadi kesalahan di API Food By Type');
+//     });
+// };

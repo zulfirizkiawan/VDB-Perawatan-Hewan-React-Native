@@ -14,14 +14,6 @@ import {colors, fonts, getData, showMessage, storeData} from '../../utils';
 
 const LihatProfile = ({navigation}) => {
   const [userProfile, setUserProfile] = useState('');
-  const [token, setToken] = useState('');
-
-  const updateUserProfile = () => {
-    getData('userProfile').then(res => {
-      // console.log('user :', res);
-      setUserProfile(res);
-    });
-  };
 
   useEffect(() => {
     navigation.addListener('focus', () => {
@@ -29,12 +21,11 @@ const LihatProfile = ({navigation}) => {
     });
   }, [navigation]);
 
-  useEffect(() => {
-    getData('token').then(res => {
-      // console.log('token :', res);
-      setToken(res.value);
+  const updateUserProfile = () => {
+    getData('userProfile').then(res => {
+      setUserProfile(res);
     });
-  }, []);
+  };
 
   const updatePhoto = () => {
     launchImageLibrary(
@@ -56,37 +47,11 @@ const LihatProfile = ({navigation}) => {
           const photoForUpload = new FormData();
           photoForUpload.append('file', dataImage);
           getData('token').then(resToken => {
-            // fetch(
-            //   `http://vdb.otwlulus.com/api/user/photo`,
-            //   {
-            //     method: 'POST',
-            //   },
-            //   photoForUpload,
-            //   {
-            //     headers: {
-            //       Authorization: resToken.value,
-            //       'Content-Type': 'multipart/form-data',
-            //     },
-            //   },
-            // )
-            //   .then(res => {
-            //     getData('userProfile').then(resUser => {
-            //       console.log('sukses :', resUser);
-            //       showMessage('Update Photo Berhasil', 'success');
-            //       // resUser.profile_photo_url = `http://vdb.otwlulus.com/storage/${res.data.data[0]}`;
-            //       storeData('userProfile', resUser).then(() => {
-            //         updateUserProfile();
-            //       });
-            //     });
-            //   })
-            //   .then(actualData => console.log(actualData))
-            //   .catch(err => {
-            //     console.log('error :', err);
-            //     showMessage('Terjadi kesalahan di API Update Photo');
-            //   });
-
-            Axios.post(
+            fetch(
               `http://vdb.otwlulus.com/api/user/photo`,
+              {
+                method: 'POST',
+              },
               photoForUpload,
               {
                 headers: {
@@ -97,6 +62,7 @@ const LihatProfile = ({navigation}) => {
             )
               .then(res => {
                 getData('userProfile').then(resUser => {
+                  console.log('sukses :', resUser);
                   showMessage('Update Photo Berhasil', 'success');
                   resUser.profile_photo_url = `http://vdb.otwlulus.com/storage/${res.data.data[0]}`;
                   storeData('userProfile', resUser).then(() => {
@@ -105,9 +71,33 @@ const LihatProfile = ({navigation}) => {
                 });
               })
               .catch(err => {
-                console.log('token :', err);
+                console.log('error :', err);
                 showMessage('Terjadi kesalahan di API Update Photo');
               });
+
+            // Axios.post(
+            //   `http://vdb.otwlulus.com/api/user/photo`,
+            //   photoForUpload,
+            //   {
+            //     headers: {
+            //       Authorization: resToken.value,
+            //       'Content-Type': 'multipart/form-data',
+            //     },
+            //   },
+            // )
+            //   .then(res => {
+            //     getData('userProfile').then(resUser => {
+            //       showMessage('Update Photo Berhasil', 'success');
+            //       resUser.profile_photo_url = `http://vdb.otwlulus.com/storage/${res.data.data[0]}`;
+            //       storeData('userProfile', resUser).then(() => {
+            //         updateUserProfile();
+            //       });
+            //     });
+            //   })
+            //   .catch(err => {
+            //     console.log('token :', err);
+            //     showMessage('Terjadi kesalahan di API Update Photo');
+            //   });
           });
         }
       },
