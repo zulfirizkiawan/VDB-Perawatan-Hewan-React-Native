@@ -18,8 +18,9 @@ export default Header;
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 20,
-    paddingVertical: 5,
-    marginBottom: 10,
+    paddingVertical: 10,
+    paddingTop: 15,
+    marginBottom: 5,
     backgroundColor: 'white',
     flexDirection: 'row',
     alignItems: 'center',

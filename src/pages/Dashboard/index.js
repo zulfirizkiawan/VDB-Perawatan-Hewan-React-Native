@@ -46,14 +46,30 @@ const Dashboard = ({navigation}) => {
   const konsultasi = () => {
     {
       dokter.map(itemDokter => {
-        navigation.navigate('ProfilDokter', itemDokter);
         setVisible(false);
+        navigation.navigate('ProfilDokter', itemDokter);
       });
     }
   };
 
   return (
     <View style={styles.page}>
+      <View>
+        <Dialog.Container visible={visible}>
+          <Dialog.Title>Pemberitahuan</Dialog.Title>
+          <Dialog.Description style={styles.descDialog}>
+            Jika hewan anda ingin berobat silahkan konsultasikan terlebih dahulu
+            kepada dr. hewan untuk mengetahui tindakan yang akan dilakukan.
+            Terimakasih
+          </Dialog.Description>
+          <Dialog.Button label="Tidak" onPress={handleCancel} color="#4552CB" />
+          <Dialog.Button
+            label="Konsultasi"
+            onPress={konsultasi}
+            color="#4552CB"
+          />
+        </Dialog.Container>
+      </View>
       <StatusBar barStyle="dark-content" backgroundColor="#FFF" />
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Profil */}
@@ -94,25 +110,6 @@ const Dashboard = ({navigation}) => {
             onPress={() => navigation.navigate('Penitipan')}
           />
           <Layanan category="Praktik" onPress={showDialog} />
-
-          <Dialog.Container visible={visible}>
-            <Dialog.Title>Pemberitahuan</Dialog.Title>
-            <Dialog.Description style={styles.descDialog}>
-              Jika hewan anda ingin berobat silahkan konsultasikan terlebih
-              dahulu kepada dr. hewan untuk mengetahui tindakan yang akan
-              dilakukan. Terimakasih
-            </Dialog.Description>
-            <Dialog.Button
-              label="Tidak"
-              onPress={handleCancel}
-              color="#4552CB"
-            />
-            <Dialog.Button
-              label="Konsultasi"
-              onPress={konsultasi}
-              color="#4552CB"
-            />
-          </Dialog.Container>
         </View>
         <Gap height={20} />
         {/* List Dokter */}
@@ -147,9 +144,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     flex: 1,
   },
-  wrapPage: {
-    paddingHorizontal: 20,
-  },
   avatar: {
     height: 60,
     width: 60,
@@ -174,7 +168,7 @@ const styles = StyleSheet.create({
   },
   wrapSlider: {
     marginTop: 30,
-    alignItems: 'center',
+    paddingHorizontal: 15,
   },
   wrapRiwayat: {
     flexDirection: 'row',

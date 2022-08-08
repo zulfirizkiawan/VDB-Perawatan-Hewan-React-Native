@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import {colors, fonts} from '../../../utils';
-import {Number} from '../../molecules';
+import Number from '../../molecules/Number';
 
 const Output = ({judul, value, note}) => {
   const [border, setBorder] = useState(colors.text.primary);
