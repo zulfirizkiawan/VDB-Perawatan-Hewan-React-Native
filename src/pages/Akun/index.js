@@ -1,16 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import {ScrollView, Image, StyleSheet, Text, View} from 'react-native';
+import {DummyProfile} from '../../assets';
 import {AkunTabSection, Gap} from '../../components';
 import {colors, fonts, getData} from '../../utils';
 
 const Akun = ({navigation}) => {
   const [userProfile, setUserProfile] = useState({});
+  const [photo, setPhoto] = useState(DummyProfile);
 
   useEffect(() => {
-    getData('userProfile').then(res => {
-      setUserProfile(res);
+    navigation.addListener('focus', () => {
+      getData('userProfile').then(res => {
+        setPhoto({uri: res.profile_photo_url});
+      });
     });
-  }, []);
+  }, [navigation]);
 
   return (
     <View style={styles.page}>
@@ -19,10 +23,7 @@ const Akun = ({navigation}) => {
           <Text style={styles.TxtHeader}>Akun</Text>
         </View>
         <View style={styles.wrapProfile}>
-          <Image
-            source={{uri: userProfile.profile_photo_url}}
-            style={styles.avatar}
-          />
+          <Image source={photo} style={styles.avatar} />
           <Gap height={24} />
           <Text style={styles.nama}>{userProfile.name}</Text>
         </View>

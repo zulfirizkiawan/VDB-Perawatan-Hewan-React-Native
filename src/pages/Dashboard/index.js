@@ -12,16 +12,20 @@ import {Gap, Layanan, ListDokter, MerawatHewan, Slider} from '../../components';
 import {getDiskonData, getDokterData} from '../../redux/action/home';
 import {colors, fonts, getData} from '../../utils';
 import Dialog from 'react-native-dialog';
+import {DummyProfile} from '../../assets';
 
 const Dashboard = ({navigation}) => {
   const [userProfile, setUserProfile] = useState({});
   const [visible, setVisible] = useState(false);
+  const [photo, setPhoto] = useState(DummyProfile);
 
   useEffect(() => {
-    getData('userProfile').then(res => {
-      setUserProfile(res);
+    navigation.addListener('focus', () => {
+      getData('userProfile').then(res => {
+        setPhoto({uri: res.profile_photo_url});
+      });
     });
-  }, []);
+  }, [navigation]);
 
   const dispatch = useDispatch();
   const {diskon, dokter} = useSelector(state => state.homeReducer);
@@ -79,10 +83,7 @@ const Dashboard = ({navigation}) => {
             <Text style={styles.hallo}>Hallo, Apa kabar ?</Text>
             <Text style={styles.namaUser}>{userProfile.name}</Text>
           </View>
-          <Image
-            source={{uri: userProfile.profile_photo_url}}
-            style={styles.avatar}
-          />
+          <Image source={photo} style={styles.avatar} />
         </View>
         {/* Slider pengumuman */}
         {diskon.turn_off === 'yes' ? (
