@@ -12,6 +12,7 @@ const Akun = ({navigation}) => {
     navigation.addListener('focus', () => {
       getData('userProfile').then(res => {
         setPhoto({uri: res.profile_photo_url});
+        setUserProfile(res);
       });
     });
   }, [navigation]);

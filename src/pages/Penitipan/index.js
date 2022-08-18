@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import DatePicker from 'react-native-date-picker';
 import {useDispatch} from 'react-redux';
-import {ICCalendar} from '../../assets';
+import {ICCalendar, ICNullPhoto} from '../../assets';
 import {
   Buttons,
   Gap,
@@ -17,17 +17,17 @@ import {
   Input,
   PickerJenisHewan,
   PickerJK,
-  TotalPesan,
-  UploadGambar,
 } from '../../components';
-import {colors, fonts, useForm} from '../../utils';
+import {colors, fonts, showMessage, useForm} from '../../utils';
 import moment from 'moment';
+import {launchImageLibrary} from 'react-native-image-picker';
 
 const Penitipan = ({navigation}) => {
   const [currentDate, setCurrentDate] = useState(new Date().toDateString());
 
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
+  const [photo, setPhoto] = useState('');
 
   const [form, setFrom] = useForm({
     animal_name: '',
@@ -46,13 +46,57 @@ const Penitipan = ({navigation}) => {
     navigation.navigate('PembayaranPenitipan');
   };
 
+  const addPhoto = () => {
+    launchImageLibrary(
+      {
+        title: 'Select Image',
+        type: 'library',
+        options: {
+          maxWidth: 200,
+          maxHeight: 200,
+          selectionLimit: 1,
+          mediaType: 'photo',
+          includeBase64: false,
+        },
+      },
+      response => {
+        if (response.didCancel || response.error) {
+          showMessage('Anda Tidak Memilih Foto');
+        } else {
+          const source = {uri: response.assets[0].uri};
+          const dataImage = {
+            uri: response.uri,
+            type: response.type,
+            name: response.fileName,
+          };
+          console.log('response :', response.assets[0]);
+          setPhoto(source);
+          dispatch({type: 'SET_PHOTO', value: dataImage});
+          dispatch({type: 'SET_UPLOAD_STATUS', value: true});
+        }
+      },
+    );
+  };
+
   return (
     <View style={styles.page}>
       <Header title="Penitipan" onPress={() => navigation.goBack()} />
       <ScrollView>
         <View style={styles.content}>
           <View style={{alignItems: 'center'}}>
-            <UploadGambar />
+            <TouchableOpacity onPress={addPhoto}>
+              <View style={styles.borderPhoto}>
+                {photo ? (
+                  <Image source={photo} style={styles.photoContainer} />
+                ) : (
+                  <ICNullPhoto
+                    width={90}
+                    height={90}
+                    style={styles.photoContainer}
+                  />
+                )}
+              </View>
+            </TouchableOpacity>
           </View>
           <Gap height={20} />
           <Text style={styles.informasiHewan}>Informasi Hewan</Text>
@@ -170,5 +214,22 @@ const styles = StyleSheet.create({
     borderBottomColor: '#BDBDBD',
     borderBottomWidth: 0.7,
     marginTop: 3,
+  },
+  borderPhoto: {
+    borderWidth: 1,
+    borderColor: colors.secondary,
+    width: 110,
+    height: 110,
+    borderRadius: 110,
+    borderStyle: 'dashed',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  photoContainer: {
+    width: 90,
+    height: 90,
+    borderRadius: 90,
+    backgroundColor: '#F0F0F0',
+    padding: 24,
   },
 });

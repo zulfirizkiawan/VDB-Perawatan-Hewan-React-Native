@@ -1,6 +1,12 @@
-import React from 'react';
-import {useEffect} from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {
   Buttons,
@@ -12,10 +18,12 @@ import {
   PickerJK,
   UploadGambar,
 } from '../../components';
-import {colors, fonts, useForm} from '../../utils';
-import {getDokterData} from '../../redux/action/home';
+import {colors, fonts, showMessage, useForm} from '../../utils';
+import {ICNullPhoto} from '../../assets';
+import {launchImageLibrary} from 'react-native-image-picker';
 
 const DrHewan = ({navigation}) => {
+  const [photo, setPhoto] = useState('');
   const [form, setFrom] = useForm({
     animal_name: '',
     animal_type: '',
@@ -34,13 +42,57 @@ const DrHewan = ({navigation}) => {
     navigation.navigate('PembayaranDrHewan');
   };
 
+  const addPhoto = () => {
+    launchImageLibrary(
+      {
+        title: 'Select Image',
+        type: 'library',
+        options: {
+          maxWidth: 200,
+          maxHeight: 200,
+          selectionLimit: 1,
+          mediaType: 'photo',
+          includeBase64: false,
+        },
+      },
+      response => {
+        if (response.didCancel || response.error) {
+          showMessage('Anda Tidak Memilih Foto');
+        } else {
+          const source = {uri: response.assets[0].uri};
+          const dataImage = {
+            uri: response.uri,
+            type: response.type,
+            name: response.fileName,
+          };
+          console.log('response :', response.assets[0]);
+          setPhoto(source);
+          dispatch({type: 'SET_PHOTO', value: dataImage});
+          dispatch({type: 'SET_UPLOAD_STATUS', value: true});
+        }
+      },
+    );
+  };
+
   return (
     <View style={styles.page}>
       <Header title="Praktik Dr. Hewan" onPress={() => navigation.goBack()} />
       <ScrollView>
         <View style={styles.content}>
           <View style={{alignItems: 'center'}}>
-            <UploadGambar />
+            <TouchableOpacity onPress={addPhoto}>
+              <View style={styles.borderPhoto}>
+                {photo ? (
+                  <Image source={photo} style={styles.photoContainer} />
+                ) : (
+                  <ICNullPhoto
+                    width={90}
+                    height={90}
+                    style={styles.photoContainer}
+                  />
+                )}
+              </View>
+            </TouchableOpacity>
           </View>
           <Gap height={20} />
 
@@ -118,5 +170,22 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: fonts.primary[400],
     color: colors.text.primary,
+  },
+  borderPhoto: {
+    borderWidth: 1,
+    borderColor: colors.secondary,
+    width: 110,
+    height: 110,
+    borderRadius: 110,
+    borderStyle: 'dashed',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  photoContainer: {
+    width: 90,
+    height: 90,
+    borderRadius: 90,
+    backgroundColor: '#F0F0F0',
+    padding: 24,
   },
 });

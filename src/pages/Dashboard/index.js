@@ -23,6 +23,7 @@ const Dashboard = ({navigation}) => {
     navigation.addListener('focus', () => {
       getData('userProfile').then(res => {
         setPhoto({uri: res.profile_photo_url});
+        setUserProfile(res);
       });
     });
   }, [navigation]);
@@ -32,9 +33,6 @@ const Dashboard = ({navigation}) => {
 
   useEffect(() => {
     dispatch(getDiskonData());
-  }, []);
-
-  useEffect(() => {
     dispatch(getDokterData());
   }, []);
 
