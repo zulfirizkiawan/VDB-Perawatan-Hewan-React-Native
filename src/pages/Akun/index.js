@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     color: colors.text.primary,
-    fontFamily: fonts.primary[600],
+    fontFamily: fonts.primary[500],
+    marginTop: 10,
   },
   page: {
     backgroundColor: '#F9F9FD',

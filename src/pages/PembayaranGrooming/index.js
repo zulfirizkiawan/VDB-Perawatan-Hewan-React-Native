@@ -21,6 +21,7 @@ const PembayaranGrooming = ({navigation, total, sub_total}) => {
   const dispatch = useDispatch();
   const {grooming} = useSelector(state => state.transactionReducer);
   const {diskon} = useSelector(state => state.homeReducer);
+  const {photoReducer} = useSelector(state => state);
 
   useEffect(() => {
     dispatch(getDiskonData());
@@ -44,33 +45,37 @@ const PembayaranGrooming = ({navigation, total, sub_total}) => {
   total = sub_total + shipping_cost - diskon.price_discount;
 
   const onCheckout = () => {
-    const data = {
-      user_id: userProfile.id,
-      animal_name: grooming.animal_name,
-      animal_type: grooming.animal_type,
-      descendants: grooming.descendants,
-      animal_gender: grooming.animal_gender,
-      note: grooming.note,
-      packet_grooming: grooming.packet_grooming,
-      status: 'PENDING',
-      sub_total,
-      shipping_cost,
-      discount: diskon.price_discount,
-      total,
-    };
+    const formdata = new FormData();
+    formdata.append('user_id', userProfile.id);
+    formdata.append('animal_name', grooming.animal_name);
+    formdata.append('animal_type', grooming.animal_type);
+    formdata.append('descendants', grooming.descendants);
+    formdata.append('animal_gender', grooming.animal_gender);
+    formdata.append('note', grooming.note);
+    formdata.append('packet_grooming', grooming.packet_grooming);
+    formdata.append('status', 'PENDING');
+    formdata.append('sub_total', sub_total);
+    formdata.append('shipping_cost', shipping_cost);
+    formdata.append('discount', diskon.price_discount);
+    formdata.append('total', total);
+    formdata.append('image', photoReducer);
 
-    console.log('checkout :', data);
+    console.log('checkout :', formdata._parts);
     getData('token').then(resToken => {
-      axios
-        .post('http://vdb.otwlulus.com/api/checkoutgrooming', data, {
-          headers: {
-            Authorization: resToken.value,
-          },
-        })
+      fetch('http://vdb.otwlulus.com/api/checkoutgrooming', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'multipart/form-data',
+          Authorization: resToken.value,
+        },
+        body: formdata,
+      })
+        .then(response => response.json())
         .then(res => {
-          console.log('checkout sukses :', res.data);
+          console.log('checkout sukses :', res);
           setIsPaymentOpen(true);
-          setPaymentURL(res.data.data.payment_url);
+          setPaymentURL(res.data.payment_url);
         })
         .catch(err => {
           console.log('checkout error :', err);
@@ -82,7 +87,7 @@ const PembayaranGrooming = ({navigation, total, sub_total}) => {
     console.log('nav :', state);
     const titleWeb = 'Laravel';
     if (state.title === titleWeb) {
-      navigation.replace('MainApp', {screen: 'Pesanan'});
+      navigation.reset({index: 0, routes: [{name: 'MainApp'}]});
     }
   };
 

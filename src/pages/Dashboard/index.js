@@ -33,6 +33,9 @@ const Dashboard = ({navigation}) => {
 
   useEffect(() => {
     dispatch(getDiskonData());
+  }, []);
+
+  useEffect(() => {
     dispatch(getDokterData());
   }, []);
 

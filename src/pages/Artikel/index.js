@@ -48,16 +48,6 @@ const Artikel = ({navigation}) => {
     },
     {
       id: 5,
-      judul: 'Melatih Hewan secara Rutin',
-      SubIsi1:
-        'Beberapa hewan peliharaan dapat kamu latih agar dapat lebih patuh pada peraturan yang ada di rumah.',
-      SubIsi2:
-        'Jika kamu memelihara anjing, melatih anjing sangat wajib dilakukan agar mereka semakin sayang pada dirimu.',
-      SubIsi3:
-        'Sementara itu, kucing memang lebih sulit dilatih dibandingkan dengan anjing, tetapi jika kamu rajin melatih mereka, kucing akan menjadi semakin pintar dan semakin menyukai dirimu.',
-    },
-    {
-      id: 6,
       judul: 'Periksa Hewan secara Teratur',
       SubIsi1:
         'Hewan lebih rawan terkena penyakit jika sering bepergian ke luar rumah.',

@@ -78,6 +78,7 @@ const Selesai = () => {
               jenisHewan={itemPraktik.animal_type}
               total={itemPraktik.total}
               status={itemPraktik.status}
+              images={{uri: itemPraktik.praktik_photo_path}}
             />
           );
         })}
@@ -120,6 +121,7 @@ const Batal = () => {
               jenisHewan={itemPraktik.animal_type}
               total={itemPraktik.total}
               status={itemPraktik.status}
+              images={{uri: itemPraktik.praktik_photo_path}}
             />
           );
         })}

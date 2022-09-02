@@ -78,6 +78,7 @@ const Selesai = () => {
               jenisHewan={itemPenitipan.animal_type}
               total={itemPenitipan.total}
               status={itemPenitipan.status}
+              images={{uri: itemPenitipan.penitipan_photo_path}}
             />
           );
         })}
@@ -120,6 +121,7 @@ const Batal = () => {
               jenisHewan={itemPenitipan.animal_type}
               total={itemPenitipan.total}
               status={itemPenitipan.status}
+              images={{uri: itemPenitipan.penitipan_photo_path}}
             />
           );
         })}

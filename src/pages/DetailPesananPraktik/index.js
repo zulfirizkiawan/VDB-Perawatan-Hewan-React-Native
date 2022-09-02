@@ -10,7 +10,6 @@ import moment from 'moment';
 
 const DetailPesananPraktik = ({navigation, route}) => {
   const itemPraktik = route.params;
-  const formatedDate = new Date(itemPraktik.created_at * 1000).toDateString();
 
   const dispatch = useDispatch();
   const {dokter} = useSelector(state => state.homeReducer);
@@ -24,7 +23,10 @@ const DetailPesananPraktik = ({navigation, route}) => {
       <Header title="Detail Pesanan" onPress={() => navigation.goBack()} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.content}>
-          <Image source={DummyCat} style={styles.avatar} />
+          <Image
+            source={{uri: itemPraktik.praktik_photo_path}}
+            style={styles.avatar}
+          />
           <Gap height={20} />
           <ItemValue
             label="Status"
@@ -39,7 +41,9 @@ const DetailPesananPraktik = ({navigation, route}) => {
           />
           <ItemValue
             label="Tanggal Pemesanan "
-            value={moment(formatedDate).format('DD MMM YYYY')}
+            value={moment(itemPraktik.created_at * 1000).format(
+              'dddd, DD MMM YYYY',
+            )}
           />
         </View>
         <View style={styles.content}>
@@ -152,9 +156,9 @@ const styles = StyleSheet.create({
     color: colors.text.primary,
   },
   avatar: {
-    height: 100,
-    width: 100,
-    borderRadius: 100 / 2,
+    height: 120,
+    width: 120,
+    borderRadius: 120 / 2,
     alignSelf: 'center',
   },
 });

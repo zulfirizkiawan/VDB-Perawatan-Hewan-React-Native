@@ -6,7 +6,15 @@ import {colors, fonts} from '../../../utils';
 import ItemValue from '../ItemValue';
 import Number from '../Number';
 
-const CardPesanan = ({onPress, total, jenisHewan, nama, status, onCancel}) => {
+const CardPesanan = ({
+  onPress,
+  total,
+  jenisHewan,
+  nama,
+  status,
+  onCancel,
+  images,
+}) => {
   return (
     <View>
       {status === 'PENDING' ? (
@@ -26,7 +34,7 @@ const CardPesanan = ({onPress, total, jenisHewan, nama, status, onCancel}) => {
           <View style={styles.garis} />
           <Gap height={10} />
           <View style={styles.wrapContent}>
-            <Image source={DummyCat} style={styles.img} />
+            <Image source={images} style={styles.img} />
             <Gap width={10} />
             <View style={styles.wrapStatus}>
               <View style={styles.flex}>
@@ -69,7 +77,7 @@ const CardPesanan = ({onPress, total, jenisHewan, nama, status, onCancel}) => {
           <View style={styles.garis} />
           <Gap height={10} />
           <View style={styles.wrapContent}>
-            <Image source={DummyCat} style={styles.img} />
+            <Image source={images} style={styles.img} />
             <Gap width={10} />
             <View style={styles.wrapStatus}>
               <View style={styles.flex}>

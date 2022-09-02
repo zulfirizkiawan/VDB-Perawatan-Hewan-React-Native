@@ -7,13 +7,15 @@ import moment from 'moment';
 
 const DetailPesananGrooming = ({navigation, route}) => {
   const itemGrooming = route.params;
-  const formatedDate = new Date(itemGrooming.created_at * 1000).toDateString();
   return (
     <View style={styles.Page}>
       <Header title="Detail Pesanan" onPress={() => navigation.goBack()} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.content}>
-          <Image source={DummyCat} style={styles.avatar} />
+          <Image
+            source={{uri: itemGrooming.grooming_photo_path}}
+            style={styles.avatar}
+          />
           <Gap height={20} />
           <ItemValue
             label="Status"
@@ -28,7 +30,9 @@ const DetailPesananGrooming = ({navigation, route}) => {
           />
           <ItemValue
             label="Tanggal Pemesanan "
-            value={moment(formatedDate).format('DD MMM YYYY')}
+            value={moment(itemGrooming.created_at * 1000).format(
+              'dddd, DD MMM YYYY',
+            )}
           />
         </View>
         <View style={styles.content}>
@@ -130,9 +134,9 @@ const styles = StyleSheet.create({
     color: colors.text.primary,
   },
   avatar: {
-    height: 100,
-    width: 100,
-    borderRadius: 100 / 2,
+    height: 120,
+    width: 120,
+    borderRadius: 120 / 2,
     alignSelf: 'center',
   },
 });

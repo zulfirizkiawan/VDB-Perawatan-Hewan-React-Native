@@ -21,6 +21,7 @@ const PembayaranDrHewan = ({navigation, total, sub_total, sub1, sub2}) => {
   const dispatch = useDispatch();
   const {praktik} = useSelector(state => state.transactionReducer);
   const {diskon, dokter} = useSelector(state => state.homeReducer);
+  const {photoReducer} = useSelector(state => state);
 
   useEffect(() => {
     dispatch(getDiskonData());
@@ -35,7 +36,7 @@ const PembayaranDrHewan = ({navigation, total, sub_total, sub1, sub2}) => {
   if (praktik.first_symptom === 'Tidak ada') {
     sub1 = 0;
   }
-  if (praktik.first_symptom === 'Pemeriksaan dan pengobatan') {
+  if (praktik.first_symptom === 'Pemeriksaan dan obat') {
     sub1 = 55000;
   }
   if (praktik.first_symptom === 'Steril kucing') {
@@ -78,7 +79,7 @@ const PembayaranDrHewan = ({navigation, total, sub_total, sub1, sub2}) => {
   if (praktik.second_symptom === 'Tidak ada') {
     sub2 = 0;
   }
-  if (praktik.second_symptom === 'Pemeriksaan dan pengobatan') {
+  if (praktik.second_symptom === 'Pemeriksaan dan obat') {
     sub2 = 55000;
   }
   if (praktik.second_symptom === 'Steril kucing') {
@@ -140,18 +141,39 @@ const PembayaranDrHewan = ({navigation, total, sub_total, sub1, sub2}) => {
       total,
     };
 
-    console.log('checkout :', data);
+    const formdata = new FormData();
+    formdata.append('user_id', userProfile.id);
+    formdata.append('animal_name', praktik.animal_name);
+    formdata.append('animal_type', praktik.animal_type);
+    formdata.append('descendants', praktik.descendants);
+    formdata.append('animal_gender', praktik.animal_gender);
+    formdata.append('note', praktik.note);
+    formdata.append('first_symptom', praktik.first_symptom);
+    formdata.append('second_symptom', praktik.second_symptom);
+    formdata.append('doctor_id', 1);
+    formdata.append('status', 'PENDING');
+    formdata.append('sub_total', sub_total);
+    formdata.append('shipping_cost', shipping_cost);
+    formdata.append('discount', diskon.price_discount);
+    formdata.append('total', total);
+    formdata.append('image', photoReducer);
+
+    console.log('checkout :', formdata);
     getData('token').then(resToken => {
-      axios
-        .post('http://vdb.otwlulus.com/api/checkoutpraktik', data, {
-          headers: {
-            Authorization: resToken.value,
-          },
-        })
+      fetch('http://vdb.otwlulus.com/api/checkoutpraktik', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'multipart/form-data',
+          Authorization: resToken.value,
+        },
+        body: formdata,
+      })
+        .then(response => response.json())
         .then(res => {
-          console.log('checkout sukses :', res.data);
+          console.log('checkout sukses :', res);
           setIsPaymentOpen(true);
-          setPaymentURL(res.data.data.payment_url);
+          setPaymentURL(res.data.payment_url);
         })
         .catch(err => {
           console.log('checkout error :', err);
@@ -163,7 +185,7 @@ const PembayaranDrHewan = ({navigation, total, sub_total, sub1, sub2}) => {
     // console.log('nav :', state);
     const titleWeb = 'Laravel';
     if (state.title === titleWeb) {
-      navigation.replace('MainApp', {screen: 'Pesanan'});
+      navigation.reset({index: 0, routes: [{name: 'MainApp'}]});
     }
   };
 

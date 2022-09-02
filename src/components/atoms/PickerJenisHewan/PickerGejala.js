@@ -14,8 +14,8 @@ const PickerGejala = ({label, value, onSelectChange, note}) => {
         style={{marginLeft: -10}}>
         <Picker.Item label="-- Pilih Tindakan --" value="Tidak ada" />
         <Picker.Item
-          label="Pemeriksaan dan pengobatan"
-          value="Pemeriksaan dan pengobatan"
+          label="Pemeriksaan dan obat"
+          value="Pemeriksaan dan obat"
         />
         <Picker.Item label="Steril kucing" value="Steril kucing" />
         <Picker.Item label="Steril anjing" value="Steril anjing" />

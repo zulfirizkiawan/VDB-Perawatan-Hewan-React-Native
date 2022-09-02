@@ -26,7 +26,7 @@ export default MerawatHewan;
 
 const styles = StyleSheet.create({
   wrapMerawat: {
-    height: 225,
+    height: 235,
     paddingTop: 30,
     paddingLeft: 20,
     flexDirection: 'row',

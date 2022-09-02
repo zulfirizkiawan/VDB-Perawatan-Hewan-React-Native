@@ -21,6 +21,7 @@ import {
 import {colors, fonts, showMessage, useForm} from '../../utils';
 import {ICNullPhoto} from '../../assets';
 import {launchImageLibrary} from 'react-native-image-picker';
+import ImageCropPicker from 'react-native-image-crop-picker';
 
 const DrHewan = ({navigation}) => {
   const [photo, setPhoto] = useState('');
@@ -43,35 +44,26 @@ const DrHewan = ({navigation}) => {
   };
 
   const addPhoto = () => {
-    launchImageLibrary(
-      {
-        title: 'Select Image',
-        type: 'library',
-        options: {
-          maxWidth: 200,
-          maxHeight: 200,
-          selectionLimit: 1,
-          mediaType: 'photo',
-          includeBase64: false,
-        },
-      },
-      response => {
-        if (response.didCancel || response.error) {
-          showMessage('Anda Tidak Memilih Foto');
-        } else {
-          const source = {uri: response.assets[0].uri};
-          const dataImage = {
-            uri: response.uri,
-            type: response.type,
-            name: response.fileName,
-          };
-          console.log('response :', response.assets[0]);
-          setPhoto(source);
-          dispatch({type: 'SET_PHOTO', value: dataImage});
-          dispatch({type: 'SET_UPLOAD_STATUS', value: true});
-        }
-      },
-    );
+    ImageCropPicker.openPicker({
+      width: 300,
+      height: 300,
+      cropping: true,
+      mediaType: 'photo',
+      includeBase64: true,
+    }).then(images => {
+      console.log(images);
+      const source = {uri: images.path};
+
+      const dataImage = {
+        uri: images.path,
+        type: images.mime,
+        name: 'cat_pic.jpeg',
+      };
+      console.log('response :', dataImage);
+      setPhoto(source);
+      dispatch({type: 'SET_PHOTO', value: dataImage});
+      dispatch({type: 'SET_UPLOAD_STATUS', value: true});
+    });
   };
 
   return (

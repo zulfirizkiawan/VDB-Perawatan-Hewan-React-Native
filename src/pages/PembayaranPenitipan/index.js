@@ -22,6 +22,7 @@ const PembayaranPenitipan = ({navigation, total, sub_total}) => {
   const dispatch = useDispatch();
   const {penitipan} = useSelector(state => state.transactionReducer);
   const {diskon} = useSelector(state => state.homeReducer);
+  const {photoReducer} = useSelector(state => state);
 
   useEffect(() => {
     dispatch(getDiskonData());
@@ -68,35 +69,41 @@ const PembayaranPenitipan = ({navigation, total, sub_total}) => {
   total = sub_total + shipping_cost - diskon.price_discount;
 
   const onCheckout = () => {
-    const data = {
-      user_id: userProfile.id,
-      animal_name: penitipan.animal_name,
-      animal_type: penitipan.animal_type,
-      descendants: penitipan.descendants,
-      animal_gender: penitipan.animal_gender,
-      note: penitipan.note,
-      tanggal_pengembalian: moment(penitipan.tanggal_pengembalian).format(
-        'YYYY-MM-DD',
-      ),
-      status: 'PENDING',
-      sub_total,
-      shipping_cost,
-      discount: diskon.price_discount,
-      total,
-    };
+    const formdata = new FormData();
+    formdata.append('user_id', userProfile.id);
+    formdata.append('animal_name', penitipan.animal_name);
+    formdata.append('animal_type', penitipan.animal_type);
+    formdata.append('descendants', penitipan.descendants);
+    formdata.append('animal_gender', penitipan.animal_gender);
+    formdata.append('note', penitipan.note);
+    formdata.append(
+      'tanggal_pengembalian',
+      moment(penitipan.tanggal_pengembalian).format('YYYY-MM-DD'),
+    );
+    formdata.append('status', 'PENDING');
+    formdata.append('sub_total', sub_total);
+    formdata.append('shipping_cost', shipping_cost);
+    formdata.append('discount', diskon.price_discount);
+    formdata.append('total', total);
+    formdata.append('image', photoReducer);
 
-    console.log('checkout :', data);
+    console.log('checkout :', formdata);
+
     getData('token').then(resToken => {
-      axios
-        .post('http://vdb.otwlulus.com/api/checkoutpenitipan', data, {
-          headers: {
-            Authorization: resToken.value,
-          },
-        })
+      fetch('http://vdb.otwlulus.com/api/checkoutpenitipan', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'multipart/form-data',
+          Authorization: resToken.value,
+        },
+        body: formdata,
+      })
+        .then(response => response.json())
         .then(res => {
-          console.log('checkout sukses :', res.data);
+          console.log('checkout sukses :', res);
           setIsPaymentOpen(true);
-          setPaymentURL(res.data.data.payment_url);
+          setPaymentURL(res.data.payment_url);
         })
         .catch(err => {
           console.log('checkout error :', err);
@@ -107,7 +114,7 @@ const PembayaranPenitipan = ({navigation, total, sub_total}) => {
   const onNavChange = state => {
     const titleWeb = 'Laravel';
     if (state.title === titleWeb) {
-      navigation.replace('MainApp', {screen: 'Pesanan'});
+      navigation.reset({index: 0, routes: [{name: 'MainApp'}]});
     }
   };
 

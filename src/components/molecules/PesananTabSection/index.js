@@ -61,7 +61,6 @@ const PesananGrooming = () => {
   const cancelGrooming = () => {
     {
       pesananGrooming.map(itemGrooming => {
-        // console.log('pentitpan: ', itemPenitipan.id);
         const data = {
           status: 'DIBATALKAN',
         };
@@ -107,6 +106,7 @@ const PesananGrooming = () => {
               total={itemGrooming.total}
               status={itemGrooming.status}
               onCancel={cancelGrooming}
+              images={{uri: itemGrooming.grooming_photo_path}}
             />
           );
         })}
@@ -180,6 +180,7 @@ const PesananPenitipan = () => {
               total={itemPenitipan.total}
               status={itemPenitipan.status}
               onCancel={cancelPenitipan}
+              images={{uri: itemPenitipan.penitipan_photo_path}}
             />
           );
         })}
@@ -253,6 +254,7 @@ const PesananPraktik = () => {
               total={itemPraktik.total}
               status={itemPraktik.status}
               onCancel={cancelPraktik}
+              images={{uri: itemPraktik.praktik_photo_path}}
             />
           );
         })}

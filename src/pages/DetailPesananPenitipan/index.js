@@ -4,17 +4,20 @@ import {DummyCat} from '../../assets';
 import {Gap, Header, Input, ItemValue, Status} from '../../components';
 import {colors, fonts} from '../../utils';
 import moment from 'moment';
+import 'moment/locale/id';
 
 const DetailPesananPenitipan = ({navigation, route}) => {
   const itemPenitipan = route.params;
-  const formatedDate = new Date(itemPenitipan.created_at * 1000).toDateString();
 
   return (
     <View style={styles.Page}>
       <Header title="Detail Pesanan" onPress={() => navigation.goBack()} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.content}>
-          <Image source={DummyCat} style={styles.avatar} />
+          <Image
+            source={{uri: itemPenitipan.penitipan_photo_path}}
+            style={styles.avatar}
+          />
           <Gap height={20} />
           <ItemValue
             label="Status"
@@ -29,7 +32,9 @@ const DetailPesananPenitipan = ({navigation, route}) => {
           />
           <ItemValue
             label="Tanggal Pemesanan "
-            value={moment(formatedDate).format('DD MMM YYYY')}
+            value={moment(itemPenitipan.created_at * 1000).format(
+              'dddd, DD MMM YYYY',
+            )}
           />
         </View>
         <View style={styles.content}>
@@ -43,13 +48,15 @@ const DetailPesananPenitipan = ({navigation, route}) => {
           />
           <ItemValue
             label="Tgl Penitipan"
-            value={moment(formatedDate).format('DD MMM YYYY')}
+            value={moment(itemPenitipan.created_at * 1000).format(
+              'dddd, DD MMM YYYY',
+            )}
             valueColor="#4552CB"
           />
           <ItemValue
             label="Tgl Peengembalian"
             value={moment(itemPenitipan.tanggal_pengembalian).format(
-              'DD MMM YYYY',
+              'dddd, DD MMM YYYY',
             )}
             valueColor="#4552CB"
           />
@@ -141,9 +148,9 @@ const styles = StyleSheet.create({
     color: colors.text.primary,
   },
   avatar: {
-    height: 100,
-    width: 100,
-    borderRadius: 100 / 2,
+    height: 120,
+    width: 120,
+    borderRadius: 120 / 2,
     alignSelf: 'center',
   },
 });

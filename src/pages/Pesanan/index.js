@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: colors.text.primary,
     textAlign: 'center',
-    //  marginTop: 20,
+    marginTop: 10,
   },
   tabContainer: {flex: 1, marginTop: 10},
 });
