@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
-import {colors, fonts, getData} from '../../../utils';
+import {colors, fonts, getData, showMessage} from '../../../utils';
 import {useNavigation} from '@react-navigation/native';
 import CardPesanan from '../CardPesanan';
 import {Gap} from '../../atoms';
@@ -79,6 +79,7 @@ const PesananGrooming = () => {
                 index: 0,
                 routes: [{name: 'MainApp'}],
               });
+              showMessage('Berhasil Dibatalkan', 'success');
             })
             .catch(err => {
               console.log('sukses cancel :', err);
@@ -153,6 +154,7 @@ const PesananPenitipan = () => {
                 index: 0,
                 routes: [{name: 'MainApp'}],
               });
+              showMessage('Berhasil Dibatalkan', 'success');
             })
             .catch(err => {
               console.log('sukses cancel :', err);
@@ -227,6 +229,7 @@ const PesananPraktik = () => {
                 index: 0,
                 routes: [{name: 'MainApp'}],
               });
+              showMessage('Berhasil Dibatalkan', 'success');
             })
             .catch(err => {
               console.log('sukses cancel :', err);

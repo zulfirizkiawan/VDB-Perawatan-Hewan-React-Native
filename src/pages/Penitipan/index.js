@@ -54,20 +54,26 @@ const Penitipan = ({navigation}) => {
       cropping: true,
       mediaType: 'photo',
       includeBase64: true,
-    }).then(images => {
-      console.log(images);
-      const source = {uri: images.path};
+    })
+      .then(images => {
+        console.log(images);
+        const source = {uri: images.path};
 
-      const dataImage = {
-        uri: images.path,
-        type: images.mime,
-        name: 'cat_pic.jpeg',
-      };
-      console.log('response :', dataImage);
-      setPhoto(source);
-      dispatch({type: 'SET_PHOTO', value: dataImage});
-      dispatch({type: 'SET_UPLOAD_STATUS', value: true});
-    });
+        const dataImage = {
+          uri: images.path,
+          type: images.mime,
+          name: 'cat_pic.jpeg',
+        };
+        console.log('response :', dataImage);
+        setPhoto(source);
+        dispatch({type: 'SET_PHOTO', value: dataImage});
+        dispatch({type: 'SET_UPLOAD_STATUS', value: true});
+      })
+      .catch(e => {
+        if (e.code === 'E_PICKER_CANCELLED') {
+          return false;
+        }
+      });
   };
 
   return (
