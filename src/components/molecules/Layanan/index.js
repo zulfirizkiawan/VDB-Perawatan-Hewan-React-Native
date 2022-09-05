@@ -4,7 +4,7 @@ import {Gap} from '../../atoms';
 import {ILDr, ILGrooming, ILPenitipan} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
-const Layanan = ({category, onPress}) => {
+const Layanan = ({category, onPress, jmlPesanan, listPesanan}) => {
   const Icon = () => {
     if (category === 'Grooming') {
       return <ILGrooming />;
@@ -17,12 +17,26 @@ const Layanan = ({category, onPress}) => {
     }
     return <ILGrooming />;
   };
+
   return (
-    <TouchableOpacity style={styles.wrapLayanan} onPress={onPress}>
-      <Gap height={2} />
-      <Icon />
-      <Text style={styles.lblLayanan}>{category}</Text>
-    </TouchableOpacity>
+    <View>
+      {jmlPesanan < 1 ? (
+        <TouchableOpacity style={styles.wrapLayanan} onPress={onPress}>
+          <Gap height={2} />
+          <Icon />
+          <Text style={styles.lblLayanan}>{category}</Text>
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity style={styles.wrapLayanan} onPress={onPress}>
+          <Gap height={2} />
+          <Icon />
+          <Text style={styles.lblLayanan}>{category}</Text>
+          <View style={styles.listOrder}>
+            <Text style={styles.listPesanan}> {jmlPesanan} </Text>
+          </View>
+        </TouchableOpacity>
+      )}
+    </View>
   );
 };
 
@@ -32,11 +46,6 @@ const styles = StyleSheet.create({
   wrapLayanan: {
     alignItems: 'center',
     backgroundColor: colors.Bg.six,
-    // shadowColor: '#ABAECA',
-    // shadowOffset: {width: 0, height: 4},
-    // shadowRadius: 28,
-    // shadowOpacity: 0.2,
-    // elevation: 10,
     height: 95,
     width: 95,
     paddingVertical: 10,
@@ -48,5 +57,22 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primary[500],
     color: colors.text.primary,
     marginTop: 10,
+  },
+  listOrder: {
+    position: 'absolute',
+    right: -4,
+    top: -4,
+    borderRadius: 25,
+    height: 25,
+    width: 25,
+    backgroundColor: '#478aed',
+    justifyContent: 'center',
+  },
+  listPesanan: {
+    textAlign: 'center',
+    color: 'white',
+    fontFamily: fonts.primary[400],
+    marginTop: 1,
+    fontSize: 14,
   },
 });

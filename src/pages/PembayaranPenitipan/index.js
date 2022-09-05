@@ -122,9 +122,10 @@ const PembayaranPenitipan = ({navigation, total, sub_total}) => {
     return (
       <>
         <Header
-          title="Payment"
-          subTitle="Silahkan selesaikan pembayaran anda"
-          onBack={() => setIsPaymentOpen(false)}
+          title="Pembayaran"
+          onPress={() =>
+            navigation.reset({index: 0, routes: [{name: 'MainApp'}]})
+          }
         />
         <WebView
           source={{uri: paymentURL}}

@@ -12,12 +12,12 @@ const PickerGrooming = ({value, onSelectChange}) => {
         onValueChange={itemValue => onSelectChange(itemValue)}
         style={{marginLeft: -10}}>
         <Picker.Item label="-- Pilih Paket Grooming --" />
-        <Picker.Item label="Basic - Rp. 45.000" value="Basic" />
-        <Picker.Item label="Kutu - Rp. 60.000" value="Kutu" />
-        <Picker.Item label="Jamur - Rp. 60.000" value="Jamur" />
+        <Picker.Item label="Basic - Rp. 65.000" value="Basic" />
+        <Picker.Item label="+ Obat Kutu - Rp. 165.000" value="Kutu" />
+        <Picker.Item label="+ Obat Jamur - Rp. 150.000" value="Jamur" />
         <Picker.Item
-          label="kombinasi (Kutu dan Jamur) - Rp. 70.000"
-          value="Kombinasi"
+          label="Kutu dan Jamur - Rp. 200.000"
+          value="Kutu dan Jamur"
         />
       </Picker>
       <View style={styles.garis} />

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {
   Image,
+  RefreshControl,
   ScrollView,
   StatusBar,
   StyleSheet,
@@ -9,7 +10,13 @@ import {
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {Gap, Layanan, ListDokter, MerawatHewan, Slider} from '../../components';
-import {getDiskonData, getDokterData} from '../../redux/action/home';
+import {
+  getDiskonData,
+  getDokterData,
+  getAllGrooming,
+  getAllPenitipan,
+  getAllPraktik,
+} from '../../redux/action/home';
 import {colors, fonts, getData} from '../../utils';
 import Dialog from 'react-native-dialog';
 import {DummyProfile} from '../../assets';
@@ -18,6 +25,7 @@ const Dashboard = ({navigation}) => {
   const [userProfile, setUserProfile] = useState({});
   const [visible, setVisible] = useState(false);
   const [photo, setPhoto] = useState(DummyProfile);
+  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
     navigation.addListener('focus', () => {
@@ -29,15 +37,27 @@ const Dashboard = ({navigation}) => {
   }, [navigation]);
 
   const dispatch = useDispatch();
-  const {diskon, dokter} = useSelector(state => state.homeReducer);
+  const {diskon, dokter, totalGrooming, totalPenitipan, totalPraktik} =
+    useSelector(state => state.homeReducer);
 
   useEffect(() => {
     dispatch(getDiskonData());
+    dispatch(getDokterData());
+    dispatch(getAllGrooming());
+    dispatch(getAllPenitipan());
+    dispatch(getAllPraktik());
   }, []);
 
-  useEffect(() => {
+  const onRefresh = () => {
+    setRefreshing(true);
+    dispatch(getDiskonData());
     dispatch(getDokterData());
-  }, []);
+    dispatch(getAllGrooming());
+    dispatch(getAllPenitipan());
+    dispatch(getAllPraktik());
+
+    setRefreshing(false);
+  };
 
   const showDialog = () => {
     setVisible(true);
@@ -76,7 +96,11 @@ const Dashboard = ({navigation}) => {
         </Dialog.Container>
       </View>
       <StatusBar barStyle="dark-content" backgroundColor="#FFF" />
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }>
         {/* Profil */}
         <Gap height={20} />
         <View style={styles.wrapProfil}>
@@ -106,12 +130,18 @@ const Dashboard = ({navigation}) => {
           <Layanan
             category="Grooming"
             onPress={() => navigation.navigate('Grooming')}
+            jmlPesanan={totalGrooming.length}
           />
           <Layanan
             category="Penitipan"
             onPress={() => navigation.navigate('Penitipan')}
+            jmlPesanan={totalPenitipan.length}
           />
-          <Layanan category="Praktik" onPress={showDialog} />
+          <Layanan
+            category="Praktik"
+            onPress={showDialog}
+            jmlPesanan={totalPraktik.length}
+          />
         </View>
         <Gap height={20} />
         {/* List Dokter */}

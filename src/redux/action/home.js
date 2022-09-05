@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import {getData} from '../../utils';
 
 const API_HOST = {
   url: 'http://vdb.otwlulus.com/api',
@@ -25,20 +26,128 @@ export const getDokterData = () => dispatch => {
     });
 };
 
-// export const getFoodDataByTypes = types => dispatch => {
-//   Axios.get(`${API_HOST.url}/food?types=${types}`)
-//     .then(res => {
-//       if (types === 'newfood') {
-//         dispatch({type: 'SET_NEW_TASTE', value: res.data.data.data});
-//       }
-//       if (types === 'popular') {
-//         dispatch({type: 'SET_POPULAR', value: res.data.data.data});
-//       }
-//       if (types === 'recommended') {
-//         dispatch({type: 'SET_RECOMMENDED', value: res.data.data.data});
-//       }
-//     })
-//     .catch(err => {
-//       showMessage('Terjadi kesalahan di API Food By Type');
-//     });
-// };
+export const getAllGrooming = () => dispatch => {
+  getData('token').then(resToken => {
+    Axios.all([
+      Axios.get(`${API_HOST.url}/grooming?status=PENDING`, {
+        headers: {
+          Authorization: resToken.value,
+        },
+      }),
+      Axios.get(`${API_HOST.url}/grooming?status=PENJEMPUTAN`, {
+        headers: {
+          Authorization: resToken.value,
+        },
+      }),
+      Axios.get(`${API_HOST.url}/grooming?status=DI PROSES`, {
+        headers: {
+          Authorization: resToken.value,
+        },
+      }),
+      Axios.get(`${API_HOST.url}/grooming?status=DI ANTAR`, {
+        headers: {
+          Authorization: resToken.value,
+        },
+      }),
+    ])
+      .then(
+        Axios.spread((res1, res2, res3, res4) => {
+          const pending = res1.data.data.data;
+          const penjemputan = res2.data.data.data;
+          const diProses = res3.data.data.data;
+          const diAntar = res4.data.data.data;
+          dispatch({
+            type: 'SET_TOTAL_GROOMING',
+            value: [...pending, ...penjemputan, ...diProses, ...diAntar],
+          });
+        }),
+      )
+      .catch(err => {
+        showMessage('Terjadi Kesalahan di In Progress API');
+      });
+  });
+};
+
+export const getAllPenitipan = () => dispatch => {
+  getData('token').then(resToken => {
+    Axios.all([
+      Axios.get(`${API_HOST.url}/penitipan?status=PENDING`, {
+        headers: {
+          Authorization: resToken.value,
+        },
+      }),
+      Axios.get(`${API_HOST.url}/penitipan?status=PENJEMPUTAN`, {
+        headers: {
+          Authorization: resToken.value,
+        },
+      }),
+      Axios.get(`${API_HOST.url}/penitipan?status=DI PROSES`, {
+        headers: {
+          Authorization: resToken.value,
+        },
+      }),
+      Axios.get(`${API_HOST.url}/penitipan?status=DI ANTAR`, {
+        headers: {
+          Authorization: resToken.value,
+        },
+      }),
+    ])
+      .then(
+        Axios.spread((res1, res2, res3, res4) => {
+          const pending = res1.data.data.data;
+          const penjemputan = res2.data.data.data;
+          const diProses = res3.data.data.data;
+          const diAntar = res4.data.data.data;
+          dispatch({
+            type: 'SET_TOTAL_PENITIPAN',
+            value: [...pending, ...penjemputan, ...diProses, ...diAntar],
+          });
+        }),
+      )
+      .catch(err => {
+        showMessage('Terjadi Kesalahan di In Progress API');
+      });
+  });
+};
+
+export const getAllPraktik = () => dispatch => {
+  getData('token').then(resToken => {
+    Axios.all([
+      Axios.get(`${API_HOST.url}/praktik?status=PENDING`, {
+        headers: {
+          Authorization: resToken.value,
+        },
+      }),
+      Axios.get(`${API_HOST.url}/praktik?status=PENJEMPUTAN`, {
+        headers: {
+          Authorization: resToken.value,
+        },
+      }),
+      Axios.get(`${API_HOST.url}/praktik?status=DI PROSES`, {
+        headers: {
+          Authorization: resToken.value,
+        },
+      }),
+      Axios.get(`${API_HOST.url}/praktik?status=DI ANTAR`, {
+        headers: {
+          Authorization: resToken.value,
+        },
+      }),
+    ])
+      .then(
+        Axios.spread((res1, res2, res3, res4) => {
+          const pending = res1.data.data.data;
+          const penjemputan = res2.data.data.data;
+          const diProses = res3.data.data.data;
+          const diAntar = res4.data.data.data;
+          dispatch({
+            type: 'SET_TOTAL_PRAKTIK',
+            value: [...pending, ...penjemputan, ...diProses, ...diAntar],
+          });
+        }),
+      )
+      .catch(err => {
+        showMessage('Terjadi Kesalahan di In Progress API');
+      });
+  });
+};

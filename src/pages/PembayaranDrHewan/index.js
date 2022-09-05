@@ -124,23 +124,6 @@ const PembayaranDrHewan = ({navigation, total, sub_total, sub1, sub2}) => {
   total = sub_total + shipping_cost - diskon.price_discount;
 
   const onCheckout = () => {
-    const data = {
-      user_id: userProfile.id,
-      animal_name: praktik.animal_name,
-      animal_type: praktik.animal_type,
-      descendants: praktik.descendants,
-      animal_gender: praktik.animal_gender,
-      note: praktik.note,
-      first_symptom: praktik.first_symptom,
-      second_symptom: praktik.second_symptom,
-      doctor_id: 1,
-      status: 'PENDING',
-      sub_total,
-      shipping_cost,
-      discount: diskon.price_discount,
-      total,
-    };
-
     const formdata = new FormData();
     formdata.append('user_id', userProfile.id);
     formdata.append('animal_name', praktik.animal_name);
@@ -193,9 +176,10 @@ const PembayaranDrHewan = ({navigation, total, sub_total, sub1, sub2}) => {
     return (
       <>
         <Header
-          title="Payment"
-          subTitle="Silahkan selesaikan pembayaran anda"
-          onBack={() => setIsPaymentOpen(false)}
+          title="Pembayaran"
+          onPress={() =>
+            navigation.reset({index: 0, routes: [{name: 'MainApp'}]})
+          }
         />
         <WebView
           source={{uri: paymentURL}}
@@ -311,7 +295,7 @@ const styles = StyleSheet.create({
     color: colors.text.for,
   },
   txtHasil: {
-    fontFamily: fonts.primary[400],
+    fontFamily: fonts.primary[500],
     fontSize: 14,
     color: colors.text.primary,
   },

@@ -30,16 +30,16 @@ const PembayaranGrooming = ({navigation, total, sub_total}) => {
   const shipping_cost = 12000;
 
   if (grooming.packet_grooming === 'Basic') {
-    sub_total = 45000;
+    sub_total = 65000;
   }
   if (grooming.packet_grooming === 'Kutu') {
-    sub_total = 60000;
+    sub_total = 165000;
   }
   if (grooming.packet_grooming === 'Jamur') {
-    sub_total = 60000;
+    sub_total = 150000;
   }
-  if (grooming.packet_grooming === 'Kombinasi') {
-    sub_total = 70000;
+  if (grooming.packet_grooming === 'Kutu dan Jamur') {
+    sub_total = 200000;
   }
 
   total = sub_total + shipping_cost - diskon.price_discount;
@@ -95,9 +95,10 @@ const PembayaranGrooming = ({navigation, total, sub_total}) => {
     return (
       <>
         <Header
-          title="Payment"
-          subTitle="Silahkan selesaikan pembayaran anda"
-          onBack={() => setIsPaymentOpen(false)}
+          title="Pembayaran"
+          onPress={() =>
+            navigation.reset({index: 0, routes: [{name: 'MainApp'}]})
+          }
         />
         <WebView
           source={{uri: paymentURL}}
