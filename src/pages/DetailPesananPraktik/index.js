@@ -1,15 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useEffect} from 'react';
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {DummyCat} from '../../assets';
-import {Gap, Header, Input, ItemValue, Status} from '../../components';
+import {Buttons, Gap, Header, ItemValue, Loading} from '../../components';
 import {getDokterData} from '../../redux/action';
-import {colors, fonts} from '../../utils';
+import {colors, fonts, getData, showMessage} from '../../utils';
 import moment from 'moment';
+import WebView from 'react-native-webview';
+import Axios from 'axios';
 
 const DetailPesananPraktik = ({navigation, route}) => {
   const itemPraktik = route.params;
+
+  const [isPaymentOpen, setIsPaymentOpen] = useState(false);
 
   const dispatch = useDispatch();
   const {dokter} = useSelector(state => state.homeReducer);
@@ -17,6 +27,61 @@ const DetailPesananPraktik = ({navigation, route}) => {
   useEffect(() => {
     dispatch(getDokterData());
   }, []);
+
+  const cancelPraktik = () => {
+    {
+      const data = {
+        status: 'DIBATALKAN',
+      };
+      getData('token').then(resToken => {
+        Axios.post(
+          `http://vdb.otwlulus.com/api/praktik/${itemPraktik.id}`,
+          data,
+          {
+            headers: {
+              Authorization: resToken.value,
+            },
+          },
+        )
+          .then(res => {
+            navigation.reset({
+              index: 0,
+              routes: [{name: 'MainApp'}],
+            });
+            showMessage('Berhasil Dibatalkan', 'success');
+          })
+          .catch(err => {
+            console.log('sukses cancel :', err);
+          });
+      });
+    }
+  };
+
+  const Bayar = () => {
+    setIsPaymentOpen(true);
+  };
+
+  const onNavChange = state => {
+    console.log('nav :', state);
+    const titleWeb = 'Laravel';
+    if (state.title === titleWeb) {
+      navigation.reset({index: 0, routes: [{name: 'MainApp'}]});
+    }
+  };
+
+  if (isPaymentOpen) {
+    return (
+      <>
+        <Header title="Pembayaran" onPress={() => setIsPaymentOpen(false)} />
+        <WebView
+          source={{uri: itemPraktik.payment_url}}
+          startInLoadingState={true}
+          renderLoading={() => <Loading />}
+          onNavigationStateChange={onNavChange}
+        />
+      </>
+    );
+  }
 
   return (
     <View style={styles.Page}>
@@ -92,6 +157,18 @@ const DetailPesananPraktik = ({navigation, route}) => {
         </View>
 
         <View style={styles.content}>
+          <Text style={styles.informasiHewan}>Pembayaran</Text>
+          <Gap height={3} />
+          <TouchableOpacity onPress={Bayar}>
+            <Text style={styles.txtLink}>{itemPraktik.payment_url}</Text>
+          </TouchableOpacity>
+          <Gap height={8} />
+          <Text>
+            Note : Abaikan kalau sudah dibayar jika belum klik link di atas ini
+          </Text>
+        </View>
+
+        <View style={styles.content}>
           <ItemValue label="Subtotal " numberRp value={itemPraktik.sub_total} />
           <ItemValue
             label="Ongkos Antar Jemput"
@@ -111,7 +188,13 @@ const DetailPesananPraktik = ({navigation, route}) => {
           />
         </View>
 
-        <Gap height={20} />
+        {itemPraktik.status === 'PENDING' ? (
+          <View style={styles.content}>
+            <Buttons title="Batalkan" onPress={cancelPraktik} />
+          </View>
+        ) : (
+          <View />
+        )}
       </ScrollView>
     </View>
   );
@@ -144,6 +227,12 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primary[500],
     fontSize: 14,
     color: colors.text.primary,
+  },
+  txtLink: {
+    fontFamily: fonts.primary[500],
+    fontSize: 14,
+    color: colors.text.primary,
+    textDecorationLine: 'underline',
   },
   txtTotal: {
     fontFamily: fonts.primary[400],

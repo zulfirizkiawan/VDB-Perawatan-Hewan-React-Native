@@ -1,12 +1,79 @@
-import React from 'react';
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
-import {DummyCat} from '../../assets';
-import {Gap, Header, ItemValue} from '../../components';
-import {colors, fonts} from '../../utils';
+import React, {useState} from 'react';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import {Buttons, Gap, Header, ItemValue, Loading} from '../../components';
+import {colors, fonts, getData, showMessage} from '../../utils';
 import moment from 'moment';
+import Axios from 'axios';
+import WebView from 'react-native-webview';
 
 const DetailPesananGrooming = ({navigation, route}) => {
   const itemGrooming = route.params;
+
+  const [isPaymentOpen, setIsPaymentOpen] = useState(false);
+
+  const cancelGrooming = () => {
+    {
+      const data = {
+        status: 'DIBATALKAN',
+      };
+      console.log('sukses  :', itemGrooming.id);
+      getData('token').then(resToken => {
+        Axios.post(
+          `http://vdb.otwlulus.com/api/grooming/${itemGrooming.id}`,
+          data,
+          {
+            headers: {
+              Authorization: resToken.value,
+            },
+          },
+        )
+          .then(res => {
+            navigation.reset({
+              index: 0,
+              routes: [{name: 'MainApp'}],
+            });
+            showMessage('Berhasil Dibatalkan', 'success');
+          })
+          .catch(err => {
+            console.log('sukses cancel :', err);
+          });
+      });
+    }
+  };
+
+  const Bayar = () => {
+    setIsPaymentOpen(true);
+  };
+
+  const onNavChange = state => {
+    console.log('nav :', state);
+    const titleWeb = 'Laravel';
+    if (state.title === titleWeb) {
+      navigation.reset({index: 0, routes: [{name: 'MainApp'}]});
+    }
+  };
+
+  if (isPaymentOpen) {
+    return (
+      <>
+        <Header title="Pembayaran" onPress={() => setIsPaymentOpen(false)} />
+        <WebView
+          source={{uri: itemGrooming.payment_url}}
+          startInLoadingState={true}
+          renderLoading={() => <Loading />}
+          onNavigationStateChange={onNavChange}
+        />
+      </>
+    );
+  }
+
   return (
     <View style={styles.Page}>
       <Header title="Detail Pesanan" onPress={() => navigation.goBack()} />
@@ -66,6 +133,18 @@ const DetailPesananGrooming = ({navigation, route}) => {
         </View>
 
         <View style={styles.content}>
+          <Text style={styles.informasiHewan}>Pembayaran</Text>
+          <Gap height={3} />
+          <TouchableOpacity onPress={Bayar}>
+            <Text style={styles.txtLink}>{itemGrooming.payment_url}</Text>
+          </TouchableOpacity>
+          <Gap height={8} />
+          <Text>
+            Note : Abaikan kalau sudah dibayar jika belum klik link di atas ini
+          </Text>
+        </View>
+
+        <View style={styles.content}>
           <ItemValue
             label="Subtotal "
             numberRp
@@ -88,8 +167,13 @@ const DetailPesananGrooming = ({navigation, route}) => {
             valueColor="#27AE60"
           />
         </View>
-
-        <Gap height={20} />
+        {itemGrooming.status === 'PENDING' ? (
+          <View style={styles.content}>
+            <Buttons title="Batalkan" onPress={cancelGrooming} />
+          </View>
+        ) : (
+          <View />
+        )}
       </ScrollView>
     </View>
   );
@@ -122,6 +206,12 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primary[500],
     fontSize: 14,
     color: colors.text.primary,
+  },
+  txtLink: {
+    fontFamily: fonts.primary[500],
+    fontSize: 14,
+    color: colors.text.primary,
+    textDecorationLine: 'underline',
   },
   txtTotal: {
     fontFamily: fonts.primary[400],

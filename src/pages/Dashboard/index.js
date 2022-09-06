@@ -111,8 +111,8 @@ const Dashboard = ({navigation}) => {
           <Image source={photo} style={styles.avatar} />
         </View>
         {/* Slider pengumuman */}
-        {diskon.turn_off === 'yes' ? (
-          <View />
+        {diskon.turn_off === 'Yes' ? (
+          <View></View>
         ) : (
           <View style={styles.wrapSlider}>
             <Slider

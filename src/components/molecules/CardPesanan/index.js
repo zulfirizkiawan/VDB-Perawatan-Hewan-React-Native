@@ -1,103 +1,47 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {Status, Gap, Buttons} from '../../atoms';
-import {DummyCat} from '../../../assets';
+import {Gap} from '../../atoms';
 import {colors, fonts} from '../../../utils';
 import ItemValue from '../ItemValue';
 import Number from '../Number';
 
-const CardPesanan = ({
-  onPress,
-  total,
-  jenisHewan,
-  nama,
-  status,
-  onCancel,
-  images,
-}) => {
+const CardPesanan = ({onPress, total, jenisHewan, nama, status, images}) => {
   return (
-    <View>
-      {status === 'PENDING' ? (
-        <TouchableOpacity style={styles.content} onPress={onPress}>
-          <ItemValue
-            label="Status"
-            value={status}
-            valueColor={
-              status === 'DIBATALKAN'
-                ? '#D9435E'
-                : status === 'SELESAI'
-                ? '#1ABC9C'
-                : '#F1A852'
-            }
-          />
-          <Gap height={5} />
-          <View style={styles.garis} />
-          <Gap height={10} />
-          <View style={styles.wrapContent}>
-            <Image source={images} style={styles.img} />
-            <Gap width={10} />
-            <View style={styles.wrapStatus}>
-              <View style={styles.flex}>
-                <Text style={styles.txt}>Nama Pemilik</Text>
-                <Text style={styles.txtHasil}>{nama}</Text>
-              </View>
-              <View style={styles.flex}>
-                <Text style={styles.txt}>Jenis Hewan</Text>
-                <Text style={styles.txtHasil}>{jenisHewan}</Text>
-              </View>
-              <View style={styles.flex}>
-                <Text style={styles.txt}>Total</Text>
-                <Number number={total} style={styles.txtHasil} />
-              </View>
-            </View>
+    <TouchableOpacity style={styles.content} onPress={onPress}>
+      <ItemValue
+        label="Status"
+        value={status}
+        valueColor={
+          status === 'DIBATALKAN'
+            ? '#D9435E'
+            : status === 'SELESAI'
+            ? '#1ABC9C'
+            : '#F1A852'
+        }
+      />
+      <Gap height={5} />
+      <View style={styles.garis} />
+      <Gap height={10} />
+      <View style={styles.wrapContent}>
+        <Image source={images} style={styles.img} />
+        <Gap width={10} />
+        <View style={styles.wrapStatus}>
+          <View style={styles.flex}>
+            <Text style={styles.txt}>Nama Pemilik</Text>
+            <Text style={styles.txtHasil}>{nama}</Text>
           </View>
-          {/* //-----// */}
-          <View>
-            <Gap height={10} />
-            <View style={styles.garis} />
-            <TouchableOpacity style={styles.BtnLogin} onPress={onCancel}>
-              <Text style={styles.TxtLogin}>Batalkan</Text>
-            </TouchableOpacity>
+          <View style={styles.flex}>
+            <Text style={styles.txt}>Jenis Hewan</Text>
+            <Text style={styles.txtHasil}>{jenisHewan}</Text>
           </View>
-        </TouchableOpacity>
-      ) : (
-        <TouchableOpacity style={styles.content} onPress={onPress}>
-          <ItemValue
-            label="Status"
-            value={status}
-            valueColor={
-              status === 'DIBATALKAN'
-                ? '#D9435E'
-                : status === 'SELESAI'
-                ? '#1ABC9C'
-                : '#F1A852'
-            }
-          />
-          <Gap height={5} />
-          <View style={styles.garis} />
-          <Gap height={10} />
-          <View style={styles.wrapContent}>
-            <Image source={images} style={styles.img} />
-            <Gap width={10} />
-            <View style={styles.wrapStatus}>
-              <View style={styles.flex}>
-                <Text style={styles.txt}>Nama Pemilik</Text>
-                <Text style={styles.txtHasil}>{nama}</Text>
-              </View>
-              <View style={styles.flex}>
-                <Text style={styles.txt}>Jenis Hewan</Text>
-                <Text style={styles.txtHasil}>{jenisHewan}</Text>
-              </View>
-              <View style={styles.flex}>
-                <Text style={styles.txt}>Total</Text>
-                <Number number={total} style={styles.txtHasil} />
-              </View>
-            </View>
+          <View style={styles.flex}>
+            <Text style={styles.txt}>Total</Text>
+            <Number number={total} style={styles.txtHasil} />
           </View>
-          {/* //-----// */}
-        </TouchableOpacity>
-      )}
-    </View>
+        </View>
+      </View>
+      <Gap height={5} />
+    </TouchableOpacity>
   );
 };
 
@@ -109,6 +53,8 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 15,
     marginTop: 15,
+    elevation: 4,
+    shadowColor: colors.text.for,
   },
   wrapContent: {
     flexDirection: 'row',

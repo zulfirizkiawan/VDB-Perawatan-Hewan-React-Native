@@ -58,37 +58,6 @@ const PesananGrooming = () => {
     setRefreshing(false);
   };
 
-  const cancelGrooming = () => {
-    {
-      pesananGrooming.map(itemGrooming => {
-        const data = {
-          status: 'DIBATALKAN',
-        };
-        getData('token').then(resToken => {
-          Axios.post(
-            `http://vdb.otwlulus.com/api/grooming/${itemGrooming.id}`,
-            data,
-            {
-              headers: {
-                Authorization: resToken.value,
-              },
-            },
-          )
-            .then(res => {
-              navigation.reset({
-                index: 0,
-                routes: [{name: 'MainApp'}],
-              });
-              showMessage('Berhasil Dibatalkan', 'success');
-            })
-            .catch(err => {
-              console.log('sukses cancel :', err);
-            });
-        });
-      });
-    }
-  };
-
   return (
     <ScrollView
       refreshControl={
@@ -106,7 +75,6 @@ const PesananGrooming = () => {
               jenisHewan={itemGrooming.animal_type}
               total={itemGrooming.total}
               status={itemGrooming.status}
-              onCancel={cancelGrooming}
               images={{uri: itemGrooming.grooming_photo_path}}
             />
           );
@@ -133,37 +101,6 @@ const PesananPenitipan = () => {
     setRefreshing(false);
   };
 
-  const cancelPenitipan = () => {
-    {
-      pesananPenitipan.map(itemPenitipan => {
-        const data = {
-          status: 'DIBATALKAN',
-        };
-        getData('token').then(resToken => {
-          Axios.post(
-            `http://vdb.otwlulus.com/api/penitipan/${itemPenitipan.id}`,
-            data,
-            {
-              headers: {
-                Authorization: resToken.value,
-              },
-            },
-          )
-            .then(res => {
-              navigation.reset({
-                index: 0,
-                routes: [{name: 'MainApp'}],
-              });
-              showMessage('Berhasil Dibatalkan', 'success');
-            })
-            .catch(err => {
-              console.log('sukses cancel :', err);
-            });
-        });
-      });
-    }
-  };
-
   return (
     <ScrollView
       refreshControl={
@@ -181,7 +118,6 @@ const PesananPenitipan = () => {
               jenisHewan={itemPenitipan.animal_type}
               total={itemPenitipan.total}
               status={itemPenitipan.status}
-              onCancel={cancelPenitipan}
               images={{uri: itemPenitipan.penitipan_photo_path}}
             />
           );
@@ -208,37 +144,6 @@ const PesananPraktik = () => {
     setRefreshing(false);
   };
 
-  const cancelPraktik = () => {
-    {
-      pesananPraktik.map(itemPraktik => {
-        const data = {
-          status: 'DIBATALKAN',
-        };
-        getData('token').then(resToken => {
-          Axios.post(
-            `http://vdb.otwlulus.com/api/praktik/${itemPraktik.id}`,
-            data,
-            {
-              headers: {
-                Authorization: resToken.value,
-              },
-            },
-          )
-            .then(res => {
-              navigation.reset({
-                index: 0,
-                routes: [{name: 'MainApp'}],
-              });
-              showMessage('Berhasil Dibatalkan', 'success');
-            })
-            .catch(err => {
-              console.log('sukses cancel :', err);
-            });
-        });
-      });
-    }
-  };
-
   return (
     <ScrollView
       refreshControl={
@@ -256,7 +161,6 @@ const PesananPraktik = () => {
               jenisHewan={itemPraktik.animal_type}
               total={itemPraktik.total}
               status={itemPraktik.status}
-              onCancel={cancelPraktik}
               images={{uri: itemPraktik.praktik_photo_path}}
             />
           );
